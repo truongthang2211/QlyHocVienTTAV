@@ -21,4 +21,4 @@ Project quản lý học viên ở trung tâm anh văn
         - Admin có tất cả các quyền của người quản lý và giáo viên
         - Thông báo đến học viên
         - Phân tích số lượng học viên đăng ký vào trung tâm, học viên nghỉ học, sự gia tăng điểm số của học viên theo từng đợt,...
-    ***Lưu ý: Sinh viên, giáo viên, quản lý, admin đều phải đăng nhập để thực hiện chức năng của mình***
+***Lưu ý: Sinh viên, giáo viên, quản lý, admin đều phải đăng nhập để thực hiện chức năng của mình***
