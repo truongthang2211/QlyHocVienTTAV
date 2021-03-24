@@ -15,9 +15,10 @@ Project quản lý học viên ở trung tâm anh văn
     - Quản lý: Có thể quản lý các lớp, TKB , quản lý SV, quản lý điểm thi , quản lý TKB, quản lý học phí trong toàn bộ trung tâm AV
         - Sinh viên được thăng lớp dựa vào điểm thi.
         - Điểm thi , TKB , Học phí như trên
-    - Admin: Tạo lịch thi, quyết định học phí SV
+    - Admin: Tạo lịch thi, quyết định học phí SV, thông báo, phân tích học viên
         - Lịch thi được admin cung cấp sau mỗi đợt
         - Admin được quyết định học phí của SV
         - Admin có tất cả các quyền của người quản lý và giáo viên
-
+        - Thông báo đến học viên
+        - Phân tích số lượng học viên đăng ký vào trung tâm, học viên nghỉ học, sự gia tăng điểm số của học viên theo từng đợt,...
     ***Lưu ý: Sinh viên, giáo viên, quản lý, admin đều phải đăng nhập để thực hiện chức năng của mình***
