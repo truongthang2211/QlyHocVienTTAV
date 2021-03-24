@@ -23,3 +23,5 @@ Project quản lý học viên ở trung tâm anh văn
         - Phân tích số lượng học viên đăng ký vào trung tâm, học viên nghỉ học, sự gia tăng điểm số của học viên theo từng đợt, ...
 
     ***Lưu ý: Sinh viên, giáo viên, quản lý, admin đều phải đăng nhập để thực hiện chức năng của mình***
+    
+    # [Link UseCase](https://online.visual-paradigm.com/share.jsp?id=313239333333392d31)
