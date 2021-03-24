@@ -19,3 +19,5 @@ Project quản lý học viên ở trung tâm anh văn
         - Lịch thi được admin cung cấp sau mỗi đợt
         - Admin được quyết định học phí của SV
         - Admin có tất cả các quyền của người quản lý và giáo viên
+
+    ***Lưu ý: Sinh viên, giáo viên, quản lý, admin đều phải đăng nhập để thực hiện chức năng của mình***
