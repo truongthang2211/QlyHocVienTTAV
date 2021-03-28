@@ -19,7 +19,9 @@ Project quản lý học viên ở trung tâm anh văn
   Xong nhấn Finish rồi Close các kiểu
  
  ![image](https://user-images.githubusercontent.com/59715444/112742271-4a1af580-8fb7-11eb-9118-203d2e17644e.png)
+ 
  ** Nếu run báo lỗi thì hãy tạo project mới như hình, nó sẽ kêu download gì đó rồi cứ bấm ok ok là ok
+ 
  ![image](https://user-images.githubusercontent.com/59715444/112742536-a5e67e00-8fb9-11eb-8f13-3233e882e4c2.png)
 
 
