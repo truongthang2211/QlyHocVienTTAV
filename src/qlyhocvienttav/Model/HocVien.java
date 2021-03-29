@@ -10,5 +10,38 @@ package qlyhocvienttav.Model;
  * @author Thang
  */
 public class HocVien {
-    public String HoTen;
+    private String Ho,Ten,QuocTich;
+
+    public HocVien(String Ho, String Ten, String QuocTich) {
+        this.Ho = Ho;
+        this.Ten = Ten;
+        this.QuocTich = QuocTich;
+    }
+
+    public String getHo() {
+        return Ho;
+    }
+
+    public void setHo(String Ho) {
+        this.Ho = Ho;
+    }
+
+    public String getTen() {
+        return Ten;
+    }
+
+    public void setTen(String Ten) {
+        this.Ten = Ten;
+    }
+
+    public String getQuocTich() {
+        return QuocTich;
+    }
+
+    public void setQuocTich(String QuocTich) {
+        this.QuocTich = QuocTich;
+    }
+    
+    
+    
 }
