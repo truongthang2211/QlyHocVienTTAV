@@ -5,6 +5,8 @@
  */
 package qlyhocvienttav.Controller;
 
+import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -16,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import qlyhocvienttav.Main;
 
 import qlyhocvienttav.Model.HocVien;
 
@@ -43,22 +46,29 @@ public class TestForm1Controller implements Initializable {
     private TableColumn<HocVien, String> c3;
     @FXML
     private TableView<HocVien> table;
-    ObservableList<HocVien> ListHocVien ;
+    ObservableList<HocVien> ListHocVien = FXCollections.observableArrayList();
+    @FXML
+    private JFXButton logoutbtn;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ListHocVien = FXCollections.observableArrayList();
         c1.setCellValueFactory(new PropertyValueFactory<>("Ho"));
         c2.setCellValueFactory(new PropertyValueFactory<>("Ten"));
         c3.setCellValueFactory(new PropertyValueFactory<>("QuocTich"));
         table.setItems(ListHocVien);
     }    
+    @FXML
     public void Add (ActionEvent event){
         ListHocVien.add(new HocVien(ho.getText(),ten.getText(),quoctich.getText()));
         
+    }
+
+    @FXML
+    private void logoutbtnAction(ActionEvent event) throws IOException {
+        Main.ShowForm("View/MainView.fxml", false, event);
     }
     
 }
