@@ -22,7 +22,7 @@ import qlyhocvienttav.Main;
  *
  * @author Thang
  */
-public class MainViewController implements Initializable {
+public class LoginViewController implements Initializable {
 
     /**
      * Initializes the controller class.

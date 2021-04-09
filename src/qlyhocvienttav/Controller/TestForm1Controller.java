@@ -68,7 +68,7 @@ public class TestForm1Controller implements Initializable {
 
     @FXML
     private void logoutbtnAction(ActionEvent event) throws IOException {
-        Main.ShowForm("View/MainView.fxml", false, event);
+        Main.ShowForm("View/LoginView.fxml", false, event);
     }
     
 }
