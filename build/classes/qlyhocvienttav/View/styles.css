@@ -8,3 +8,20 @@
     -fx-border-width: 4;
     
 }
+.ListButton{
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: #fafafa;
+    -fx-pref-height:50;
+    -fx-pref-width:325;
+    -fx-font-size:17;
+    -fx-graphic-text-gap:20;
+    -fx-font-weight: normal;
+    -fx-alignment: CENTER_LEFT;
+}
+.ListButton:focused{
+    -fx-border-width: 1 0 1 0 ;
+    -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #dc143c, #32cd32);
+}
+.ListButton:hover{
+    -fx-background-color: #353535;
+}

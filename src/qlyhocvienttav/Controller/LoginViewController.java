@@ -31,7 +31,7 @@ public class LoginViewController implements Initializable {
     private Button loginbtn;
     @FXML
     private void HamThucHienButton(ActionEvent event) throws Exception {
-        Main.ShowForm("View/TestForm1.fxml", false,event);
+        Main.ShowForm("View/Manager/MainManager.fxml", false,event);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
