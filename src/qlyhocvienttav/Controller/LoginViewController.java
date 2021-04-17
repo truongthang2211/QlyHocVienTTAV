@@ -5,16 +5,18 @@
  */
 package qlyhocvienttav.Controller;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import qlyhocvienttav.Main;
 /**
@@ -24,18 +26,32 @@ import qlyhocvienttav.Main;
  */
 public class LoginViewController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @FXML
-    private Button loginbtn;
+    private JFXTextField username;
     @FXML
-    private void HamThucHienButton(ActionEvent event) throws Exception {
-        Main.ShowForm("View/Manager/MainManager.fxml", false,event);
+    private JFXPasswordField password;
+    @FXML
+    private Label warninglabel;
+    @FXML
+    private JFXButton loginbutton;
+    @FXML
+    private void LoginButton(ActionEvent event) throws Exception {
+        
+        String Role = "";
+        if (username.getText().equals("manager") && password.getText().equals("manager")){
+            Role = "Manager/MainManager";
+        }else if (username.getText().equals("teacher") && password.getText().equals("teacher")){
+            Role = "Teacher/MainTeacher";
+        }else {
+            warninglabel.visibleProperty().set(true);
+            return;
+        }
+        Main.ShowForm("View/"+Role +".fxml", false,event);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
-    
+
 }
