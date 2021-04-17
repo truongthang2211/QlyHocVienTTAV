@@ -25,3 +25,38 @@
 .ListButton:hover{
     -fx-background-color: #353535;
 }
+.AddButton{
+    -fx-background-color: linear-gradient( #84fab0 0%, #8fd3f4 100%);
+    -fx-text-fill: #7f7f7f;
+    -fx-font-size:15;
+    -fx-pref-width:130;
+    -fx-pref-height:50;
+    -fx-background-radius: 25;
+}
+.EditButton{
+    -fx-background-color: linear-gradient( #a1c4fd 0%, #c2e9fb 100%);
+    -fx-text-fill: #7f7f7f;
+    -fx-font-size:15;
+    -fx-pref-width:130;
+    -fx-pref-height:50;
+    -fx-background-radius: 25;
+
+}
+.DeleteButton{
+    -fx-background-color: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    -fx-text-fill: #7f7f7f;
+    -fx-font-size:15;
+    -fx-pref-width:130;
+    -fx-pref-height:50;
+    -fx-background-radius: 25;
+
+}
+.AddButton:hover{
+    -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+.EditButton:hover{
+    -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+.DeleteButton:hover{
+    -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}

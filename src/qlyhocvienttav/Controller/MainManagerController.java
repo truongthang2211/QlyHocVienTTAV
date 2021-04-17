@@ -15,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -49,9 +51,6 @@ public class MainManagerController implements Initializable {
         topcenterlabel.setText("Information");
         LoadUI("../View/Manager/CenterInfo.fxml");
         centergrid.add(root, 0, 0);
-        LoadUI("../View/Manager/RightStudentManage.fxml");
-        rightgrid.add(root, 0, 0);
-        
     }    
 
     @FXML
@@ -60,9 +59,8 @@ public class MainManagerController implements Initializable {
         topcenterlabel.setText("Information");
         LoadUI("../View/Manager/CenterInfo.fxml");
         centergrid.add(root, 0, 0);
-        LoadUI("../View/Manager/RightStudentManage.fxml");
         rightgrid.getChildren().clear();
-        rightgrid.add(root, 0, 0);
+       
     }
     public void LoadUI(String fxml){
         try {
@@ -76,17 +74,68 @@ public class MainManagerController implements Initializable {
 
     @FXML
     private void Student_management_Button(ActionEvent event) {
-        centergrid.getChildren().clear();
         topcenterlabel.setText("Student management");
         LoadUI("../View/Manager/CenterStudentManage.fxml");
+        centergrid.getChildren().clear();
         centergrid.add(root, 0, 0);
         LoadUI("../View/Manager/RightStudentManage.fxml");
         rightgrid.getChildren().clear();
-        rightgrid.add(root, 0, 0);
+        rightgrid.add(root, 0, 1);
     }
 
     @FXML
     private void SignoutButton(ActionEvent event) throws IOException {
         Main.ShowForm("View/LoginView.fxml", false, event);
+    }
+
+    @FXML
+    private void StudentFeeButton(ActionEvent event) {
+        LoadUI("../View/Manager/CenterStudentManage.fxml");
+        centergrid.getChildren().clear();
+        centergrid.add(root, 0, 0);
+        LoadUI("../View/Manager/RightStudentFee.fxml");
+        rightgrid.getChildren().clear();
+        rightgrid.add(root, 0, 1);
+    }
+
+    @FXML
+    private void ScheduleButton(ActionEvent event) {
+        LoadUI("../View/Manager/CenterStudentManage.fxml");
+        centergrid.getChildren().clear();
+        centergrid.add(root, 0, 0);
+        LoadUI("../View/Manager/RightScheduleManage.fxml");
+        rightgrid.getChildren().clear();
+        rightgrid.add(root, 0, 1);
+    }
+
+    @FXML
+    private void RoomButton(ActionEvent event) {
+        LoadUI("../View/Manager/CenterStudentManage.fxml");
+        centergrid.getChildren().clear();
+        centergrid.add(root, 0, 0);
+        LoadUI("../View/Manager/RightRoomManage.fxml");
+        rightgrid.getChildren().clear();
+        rightgrid.add(root, 0, 1);
+    }
+
+    @FXML
+    private void ClassButton(ActionEvent event) {
+        LoadUI("../View/Manager/CenterStudentManage.fxml");
+        centergrid.getChildren().clear();
+        centergrid.add(root, 0, 0);
+        LoadUI("../View/Manager/RightClassManage.fxml");
+        rightgrid.getChildren().clear();
+        rightgrid.add(root, 0, 1);
+    }
+
+    @FXML
+    private void ChangePasswordButton(ActionEvent event) {
+        centergrid.getChildren().clear();
+        topcenterlabel.setText("Change password");
+        LoadUI("../View/Manager/CenterChangePass.fxml");
+        centergrid.add(root, 0, 0);
+        GridPane.setHalignment(root, HPos.LEFT);
+        GridPane.setValignment(root, VPos.TOP);
+        rightgrid.getChildren().clear();
     }
 }
