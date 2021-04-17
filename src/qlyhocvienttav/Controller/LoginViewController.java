@@ -15,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -35,6 +37,8 @@ public class LoginViewController implements Initializable {
     @FXML
     private JFXButton loginbutton;
     @FXML
+    private ImageView Logoimg;
+    @FXML
     private void LoginButton(ActionEvent event) throws Exception {
         
         String Role = "";
@@ -51,7 +55,8 @@ public class LoginViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+//        Image img = new Image ("file:logo.gif");
+//        Logoimg.setImage(img);
     }    
 
 }

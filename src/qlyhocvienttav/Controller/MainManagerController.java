@@ -96,6 +96,7 @@ public class MainManagerController implements Initializable {
         LoadUI("../View/Manager/RightStudentFee.fxml");
         rightgrid.getChildren().clear();
         rightgrid.add(root, 0, 1);
+        topcenterlabel.setText("Student's fee management");
     }
 
     @FXML
@@ -106,6 +107,7 @@ public class MainManagerController implements Initializable {
         LoadUI("../View/Manager/RightScheduleManage.fxml");
         rightgrid.getChildren().clear();
         rightgrid.add(root, 0, 1);
+        topcenterlabel.setText("Schedule management");
     }
 
     @FXML
@@ -116,6 +118,7 @@ public class MainManagerController implements Initializable {
         LoadUI("../View/Manager/RightRoomManage.fxml");
         rightgrid.getChildren().clear();
         rightgrid.add(root, 0, 1);
+        topcenterlabel.setText("Room mangement");
     }
 
     @FXML
@@ -126,6 +129,7 @@ public class MainManagerController implements Initializable {
         LoadUI("../View/Manager/RightClassManage.fxml");
         rightgrid.getChildren().clear();
         rightgrid.add(root, 0, 1);
+        topcenterlabel.setText("Class management");
     }
 
     @FXML

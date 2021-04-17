@@ -44,6 +44,11 @@ public class MainTeacherController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        centergrid.getChildren().clear();
+        rightgrid.getChildren().clear();
+        LoadUI("../View/Teacher/CenterInfo.fxml");
+        centergrid.add(root, 0, 0);
+        topcenterlabel.setText("Information");
     }    
     public void LoadUI(String fxml){
         try {
@@ -60,6 +65,7 @@ public class MainTeacherController implements Initializable {
         rightgrid.getChildren().clear();
         LoadUI("../View/Teacher/CenterInfo.fxml");
         centergrid.add(root, 0, 0);
+        topcenterlabel.setText("Information");
     }
 
 
@@ -69,10 +75,13 @@ public class MainTeacherController implements Initializable {
         rightgrid.getChildren().clear();
         LoadUI("../View/Teacher/CenterClass.fxml");
         centergrid.add(root, 0, 0);
+        topcenterlabel.setText("Class");
     }
 
     @FXML
     private void ScheduleButton(ActionEvent event) {
+        
+        topcenterlabel.setText("Schedule");
     }
 
     @FXML
@@ -83,6 +92,7 @@ public class MainTeacherController implements Initializable {
         centergrid.add(root, 0, 0);
         GridPane.setHalignment(root, HPos.LEFT);
         GridPane.setValignment(root, VPos.TOP);
+        topcenterlabel.setText("Change password");
     }
 
     @FXML
@@ -98,6 +108,7 @@ public class MainTeacherController implements Initializable {
         rightgrid.add(root, 0, 1);
         LoadUI("../View/Teacher/CenterStudentManage.fxml");
         centergrid.add(root,0,0);
+        topcenterlabel.setText("Score management");
     }
     
 }
