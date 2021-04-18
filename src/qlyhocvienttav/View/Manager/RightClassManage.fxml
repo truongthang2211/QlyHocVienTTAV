@@ -28,23 +28,23 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <JFXTextField labelFloat="true" promptText="Class ID">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Class ID">
                <GridPane.margin>
                   <Insets right="250.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Name" GridPane.rowIndex="1">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Name" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="150.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Sĩ số" GridPane.rowIndex="2">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Sĩ số" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="300.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Sĩ số tối đa" GridPane.rowIndex="3" />
-            <JFXTextField labelFloat="true" promptText="Course ID" GridPane.rowIndex="4" />
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Sĩ số tối đa" GridPane.rowIndex="3" />
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Course ID" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="1">

@@ -30,28 +30,28 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXTextField disable="true" labelFloat="true" promptText="Fee ID">
+            <JFXTextField disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Fee ID">
                <GridPane.margin>
                   <Insets right="250.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Student ID" GridPane.rowIndex="1">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Student ID" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="250.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField disable="true" labelFloat="true" promptText="Full name" GridPane.rowIndex="2">
+            <JFXTextField disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Full name" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Số tiền đóng" GridPane.rowIndex="3">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Số tiền đóng" GridPane.rowIndex="3">
                <padding>
                   <Insets right="50.0" />
                </padding>
             </JFXTextField>
-            <JFXDatePicker prefHeight="25.0" prefWidth="206.0" promptText="Thời gian" showWeekNumbers="true" GridPane.rowIndex="4" />
-            <JFXTextField disable="true" editable="false" labelFloat="true" promptText="Status" GridPane.rowIndex="5" />
+            <JFXDatePicker defaultColor="#1f1f1f" prefHeight="25.0" prefWidth="206.0" promptText="Thời gian" showWeekNumbers="true" GridPane.rowIndex="4" />
+            <JFXTextField disable="true" editable="false" focusColor="#1f1f1f" labelFloat="true" promptText="Status" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="1">

@@ -29,30 +29,30 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <JFXTextField disable="true" labelFloat="true" promptText="Student ID">
+            <JFXTextField disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Student ID">
                <GridPane.margin>
                   <Insets right="250.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField editable="false" focusTraversable="false" labelFloat="true" promptText="Sdtudent name" GridPane.rowIndex="1">
+            <JFXTextField editable="false" focusColor="#1f1f1f" focusTraversable="false" labelFloat="true" promptText="Sdtudent name" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="150.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Listening" GridPane.rowIndex="2">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Listening" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="300.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Writing" GridPane.rowIndex="3">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Writing" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="300.0" />
                </GridPane.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Reading" GridPane.rowIndex="4">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Reading" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="300.0" />
                </GridPane.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Speaking" GridPane.rowIndex="5">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Speaking" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="300.0" />
                </GridPane.margin>

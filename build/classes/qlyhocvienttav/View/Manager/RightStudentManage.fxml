@@ -37,48 +37,48 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <JFXTextField editable="false" focusTraversable="false" promptText="ID ">
+            <JFXTextField editable="false" focusColor="#1f1f1f" focusTraversable="false" promptText="ID ">
                <GridPane.margin>
                   <Insets right="250.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Full name" GridPane.rowIndex="1">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Full name" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin></JFXTextField>
-            <JFXDatePicker promptText="Date of birth" GridPane.rowIndex="2" />
-            <JFXComboBox promptText="Sex" GridPane.rowIndex="3" />
-            <JFXTextField labelFloat="true" prefHeight="26.0" prefWidth="20.0" promptText="National" GridPane.rowIndex="4">
+            <JFXDatePicker defaultColor="#1f1f1f" promptText="Date of birth" GridPane.rowIndex="2" />
+            <JFXComboBox focusColor="#1f1f1f" promptText="Sex" GridPane.rowIndex="3" />
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" prefHeight="26.0" prefWidth="20.0" promptText="National" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="200.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Address" GridPane.rowIndex="5">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Address" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Email" GridPane.rowIndex="6">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Email" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets right="200.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Phone number" GridPane.rowIndex="7">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Phone number" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets right="200.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXComboBox promptText="Cousre" GridPane.rowIndex="8" />
-            <JFXTextField editable="false" focusTraversable="false" labelFloat="true" promptText="Class" GridPane.rowIndex="9">
+            <JFXComboBox focusColor="#1f1f1f" promptText="Cousre" GridPane.rowIndex="8" />
+            <JFXTextField editable="false" focusColor="#1f1f1f" focusTraversable="false" labelFloat="true" promptText="Class" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets right="200.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Cấm thi" GridPane.rowIndex="10">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Cấm thi" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets right="200.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Ghi chú" GridPane.rowIndex="11">
+            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Ghi chú" GridPane.rowIndex="11">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin></JFXTextField>

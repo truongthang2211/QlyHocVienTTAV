@@ -129,7 +129,7 @@
             </GridPane>
          </children>
          <padding>
-            <Insets left="20.0" />
+            <Insets bottom="20.0" left="20.0" />
          </padding>
       </GridPane>
       <GridPane fx:id="rightgrid" GridPane.columnIndex="2">
