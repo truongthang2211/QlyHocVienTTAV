@@ -6,7 +6,10 @@
 package qlyhocvienttav.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.awt.Dimension;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,6 +22,8 @@ import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import qlyhocvienttav.Main;
 
@@ -29,8 +34,6 @@ import qlyhocvienttav.Main;
  */
 public class MainManagerController implements Initializable {
 
-    @FXML
-    private GridPane leftgrid;
     @FXML
     private GridPane centergrid;
     @FXML
@@ -43,6 +46,12 @@ public class MainManagerController implements Initializable {
      * 
      */
     private Parent root = null;
+    @FXML
+    private ImageView logo;
+    @FXML
+    private GridPane logogrid;
+    @FXML
+    private GridPane rootgrid;
    
     
     @Override
@@ -51,6 +60,10 @@ public class MainManagerController implements Initializable {
         topcenterlabel.setText("Information");
         LoadUI("../View/Manager/CenterInfo.fxml");
         centergrid.add(root, 0, 0);
+        
+        logo.fitWidthProperty().bind(logogrid.widthProperty());
+        rootgrid.setPrefHeight(Main.height);
+        rootgrid.setPrefWidth(Main.width);
     }    
 
     @FXML

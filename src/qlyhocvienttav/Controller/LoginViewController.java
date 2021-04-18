@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 
 import qlyhocvienttav.Main;
 /**
@@ -37,7 +38,9 @@ public class LoginViewController implements Initializable {
     @FXML
     private JFXButton loginbutton;
     @FXML
-    private ImageView Logoimg;
+    private GridPane logogrid;
+    @FXML
+    private ImageView logogif;
     @FXML
     private void LoginButton(ActionEvent event) throws Exception {
         
@@ -55,8 +58,7 @@ public class LoginViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-//        Image img = new Image ("file:logo.gif");
-//        Logoimg.setImage(img);
+        logogif.fitWidthProperty().bind(logogrid.widthProperty());
     }    
 
 }

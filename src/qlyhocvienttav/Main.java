@@ -5,6 +5,7 @@
  */
 package qlyhocvienttav;
 
+import java.awt.Dimension;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.concurrent.Task;
@@ -19,8 +20,7 @@ import javafx.stage.Stage;
  * @author Thang
  */
 public class Main extends Application {
-    
-    
+    public static double height=1920,width=1080;
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("./View/LoginView.fxml"));
@@ -28,6 +28,10 @@ public class Main extends Application {
         stage.setScene(scene);
         //stage.setResizable(false);
         stage.show();
+        
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        width = screenSize.getWidth()*0.9375;
+        height = screenSize.getHeight()*0.9;
     }
     /**
      * @param args the command line arguments

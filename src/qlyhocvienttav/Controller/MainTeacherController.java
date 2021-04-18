@@ -18,6 +18,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import qlyhocvienttav.Main;
 
@@ -29,8 +30,6 @@ import qlyhocvienttav.Main;
 public class MainTeacherController implements Initializable {
 
     @FXML
-    private GridPane leftgrid;
-    @FXML
     private Label topcenterlabel;
     @FXML
     private GridPane centergrid;
@@ -38,6 +37,12 @@ public class MainTeacherController implements Initializable {
     private GridPane rightgrid;
 
     private Parent root = null;
+    @FXML
+    private GridPane rootgrid;
+    @FXML
+    private GridPane logogrid;
+    @FXML
+    private ImageView logo;
     /**
      * Initializes the controller class.
      */
@@ -49,6 +54,10 @@ public class MainTeacherController implements Initializable {
         LoadUI("../View/Teacher/CenterInfo.fxml");
         centergrid.add(root, 0, 0);
         topcenterlabel.setText("Information");
+        
+        logo.fitWidthProperty().bind(logogrid.widthProperty());
+        rootgrid.setPrefHeight(Main.height);
+        rootgrid.setPrefWidth(Main.width);
     }    
     public void LoadUI(String fxml){
         try {

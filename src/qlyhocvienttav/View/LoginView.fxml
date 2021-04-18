@@ -23,7 +23,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <GridPane GridPane.columnIndex="1">
+      <GridPane fx:id="logogrid" GridPane.columnIndex="1">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -128,10 +128,13 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ImageView fx:id="Logoimg" fitHeight="455.0" fitWidth="437.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <ImageView fx:id="logogif" fitHeight="528.0" fitWidth="437.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
                   <Image url="@imgs/logo.gif" />
                </image>
+               <GridPane.margin>
+                  <Insets bottom="150.0" />
+               </GridPane.margin>
             </ImageView>
          </children>
       </GridPane>
