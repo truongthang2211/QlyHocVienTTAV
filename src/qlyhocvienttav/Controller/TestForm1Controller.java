@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import qlyhocvienttav.Main;
 
-import qlyhocvienttav.Model.HocVien;
+import qlyhocvienttav.Model.DTO.HocVien;
 
 /**
  * FXML Controller class
