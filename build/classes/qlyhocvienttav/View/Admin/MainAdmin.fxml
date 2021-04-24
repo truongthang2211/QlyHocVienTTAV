@@ -13,7 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <GridPane fx:id="rootgrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1800.0" style="-fx-background-color: #ffffff;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.MainManagerController">
+=======
+<GridPane fx:id="rootgrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1800.0" style="-fx-background-color: #ffffff;" stylesheets="@../QlyHocVienTTAV/src/qlyhocvienttav/View/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.MainManagerController">
+>>>>>>> 8db618d4a927f8c92e4b48e2de4ee7f933ed386b
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="18.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="57.0" prefWidth="100.0" />
@@ -42,7 +46,11 @@
                <children>
                   <ImageView fx:id="logo" fitHeight="125.0" fitWidth="300.0" pickOnBounds="true" GridPane.halignment="CENTER">
                      <image>
+<<<<<<< HEAD
                         <Image url="@../imgs/efulogo.png" />
+=======
+                        <Image url="@../QlyHocVienTTAV/src/qlyhocvienttav/View/imgs/efulogo.png" />
+>>>>>>> 8db618d4a927f8c92e4b48e2de4ee7f933ed386b
                      </image>
                      <viewport>
                         <Rectangle2D />
