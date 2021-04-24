@@ -5,6 +5,7 @@
  */
 package qlyhocvienttav.BUS;
 
+import java.sql.SQLException;
 import qlyhocvienttav.Model.DAL.HocVien_DAL;
 import qlyhocvienttav.Model.DTO.HocVien;
 
@@ -16,7 +17,7 @@ public class HocVien_BUS {
     
     private HocVien_DAL hv_dal = new HocVien_DAL();
     
-    public boolean Insert(HocVien hv){
+    public boolean Insert(HocVien hv) throws SQLException{
         return hv_dal.Insert(hv);
     }
 }

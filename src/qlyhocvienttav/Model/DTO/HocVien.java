@@ -5,11 +5,13 @@
  */
 package qlyhocvienttav.Model.DTO;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 /**
  *
  * @author Thang
  */
-public class HocVien {
+public class HocVien extends RecursiveTreeObject<HocVien> {
     private String HoTen,Email,Ghichu;
 
     public HocVien(String HoTen, String Email, String Ghichu) {

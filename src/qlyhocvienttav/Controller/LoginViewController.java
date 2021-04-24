@@ -8,20 +8,21 @@ package qlyhocvienttav.Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
 import qlyhocvienttav.Main;
+import qlyhocvienttav.Model.DAL.DBConnection;
 /**
  * FXML Controller class
  *
@@ -42,23 +43,40 @@ public class LoginViewController implements Initializable {
     @FXML
     private ImageView logogif;
     @FXML
-    private void LoginButton(ActionEvent event) throws Exception {
-        
-        String Role = "";
-        if (username.getText().equals("manager") && password.getText().equals("manager")){
-            Role = "Manager/MainManager";
-        }else if (username.getText().equals("teacher") && password.getText().equals("teacher")){
-            Role = "Teacher/MainTeacher";
-        }else {
-            warninglabel.visibleProperty().set(true);
-            return;
-        }
-        Main.ShowForm("View/"+Role +".fxml", false,event);
+    private void LoginButton(ActionEvent event) throws IOException  {
+        Task task;
+        task = new Task<Void>() { 
+            @Override
+            public Void call() {
+                try {
+                    String Role = "";
+                    if (username.getText().equals("manager") && password.getText().equals("manager")){
+                        Role = "Manager/MainManager";
+                    }else if (username.getText().equals("teacher") && password.getText().equals("teacher")){
+                        Role = "Teacher/MainTeacher";
+                    }else {
+                        warninglabel.visibleProperty().set(true);
+//                        return null;
+                    }
+                    
+                    connection.OpenConnection();
+                    Main.ShowForm("View/"+Role +".fxml", false,event);
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return null;
+            }
+        };
+        Thread thread = new Thread(task);
+        thread.start();
     }
+    
+    public static DBConnection connection = new DBConnection();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         logogif.fitWidthProperty().bind(logogrid.widthProperty());
     }    
+    
 
 }

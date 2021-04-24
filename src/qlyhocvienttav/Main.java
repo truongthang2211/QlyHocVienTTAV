@@ -37,18 +37,36 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     
-    public static void ShowForm(String fxml , boolean newwindow, ActionEvent event) throws IOException{
-        FXMLLoader fxmlloader = new FXMLLoader(Main.class.getResource(fxml));
-        Parent root1 = fxmlloader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
-        stage.show();
-        if (!newwindow){
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-        }
-    }
     public static void main(String[] args) {
         launch(args);
+    }
+    public static void ShowForm(String fxml , boolean newwindow, ActionEvent event) throws IOException{
+        
+        Task<Parent> task = new Task<Parent>() {
+            @Override
+            protected Parent call() throws Exception {
+                return FXMLLoader.load(Main.class.getResource(fxml));
+            }
+        };
+
+        task.setOnSucceeded(event2 -> {
+            Parent root = task.getValue();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            if (!newwindow){
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+        });
+        Thread thread = new Thread(task);
+        thread.start();
+
+
+//            Parent root = FXMLLoader.load(Main.class.getResource(fxml));
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.show();
     }
 }
 
