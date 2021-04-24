@@ -42,7 +42,7 @@
                   <Insets right="250.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Full name" GridPane.rowIndex="1">
+            <JFXTextField fx:id="fullnameTxt" focusColor="#1f1f1f" labelFloat="true" promptText="Full name" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin></JFXTextField>
@@ -57,7 +57,7 @@
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin></JFXTextField>
-            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Email" GridPane.rowIndex="6">
+            <JFXTextField fx:id="emailTxt" focusColor="#1f1f1f" labelFloat="true" promptText="Email" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets right="200.0" />
                </GridPane.margin>
@@ -78,7 +78,7 @@
                   <Insets right="200.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Ghi chú" GridPane.rowIndex="11">
+            <JFXTextField fx:id="GhichuTxt" focusColor="#1f1f1f" labelFloat="true" promptText="Ghi chú" GridPane.rowIndex="11">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin></JFXTextField>
@@ -94,7 +94,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <JFXButton prefHeight="49.0" prefWidth="130.0" styleClass="AddButton" text="Add" textFill="#808080" wrapText="true" GridPane.halignment="CENTER" />
+            <JFXButton onAction="#AddButton" prefHeight="49.0" prefWidth="130.0" styleClass="AddButton" text="Add" textFill="#808080" wrapText="true" GridPane.halignment="CENTER" />
             <JFXButton prefHeight="49.0" prefWidth="128.0" styleClass="EditButton" text="Edit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <JFXButton prefHeight="49.0" prefWidth="128.0" styleClass="DeleteButton" text="Delete" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
          </children>
