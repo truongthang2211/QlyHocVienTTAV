@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/Controller/LoginViewController.java</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/View/Teacher/CenterClass.fxml</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/View/Teacher/CenterStudentManage.fxml</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/View/LoginView.fxml</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/Controller/MainManagerController.java</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/Main.java</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/View/styles.css</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/View/Teacher/CenterInfo.fxml</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/View/Teacher/RightScoreManage.fxml</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/View/Teacher/CenterChangePass.fxml</file>
-            <file>file:/D:/OneDrive%20-UIT/Code/JavaCode/QlyHocVienTTAV/src/qlyhocvienttav/Controller/MainTeacherController.java</file>
+            <file>file:/E:/QlyHocVienTTAV/src/qlyhocvienttav/Controller/TeacherController.java</file>
+            <file>file:/E:/QlyHocVienTTAV/src/qlyhocvienttav/Controller/ManagerController.java</file>
+            <file>file:/E:/QlyHocVienTTAV/src/qlyhocvienttav/Controller/MainManagerController.java</file>
+            <file>file:/E:/QlyHocVienTTAV/src/qlyhocvienttav/Controller/TestForm1Controller.java</file>
         </group>
     </open-files>
 </project-private>
