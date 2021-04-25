@@ -44,6 +44,7 @@ public class LoginViewController implements Initializable {
     private ImageView logogif;
     @FXML
     private void LoginButton(ActionEvent event) throws IOException  {
+        loginbutton.disableProperty().set(true);
         Task task;
         task = new Task<Void>() { 
             @Override
@@ -58,12 +59,14 @@ public class LoginViewController implements Initializable {
                         warninglabel.visibleProperty().set(true);
 //                        return null;
                     }
-                    
-                    connection.OpenConnection();
-                    Main.ShowForm("View/"+Role +".fxml", false,event);
+                    if ( connection.OpenConnection()){
+                        Main.ShowForm("View/"+Role +".fxml", false,event);
+                    }
+                   
                 } catch (IOException ex) {
                     Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                loginbutton.disableProperty().set(false);
                 return null;
             }
         };
@@ -76,6 +79,8 @@ public class LoginViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         logogif.fitWidthProperty().bind(logogrid.widthProperty());
+        
+
     }    
     
 

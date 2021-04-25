@@ -5,10 +5,15 @@
  */
 package qlyhocvienttav.Controller.Manager;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,8 +22,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import qlyhocvienttav.Model.DAL.HocVien_DAL;
-import qlyhocvienttav.Model.DTO.HocVien;
+import qlyhocvienttav.Model.DAL.Student_DAL;
+import qlyhocvienttav.Model.DTO.Student;
+import qlyhocvienttav.Model.DTO.Student;
 
 /**
  * FXML Controller class
@@ -33,60 +39,106 @@ public class StudentManageController implements Initializable {
     @FXML
     private JFXTextField GhichuTxt;
     
-    HocVien_DAL hv_dal= new HocVien_DAL();
-    @FXML
-    private JFXTextField IDTxt;
+    Student_DAL st_dal= new Student_DAL();
 
 
     /**
      * Initializes the controller class.
      */
-    HocVien_DAL hocvien_dal = new HocVien_DAL();
-    
-    
 
     public ObservableList data ;
     @FXML
-    private TableView<HocVien> maintable;
+    private TableView<Student> maintable;
+    @FXML
+    private JFXTextField idTxt;
+    @FXML
+    private JFXTextField nationalTxt;
+    @FXML
+    private JFXTextField addressTxt;
+    @FXML
+    private JFXTextField phonenumberTxt;
+    @FXML
+    private JFXComboBox<?> courseTxt;
+    @FXML
+    private JFXTextField classTxt;
+    @FXML
+    private JFXDatePicker dateofbirthDate;
+    @FXML
+    private JFXComboBox<String> sexCbb;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
+        sexCbb.setItems(sexList);
+        
+        
+        
+        TableColumn st_id = new TableColumn("Studen ID");
+        TableColumn class_id = new TableColumn("Class ID");
         TableColumn fullname = new TableColumn("Ho ten");
+        TableColumn Sex = new TableColumn("Gioi tinh");
+        TableColumn DateofBirth = new TableColumn("Ngay sinh");
+        TableColumn national = new TableColumn("Quoc tich");
+        TableColumn address = new TableColumn("Dia chi");
         TableColumn email = new TableColumn("Email");
-        TableColumn ghichu = new TableColumn("Ghi chus");
+        TableColumn phonenumber = new TableColumn("SDT");
         
         
-        
-        fullname.setCellValueFactory(new PropertyValueFactory<>("HoTen"));
-        email.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        ghichu.setCellValueFactory(new PropertyValueFactory<>("Ghichu"));
-        maintable.getColumns().addAll(fullname,email,ghichu);
-        data = hocvien_dal.GetData();
+        st_id.setCellValueFactory(new PropertyValueFactory<>("student_id"));
+        class_id.setCellValueFactory(new PropertyValueFactory<>("class_id"));
+        fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        Sex.setCellValueFactory(new PropertyValueFactory<>("sex"));
+        DateofBirth.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+        national.setCellValueFactory(new PropertyValueFactory<>("nationality"));
+        address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        maintable.getColumns().addAll(st_id,class_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
+        data = st_dal.GetData();
         maintable.setItems(data);
     }    
 
     @FXML
    private void AddButton(ActionEvent event) throws SQLException {
-       HocVien hv = new HocVien(fullnameTxt.getText(), emailTxt.getText(), GhichuTxt.getText());
-       hv_dal.Insert(hv);
-       data.add(hv);
+       Student st = new Student("",classTxt.getText(),fullnameTxt.getText(),sexCbb.getSelectionModel().getSelectedItem(),dateofbirthDate.getValue().toString(),nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText());
+       st_dal.Insert(st);
+       data = st_dal.GetData();
+       
 
     }
     @FXML
     private void displaySelected(MouseEvent event) {
-        HocVien hv = maintable.getSelectionModel().getSelectedItem();
-        if (hv == null ){
-            System.out.println("Khong thay hv");
+        Student st = maintable.getSelectionModel().getSelectedItem();
+        if (st == null ){
+            System.out.println("Khong thay st");
         }else {
-            fullnameTxt.setText(hv.getHoTen());
+            fullnameTxt.setText(st.getFullName());
+            idTxt.setText(st.getStudent_id());
+            sexCbb.getSelectionModel().select(st.getSex());
+            dateofbirthDate.setValue(LocalDate.parse(st.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            nationalTxt.setText(st.getNationality());
+            addressTxt.setText(st.getAddress());
+            emailTxt.setText(st.getEmail());
+            phonenumberTxt.setText(st.getPhoneNumber());
         }
     }
 
     @FXML
     private void DeleteButton(ActionEvent event) throws SQLException {
-        HocVien hv = maintable.getSelectionModel().getSelectedItem();
-        hocvien_dal.Delete(hv);
-        data.remove(hv);
+        Student st = maintable.getSelectionModel().getSelectedItem();
+        st_dal.Delete(st);
+        data = st_dal.GetData();
+    }
+
+    @FXML
+    private void EditButton(ActionEvent event) throws SQLException {
+        Student st = maintable.getSelectionModel().getSelectedItem();
+        String sex = sexCbb.getSelectionModel().getSelectedItem();
+        String date = dateofbirthDate.getValue().toString();
+        Student st2 = new Student("",classTxt.getText(),fullnameTxt.getText(),sex,date,nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText());
+        st_dal.Update(st.getStudent_id(),st2);
+        data = st_dal.GetData();
     }
     
 }

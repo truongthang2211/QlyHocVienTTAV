@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Thang Nguyen Anh
@@ -17,22 +18,24 @@ import java.util.logging.Logger;
 public class DBConnection {
     String dbURL= "jdbc:oracle:thin:@//localhost:1521/Qlyhocvien";
     String username = "admin";
-    String password = "22112001";
+    String password = "123456";
     public Connection con;
 
     public DBConnection() {
     }
-    public void OpenConnection(){
+    public boolean OpenConnection(){
         try {
             this.con = DriverManager.getConnection(dbURL,username,password);
             System.out.println("connect succesfull");
         } catch (SQLException ex) {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
+        return true;
     }
     public void CloseConnection(){
         try{
-            con.close();;
+            con.close();
         } catch (SQLException ex){
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
