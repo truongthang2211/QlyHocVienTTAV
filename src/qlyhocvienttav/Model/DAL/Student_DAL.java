@@ -5,9 +5,11 @@
  */
 package qlyhocvienttav.Model.DAL;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
@@ -91,14 +93,22 @@ public class Student_DAL {
                             "FROM STUDENT ST JOIN PERSONAL_INFO IF ON ST.STUDENT_ID = IF.ID";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5).toString(),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)));
+                Date lcdate = rs.getDate(5);
+                String date = lcdate==null?"":lcdate.toString();
+                String sex = rs.getString(4);
+                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),date,rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     public ObservableList<Student> GetData(){
-        LoadData();
+        try{
+            LoadData();
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
+        }
+        
         return this.Data;
     }
     

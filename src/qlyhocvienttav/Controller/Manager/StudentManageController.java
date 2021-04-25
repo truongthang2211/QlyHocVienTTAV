@@ -24,7 +24,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import qlyhocvienttav.Model.DAL.Student_DAL;
 import qlyhocvienttav.Model.DTO.Student;
-import qlyhocvienttav.Model.DTO.Student;
 
 /**
  * FXML Controller class
@@ -46,7 +45,7 @@ public class StudentManageController implements Initializable {
      * Initializes the controller class.
      */
 
-    public ObservableList data ;
+    public ObservableList<Student> data;
     @FXML
     private TableView<Student> maintable;
     @FXML
@@ -68,7 +67,6 @@ public class StudentManageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
         ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
         sexCbb.setItems(sexList);
         
@@ -101,7 +99,11 @@ public class StudentManageController implements Initializable {
 
     @FXML
    private void AddButton(ActionEvent event) throws SQLException {
-       Student st = new Student("",classTxt.getText(),fullnameTxt.getText(),sexCbb.getSelectionModel().getSelectedItem(),dateofbirthDate.getValue().toString(),nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText());
+       String sex = sexCbb.getSelectionModel().getSelectedItem();
+       sex=sex==null?"":sex;
+       LocalDate lcdate = dateofbirthDate.getValue();
+       String date = lcdate==null?"":lcdate.toString();
+       Student st = new Student("",classTxt.getText(),fullnameTxt.getText(),sex,date,nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText());
        st_dal.Insert(st);
        data = st_dal.GetData();
        
