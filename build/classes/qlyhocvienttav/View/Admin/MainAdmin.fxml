@@ -54,42 +54,42 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="INFO_CIRCLE" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#SdtudentManageButton" prefWidth="327.0" styleClass="ListButton" text="Manage Manager &amp; Teacher">
+                  <JFXButton onAction="#StudentandManagerManageButton" prefWidth="327.0" styleClass="ListButton" text="Manage Manager &amp; Teacher">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="ADDRESS_BOOK_ALT" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#StudentFeeButton" prefWidth="327.0" styleClass="ListButton" text="Course Management">
+                  <JFXButton onAction="#CourseButton" prefWidth="327.0" styleClass="ListButton" text="Course Management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="BOOK" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#ScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Test schedule Management">
+                  <JFXButton onAction="#TestScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Test schedule Management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR_CHECK_ALT" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#ClassButton" prefWidth="327.0" styleClass="ListButton" text="Student analysis">
+                  <JFXButton onAction="#StudentAnalysisButton" prefWidth="327.0" styleClass="ListButton" text="Student analysis">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#RoomButton" prefWidth="327.0" styleClass="ListButton" text="View Schedule">
+                  <JFXButton onAction="#ViewScheduleButton" prefWidth="327.0" styleClass="ListButton" text="View Schedule">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="260.0" onAction="#RoomButton" prefWidth="327.0" styleClass="ListButton" text="View Students">
+                  <JFXButton layoutX="10.0" layoutY="260.0" onAction="#ViewStudentButton" prefWidth="327.0" styleClass="ListButton" text="View Students">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="310.0" onAction="#RoomButton" prefWidth="327.0" styleClass="ListButton" text="View student's fee">
+                  <JFXButton layoutX="10.0" layoutY="310.0" onAction="#StudentFeeButton" prefWidth="327.0" styleClass="ListButton" text="View student's fee">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="MONEY" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#RoomButton" prefWidth="327.0" styleClass="ListButton" text="View class">
+                  <JFXButton onAction="#ClassButton" prefWidth="327.0" styleClass="ListButton" text="View class">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="TRELLO" size="25" />
                      </graphic>
