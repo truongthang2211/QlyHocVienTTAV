@@ -1,0 +1,167 @@
+
+-----------------------------
+create table Student(
+	student_id varchar(50) not null primary key,
+	class_id varchar(50) null
+	
+);
+-----------------------------
+create table Personal_Info(
+	id varchar(50) not null primary key,
+	fullName varchar(100),
+	sex varchar(10),
+	dateOfBirth date,
+	nationality varchar(50),
+	address varchar(150),
+	email varchar(50),
+	phoneNumber varchar(50)
+);
+-----------------------------
+create table Teacher(
+	teacher_id varchar(50) not null primary key
+);
+-----------------------------
+create table Admin(
+	admin_id varchar(50) not null primary key
+);
+-----------------------------
+create table Manager(
+	manager_id varchar(50) not null primary key
+);
+-----------------------------
+create table Account(
+	username varchar(50),
+	password varchar(50),
+	kindOfAccount varchar(50),
+	dateOfBegin date
+	
+);
+-----------------------------
+create table Room(
+	room_id varchar(50) not null primary key,
+	room_name varchar(50),
+	capacity int
+);
+-----------------------------
+create table Class(
+	class_id varchar(50) not null primary key,
+	className varchar(50),
+	numberOfPeople int,
+	maxNumberOfPeople int,
+	course_id varchar(50)
+);
+-----------------------------
+create table Course(
+	course_id varchar(50) not null primary key,
+	courseName varchar(50),
+	fee NUMBER,
+	dayStart date,
+	dayEnd date
+);
+-----------------------------
+create table Schedule(
+	schedule_id varchar(50) not null primary key,
+	dayOfSchedule varchar(50),
+	timeOfSchedule varchar(50),
+	class_id varchar(50),
+	room_id varchar(50),
+	teacher_id varchar(50)
+);
+-----------------------------
+create table Score(
+	id varchar(50) not null primary key,
+	student_id varchar(50),
+	listening int,
+	writing int,
+	reading int,
+	speaking int,
+	test_schedule_id varchar(50)
+);
+create table Test_Schedule(
+	id varchar(50) not null primary key,
+	testDate date,
+	kindOfTest varchar(50),
+	teacher_id varchar(50),
+	course_id varchar(50),
+	room_id varchar(50)
+);
+
+create table StudentFee(
+	studentFeeId varchar(50) not null primary key,
+	student_id varchar(50) not null,
+	amountOfFeeIsComplete NUMBER,
+	statusOfFee varchar(50),
+	dateOfCompleteFee date
+);
+--------------------------------
+ALTER TABLE StudentFee
+ADD CONSTRAINT FK_studentId_to_Student
+FOREIGN KEY (student_id) REFERENCES Student(student_id);
+--------------------------------
+
+ALTER TABLE Test_Schedule
+ADD CONSTRAINT FK_teacherId_to_Teacher
+FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id);
+
+ALTER TABLE Test_Schedule
+ADD CONSTRAINT FK_courseId_to_Course
+FOREIGN KEY (course_id) REFERENCES Course(course_id);
+
+ALTER TABLE Test_Schedule
+ADD CONSTRAINT FK_roomId_to_Room
+FOREIGN KEY (room_id) REFERENCES Room(room_id);
+--------------------------------
+
+alter table Student
+add constraint FK_StudentId_to_personalInfo
+foreign key (student_id) references Personal_Info(id);
+
+alter table Student
+add constraint FK_ClassId_to_Class
+foreign key (class_id) references Class(class_id);
+
+--------------------------------
+
+alter table Score
+add constraint FK_Id_to_Student
+foreign key (student_id) references Student(student_id);
+
+alter table Score
+add constraint FK_testScheduleId_To_testSchedule
+foreign key (test_schedule_id) references Test_Schedule(id);
+--------------------------------
+
+alter table Teacher
+add constraint FK_TeacherID_To_PersonalInfo
+foreign key (teacher_id) references Personal_Info(id);
+--------------------------------
+
+alter table Admin
+add constraint FK_AdminID_To_PersonalInfo
+foreign key (admin_id) references Personal_Info(id);
+--------------------------------
+alter table Manager
+add constraint FK_managerId_To_PersonalInfo
+foreign key (manager_id) references Personal_Info(id);
+--------------------------------
+alter table Class
+add constraint FK_courseIdOfClass_To_Course
+foreign key (course_id) references Course(course_id);
+
+--------------------------------
+
+alter table Schedule
+add constraint FK_ClassIdOfSchedule_To_Class
+foreign key (class_id) references class(class_id);
+
+alter table Schedule
+add constraint FK_RoomIdOfSchedule_To_Class
+foreign key (room_id) references room(room_id);
+
+alter table Schedule
+add constraint FK_teacherIdOfSchedule_To_Class
+foreign key (teacher_id) references Teacher(teacher_id);
+
+--------------------------------
+CREATE SEQUENCE seq_student_id start with 1 increment by 1;
+ALTER USER admin quota 100M on system;
