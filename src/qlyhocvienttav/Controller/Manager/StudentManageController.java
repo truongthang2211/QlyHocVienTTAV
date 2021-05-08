@@ -118,11 +118,15 @@ public class StudentManageController implements Initializable {
             fullnameTxt.setText(st.getFullName());
             idTxt.setText(st.getStudent_id());
             sexCbb.getSelectionModel().select(st.getSex());
-            dateofbirthDate.setValue(LocalDate.parse(st.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             nationalTxt.setText(st.getNationality());
             addressTxt.setText(st.getAddress());
             emailTxt.setText(st.getEmail());
             phonenumberTxt.setText(st.getPhoneNumber());
+            if (!st.getDateOfBirth().equals("")){
+                dateofbirthDate.setValue(LocalDate.parse(st.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            }else {
+                dateofbirthDate.setValue(null);
+            }
         }
     }
 
