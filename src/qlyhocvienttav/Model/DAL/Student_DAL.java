@@ -95,7 +95,6 @@ public class Student_DAL {
             while (rs.next()){
                 Date lcdate = rs.getDate(5);
                 String date = lcdate==null?"":lcdate.toString();
-                String sex = rs.getString(4);
                 Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),date,rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)));
             }
         } catch (SQLException ex) {

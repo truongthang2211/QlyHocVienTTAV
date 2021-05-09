@@ -92,7 +92,6 @@ public class MainManagerController implements Initializable {
     private void ClassButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/ClassManage.fxml");
     }
-
     @FXML
     private void ChangePasswordButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/ChangePass.fxml");
@@ -101,6 +100,11 @@ public class MainManagerController implements Initializable {
         maingrid.getChildren().clear();
         LoadUI(centerfxml);
         maingrid.add(root, 0, 0);
+    }
+
+    @FXML
+    private void ViewTeacherButton(ActionEvent event) {
+        ChangeScreen("../../View/Manager/ViewTeacher.fxml");
     }
 }
 
