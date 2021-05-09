@@ -11,7 +11,6 @@ package qlyhocvienttav.Model.DTO;
  */
 public class Personal_Info {
     String id, fullName, sex,dateOfBirth, nationality,address,email,phoneNumber;
-
     public Personal_Info( String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
         this.fullName = fullName;
         this.sex = sex;

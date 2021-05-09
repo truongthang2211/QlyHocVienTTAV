@@ -1,0 +1,67 @@
+.LoginButton{
+    -fx-background-color: #262626;
+    -fx-background-radius: 25;
+    -fx-text-fill: #fafafa;
+    -fx-pref-width:150;
+    -fx-pref-height:50;
+    -fx-font-size:15;
+    -fx-font-weight: bold;
+}
+.LoginButton:hover{
+    -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #dc143c, #32cd32);
+    -fx-border-radius: 25;
+    -fx-border-width: 4;
+    
+}
+.ListButton{
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: #fafafa;
+    -fx-pref-height:50;
+    -fx-pref-width:325;
+    -fx-font-size:17;
+    -fx-graphic-text-gap:20;
+    -fx-font-weight: normal;
+    -fx-alignment: CENTER_LEFT;
+}
+.ListButton:focused{
+    -fx-border-width: 1 0 1 0 ;
+    -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #dc143c, #32cd32);
+}
+.ListButton:hover{
+    -fx-background-color: #353535;
+}
+.AddButton{
+    -fx-background-color: linear-gradient( #84fab0 0%, #8fd3f4 100%);
+    -fx-text-fill: #7f7f7f;
+    -fx-font-size:15;
+    -fx-pref-width:130;
+    -fx-pref-height:50;
+    -fx-background-radius: 25;
+}
+.EditButton{
+    -fx-background-color: linear-gradient( #a1c4fd 0%, #c2e9fb 100%);
+    -fx-text-fill: #7f7f7f;
+    -fx-font-size:15;
+    -fx-pref-width:130;
+    -fx-pref-height:50;
+    -fx-background-radius: 25;
+
+}
+.DeleteButton{
+    -fx-background-color: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    -fx-text-fill: #7f7f7f;
+    -fx-font-size:15;
+    -fx-pref-width:130;
+    -fx-pref-height:50;
+    -fx-background-radius: 25;
+
+}
+.AddButton:hover{
+    -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+.EditButton:hover{
+    -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+.DeleteButton:hover{
+    -fx-effect: dropshadow( three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}

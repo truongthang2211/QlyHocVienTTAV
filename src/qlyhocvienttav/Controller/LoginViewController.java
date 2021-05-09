@@ -55,6 +55,8 @@ public class LoginViewController implements Initializable {
                         Role = "Manager/MainManager";
                     }else if (username.getText().equals("teacher") && password.getText().equals("teacher")){
                         Role = "Teacher/MainTeacher";
+                    }else if (username.getText().equals("admin") && password.getText().equals("admin")){
+                        Role = "Admin/MainAdmin";
                     }else {
                         warninglabel.visibleProperty().set(true);
 //                        return null;

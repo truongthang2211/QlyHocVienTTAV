@@ -69,10 +69,10 @@ public class StudentManageController implements Initializable {
         // TODO
         ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
         sexCbb.setItems(sexList);
-        
-        
-        
-        TableColumn st_id = new TableColumn("Studen ID");
+
+
+
+        TableColumn st_id = new TableColumn("Student ID");
         TableColumn class_id = new TableColumn("Class ID");
         TableColumn fullname = new TableColumn("Ho ten");
         TableColumn Sex = new TableColumn("Gioi tinh");
@@ -81,8 +81,8 @@ public class StudentManageController implements Initializable {
         TableColumn address = new TableColumn("Dia chi");
         TableColumn email = new TableColumn("Email");
         TableColumn phonenumber = new TableColumn("SDT");
-        
-        
+
+
         st_id.setCellValueFactory(new PropertyValueFactory<>("student_id"));
         class_id.setCellValueFactory(new PropertyValueFactory<>("class_id"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
@@ -94,8 +94,8 @@ public class StudentManageController implements Initializable {
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         maintable.getColumns().addAll(st_id,class_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
         data = st_dal.GetData();
-        maintable.setItems(data);
-    }    
+      maintable.setItems(data);
+    }
 
     @FXML
    private void AddButton(ActionEvent event) throws SQLException {

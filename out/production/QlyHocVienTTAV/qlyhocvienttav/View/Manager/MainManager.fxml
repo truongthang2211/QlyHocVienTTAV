@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,10 +10,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane fx:id="rootgrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1800.0" style="-fx-background-color: #ffffff;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.Admin.MainAdminController">
+<GridPane fx:id="rootgrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1800.0" style="-fx-background-color: #ffffff;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.Manager.MainManagerController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="18.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="82.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -54,49 +53,29 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="INFO_CIRCLE" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#StudentandManagerManageButton" prefWidth="327.0" styleClass="ListButton" text="Manage Manager &amp; Teacher">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="ADDRESS_BOOK_ALT" size="25" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton onAction="#CourseButton" prefWidth="327.0" styleClass="ListButton" text="Course Management">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="BOOK" size="25" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton onAction="#TestScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Test schedule Management">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR_CHECK_ALT" size="25" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton onAction="#StudentAnalysisButton" prefWidth="327.0" styleClass="ListButton" text="Student analysis">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="25" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton onAction="#ViewScheduleButton" prefWidth="327.0" styleClass="ListButton" text="View Schedule">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="25" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="260.0" onAction="#ViewStudentButton" prefWidth="327.0" styleClass="ListButton" text="View Students">
+                  <JFXButton onAction="#Student_management_Button" prefWidth="327.0" styleClass="ListButton" text="Student management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="310.0" onAction="#StudentFeeButton" prefWidth="327.0" styleClass="ListButton" text="View student's fee">
+                  <JFXButton onAction="#StudentFeeButton" prefWidth="327.0" styleClass="ListButton" text="Student's fee management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="MONEY" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#ClassButton" prefWidth="327.0" styleClass="ListButton" text="View class">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="TRELLO" size="25" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton onAction="#RoomButton" prefWidth="327.0" styleClass="ListButton" text="View room">
+                  <JFXButton onAction="#RoomButton" prefWidth="327.0" styleClass="ListButton" text="Room management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="SQUARE" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#ClassButton" prefWidth="327.0" styleClass="ListButton" text="Class management">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#ScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Schedule management">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="25" />
                      </graphic>
                   </JFXButton>
                   <JFXButton onAction="#ChangePasswordButton" prefWidth="327.0" styleClass="ListButton" text="Change password">
@@ -120,9 +99,6 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
       </GridPane>
    </children>
 </GridPane>
