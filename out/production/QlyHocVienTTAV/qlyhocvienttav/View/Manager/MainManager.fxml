@@ -58,6 +58,11 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="25" />
                      </graphic>
                   </JFXButton>
+                  <JFXButton onAction="#ViewTeacherButton" prefWidth="327.0" styleClass="ListButton" text="View teacher">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER" size="25" />
+                     </graphic>
+                  </JFXButton>
                   <JFXButton onAction="#StudentFeeButton" prefWidth="327.0" styleClass="ListButton" text="Student's fee management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="MONEY" size="25" />
