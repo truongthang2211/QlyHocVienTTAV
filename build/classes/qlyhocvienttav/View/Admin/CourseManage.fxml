@@ -47,7 +47,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TableView fx:id="maintable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="maintable" onMouseClicked="#displaySelected" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
@@ -94,18 +94,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Course Name">
+                        <JFXTextField fx:id="txt_courseName" focusColor="#1f1f1f" labelFloat="true" promptText="Course Name">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1f1f1f" labelFloat="true" prefHeight="25.0" prefWidth="293.0" promptText="Fee" GridPane.rowIndex="1">
+                        <JFXTextField fx:id="txt_Fee" focusColor="#1f1f1f" labelFloat="true" prefHeight="25.0" prefWidth="293.0" promptText="Fee" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets right="150.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXDatePicker promptText="Day Start" GridPane.rowIndex="2" />
-                        <JFXDatePicker promptText="Day End" GridPane.rowIndex="3" />
+                         <JFXDatePicker fx:id="dp_DayStart" promptText="Day Start" GridPane.rowIndex="2" />
+                         <JFXDatePicker fx:id="dp_dayEnd" promptText="Day End" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
@@ -118,9 +118,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXButton styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
-                        <JFXButton styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <JFXButton styleClass="AddButton" onAction="#AddButton" text="Add" GridPane.halignment="CENTER" />
+                        <JFXButton styleClass="EditButton" onAction="#EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <JFXButton styleClass="DeleteButton" onAction="#DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

@@ -22,7 +22,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import qlyhocvienttav.Model.DAL.Course_DAL;
 import qlyhocvienttav.Model.DAL.Student_DAL;
+import qlyhocvienttav.Model.DTO.Course;
 import qlyhocvienttav.Model.DTO.Student;
 
 /**
@@ -40,7 +42,6 @@ public class StudentManageController implements Initializable {
     
     Student_DAL st_dal= new Student_DAL();
 
-
     /**
      * Initializes the controller class.
      */
@@ -57,21 +58,24 @@ public class StudentManageController implements Initializable {
     @FXML
     private JFXTextField phonenumberTxt;
     @FXML
-    private JFXComboBox<?> courseTxt;
-    @FXML
     private JFXTextField classTxt;
     @FXML
     private JFXDatePicker dateofbirthDate;
     @FXML
     private JFXComboBox<String> sexCbb;
+    @FXML
+    private JFXComboBox<String> courseCbb;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
         sexCbb.setItems(sexList);
         sexCbb.getSelectionModel().select(0);
-
-
+        GetCourseToCbb();
+        
+        
+        
+        
         TableColumn st_id = new TableColumn("Student ID");
         TableColumn class_id = new TableColumn("Class ID");
         TableColumn course_id = new TableColumn("Course ID");
@@ -148,5 +152,12 @@ public class StudentManageController implements Initializable {
         st_dal.Update(st.getStudent_id(),st2);
         data = st_dal.GetData();
     }
-    
+    private void GetCourseToCbb(){
+        Course_DAL course_dal = new Course_DAL();
+        ObservableList<Course> CourseList = course_dal.GetData();
+        for (Course cs : CourseList){
+            courseCbb.getItems().add(cs.getCourse_id());
+        }
+        courseCbb.getSelectionModel().select(0);
+    }
 }
