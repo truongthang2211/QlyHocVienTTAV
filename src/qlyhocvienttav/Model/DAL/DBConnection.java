@@ -20,7 +20,7 @@ public class DBConnection {
     String username = "admin";
     String password = "123456";
     public Connection con;
-
+    
     public DBConnection() {
     }
     public boolean OpenConnection(){
