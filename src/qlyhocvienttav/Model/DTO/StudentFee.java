@@ -5,14 +5,14 @@ public class StudentFee {
     String idFee;
     String idStudent;
     String nameStudent;
-    Long amountOfFee;
+    double amountOfFee;
 
 
-    Long amountOfFeeIsComplete;
+    double amountOfFeeIsComplete;
     String dateOfCompleteFee;
     String status;
     StudentFee(){};
-    public StudentFee(String _idFee, String _idStudent, String _nameStudent, Long _amountOfStudent, String _status,String _dateOfCompleteFee){
+    public StudentFee(String _idFee, String _idStudent, String _nameStudent, double _amountOfStudent, String _status,String _dateOfCompleteFee){
         idFee=_idFee;
         idStudent=_idStudent;
         nameStudent=_nameStudent;
@@ -20,11 +20,11 @@ public class StudentFee {
         dateOfCompleteFee=_dateOfCompleteFee;
         status=_status;
     }
-    public Long getAmountOfFeeIsComplete() {
+    public double getAmountOfFeeIsComplete() {
         return amountOfFeeIsComplete;
     }
 
-    public void setAmountOfFeeIsComplete(Long amountOfFeeIsComplete) {
+    public void setAmountOfFeeIsComplete(double amountOfFeeIsComplete) {
         this.amountOfFeeIsComplete = amountOfFeeIsComplete;
     }
 
@@ -52,11 +52,11 @@ public class StudentFee {
         this.nameStudent = nameStudent;
     }
 
-    public Long getAmountOfFee() {
+    public double getAmountOfFee() {
         return amountOfFee;
     }
 
-    public void setAmountOfFee(Long amountOfFee) {
+    public void setAmountOfFee(double amountOfFee) {
         this.amountOfFee = amountOfFee;
     }
 

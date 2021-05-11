@@ -79,7 +79,7 @@ public class StudentFeeManageController implements Initializable {
         maintable.setItems(data);
 
         txt_StudentId.focusedProperty().addListener((obs, oldVal, newVal) -> 
-                {if (!newVal){
+                {if (oldVal){
                     OutfocusStudentID();
                 }});
     }
@@ -102,7 +102,7 @@ public class StudentFeeManageController implements Initializable {
                 datePickerOfComplete.setValue(LocalDate.parse(stf.getDateOfCompleteFee(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
             txt_status.setText(stf.getStatus());
-            txt_amountOfFee.setText(Long.toString(stf.getAmountOfFee()));
+            txt_amountOfFee.setText(Double.toString(stf.getAmountOfFee()));
         }
     }
     @FXML
@@ -116,7 +116,7 @@ public class StudentFeeManageController implements Initializable {
     private void EditButton(ActionEvent event) throws SQLException {
         StudentFee stf = maintable.getSelectionModel().getSelectedItem();
         String date = datePickerOfComplete.getValue().toString();
-        StudentFee stf2 = new StudentFee(stf.getIdFee(),txt_StudentId.getText(),txt_FullName.getText(),Long.parseLong(txt_amountOfFee.getText()),txt_status.getText(),date);
+        StudentFee stf2 = new StudentFee(stf.getIdFee(),txt_StudentId.getText(),txt_FullName.getText(),Double.parseDouble(txt_amountOfFee.getText()),txt_status.getText(),date);
         stf_dal.Update(stf2);
         data = stf_dal.GetData();
     }
@@ -126,7 +126,7 @@ public class StudentFeeManageController implements Initializable {
 
         LocalDate lcdate = datePickerOfComplete.getValue();
         String date = lcdate==null?"":lcdate.toString();
-        StudentFee st = new StudentFee("",txt_StudentId.getText(),txt_FullName.getText(),Long.parseLong(txt_amountOfFee.getText()),date,txt_status.getText());
+        StudentFee st = new StudentFee("",txt_StudentId.getText(),txt_FullName.getText(),Double.parseDouble(txt_amountOfFee.getText()),date,txt_status.getText());
         stf_dal.Insert(st);
         data = stf_dal.GetData();
 
