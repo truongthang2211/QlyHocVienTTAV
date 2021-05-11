@@ -165,3 +165,7 @@ foreign key (teacher_id) references Teacher(teacher_id);
 --------------------------------
 CREATE SEQUENCE seq_student_id start with 1 increment by 1;
 ALTER USER admin quota 100M on system;
+
+--------------------------------
+CREATE SEQUENCE seq_teacher_id start with 1 increment by 1;
+ALTER USER admin quota 100M on system;a
