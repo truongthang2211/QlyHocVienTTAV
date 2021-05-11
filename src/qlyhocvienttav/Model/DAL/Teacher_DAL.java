@@ -3,6 +3,7 @@ package qlyhocvienttav.Model.DAL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import qlyhocvienttav.Controller.LoginViewController;
+import qlyhocvienttav.Model.DTO.Student;
 import qlyhocvienttav.Model.DTO.Teacher;
 
 import javax.swing.*;
@@ -11,8 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class Teacher_DAL {
     public Teacher_DAL(){};
+
     ObservableList<Teacher> Data = FXCollections.observableArrayList();
 
     public void Insert(Teacher teacher){
@@ -35,6 +38,41 @@ public class Teacher_DAL {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
         }
+
+    }
+    public boolean Delete(Teacher teacher){
+        try {
+            Object arg[]= {teacher.getTeacherId()};
+            String info_sql,teacher_sql;
+            info_sql = String.format("DELETE FROM Personal_Info WHERE ID = '%s'", arg);
+            teacher_sql = String.format("DELETE FROM Teacher WHERE teacher_id = '%s'", arg);
+            Statement statement = LoginViewController.connection.con.createStatement();
+            int teacher_rows = statement.executeUpdate(teacher_sql);
+            int info_rows = statement.executeUpdate(info_sql);
+            if (info_rows > 0 && teacher_rows >0){
+                System.out.println("Delete successfull");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    public boolean Update(String ID ,Teacher teacher) {
+        try {
+            Object arg[]= {teacher.getFullName(),teacher.getSex(),teacher.getDateOfBirth(),teacher.getNationality(),teacher.getAddress(),teacher.getEmail(),teacher.getPhoneNumber(),ID};
+            String sql;
+            sql = String.format("UPDATE Personal_Info SET fullName = '%s', sex = '%s', dateOfBirth = TO_DATE('%s','YYYY-MM-DD'), nationality = '%s', address = '%s', email = '%s', phoneNumber = '%s' WHERE ID = '%s'", arg);
+            Statement statement = LoginViewController.connection.con.createStatement();
+            int rows = statement.executeUpdate(sql);
+            if (rows > 0){
+                System.out.println("Update successfull");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
 
     }
     public void LoadData(){
