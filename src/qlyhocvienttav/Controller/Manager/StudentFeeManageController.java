@@ -31,6 +31,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import qlyhocvienttav.Model.DAL.Student_DAL;
+import qlyhocvienttav.Model.DTO.Student;
 
 public class StudentFeeManageController implements Initializable {
     public ObservableList<StudentFee> data;
@@ -66,20 +68,20 @@ public class StudentFeeManageController implements Initializable {
         TableColumn status = new TableColumn("Tinh Trang");
         TableColumn dateOfCompleteFee = new TableColumn("Ngay Nap");
 
-
         idFee.setCellValueFactory(new PropertyValueFactory<>("idFee"));
         idStudent.setCellValueFactory(new PropertyValueFactory<>("idStudent"));
         fullNameStudent.setCellValueFactory(new PropertyValueFactory<>("nameStudent"));
         amountOfFee.setCellValueFactory(new PropertyValueFactory<>("amountOfFee"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         dateOfCompleteFee.setCellValueFactory(new PropertyValueFactory<>("dateOfCompleteFee"));
-
         maintable.getColumns().addAll(idFee,idStudent,fullNameStudent,amountOfFee,status,dateOfCompleteFee);
-
-
         data = stf_dal.GetData();
         maintable.setItems(data);
 
+        txt_StudentId.focusedProperty().addListener((obs, oldVal, newVal) -> 
+                {if (!newVal){
+                    OutfocusStudentID();
+                }});
     }
     @FXML
     private void displaySelected(MouseEvent event) {
@@ -129,5 +131,15 @@ public class StudentFeeManageController implements Initializable {
         data = stf_dal.GetData();
 
 
+    }
+    private void OutfocusStudentID(){
+        Student_DAL st_dal = new Student_DAL();
+        ObservableList<Student> studentList = st_dal.GetData();
+        for(Student st : studentList){
+            if (st.getStudent_id().equalsIgnoreCase(txt_StudentId.getText())){
+                txt_FullName.setText(st.getFullName());
+                return;
+            }
+        }
     }
 }
