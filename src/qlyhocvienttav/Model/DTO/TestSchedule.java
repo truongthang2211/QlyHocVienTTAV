@@ -11,13 +11,16 @@ package qlyhocvienttav.Model.DTO;
  */
 public class TestSchedule {
     String TestSche_ID,Teacher_ID,Course_ID,Room_ID,Loai_KT,TestDate;
-    public TestSchedule(String TestSche_ID,String Teacher_ID,String Course_ID, String Room_ID, String Loai_KT, String TestDate){
+    //Them ca thi
+    int Shift;
+    public TestSchedule(String TestSche_ID,String Teacher_ID,String Course_ID, String Room_ID, String Loai_KT, String TestDate, int Shift){
         this.TestSche_ID = TestSche_ID;
         this.Teacher_ID = Teacher_ID;
         this.Course_ID = Course_ID;
         this.Room_ID = Room_ID;
         this.Loai_KT = Loai_KT;
         this.TestDate = TestDate;
+        this.Shift = Shift;
     }
 
     public String getTestSche_ID() {
@@ -39,7 +42,11 @@ public class TestSchedule {
     public String getCourse_ID() {
         return Course_ID;
     }
-
+    
+    public int getShift(){
+        return Shift;
+    }
+    
     public void setCourse_ID(String Course_ID) {
         this.Course_ID = Course_ID;
     }
@@ -68,5 +75,8 @@ public class TestSchedule {
         this.TestDate = TestDate;
     }
     
+    public void setShift(int Shift){
+        this.Shift = Shift;
+    }
     
 }
