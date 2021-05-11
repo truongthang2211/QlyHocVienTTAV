@@ -156,8 +156,8 @@
                      </rowConstraints>
                      <children>
                         <JFXButton fx:id="btn_add" onAction="#AddButton" prefHeight="49.0" prefWidth="130.0" styleClass="AddButton" text="Add" textFill="#808080" wrapText="true" GridPane.halignment="CENTER" />
-                        <JFXButton fx:id="btn_edit" prefHeight="49.0" prefWidth="128.0" styleClass="EditButton" text="Edit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton fx:id="btn_delete" prefHeight="49.0" prefWidth="128.0" styleClass="DeleteButton" text="Delete" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <JFXButton fx:id="btn_edit" onAction="#EditButton" prefHeight="49.0" prefWidth="128.0" styleClass="EditButton" text="Edit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <JFXButton fx:id="btn_delete" onAction="#DeleteButton" prefHeight="49.0" prefWidth="128.0" styleClass="DeleteButton" text="Delete" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                      </children>
                      <GridPane.margin>
                         <Insets top="20.0" />

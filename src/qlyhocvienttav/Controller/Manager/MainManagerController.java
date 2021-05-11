@@ -48,6 +48,7 @@ public class MainManagerController implements Initializable {
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
         rootgrid.setPrefWidth(Main.width);
+
     }    
 
     @FXML

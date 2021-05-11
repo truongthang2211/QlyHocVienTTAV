@@ -15,8 +15,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import qlyhocvienttav.Model.DAL.Teacher_DAL;
+import qlyhocvienttav.Model.DTO.Student;
 import qlyhocvienttav.Model.DTO.Teacher;
 
+import javax.swing.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -107,6 +109,7 @@ public class ManagerAndTeacherManageController implements Initializable {
     @FXML
     private void displaySelected(MouseEvent event) {
         Teacher tc = maintable.getSelectionModel().getSelectedItem();
+        System.out.println(tc.getNationality());
         if (tc == null ){
             System.out.println("Khong thay st");
         }else {
@@ -120,17 +123,47 @@ public class ManagerAndTeacherManageController implements Initializable {
             txt_phoneNumber.setText(tc.getPhoneNumber());
         }
     }
+
     @FXML
     private void AddButton(ActionEvent event) throws SQLException {
         System.out.println("click add button");
-        String sex = cb_sex.getSelectionModel().getSelectedItem();
-        sex=sex==null?"":sex;
-        LocalDate lcdate = datePicker_DOB.getValue();
-        String date = lcdate==null?"":lcdate.toString();
-        Teacher teacher = new Teacher("1",txt_name.getText(),sex,date,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
-        teacher_dal.Insert(teacher);
-        data = teacher_dal.GetData();
+        if (txt_name.getText().equals("")||datePicker_DOB.getValue()==null){
+            JOptionPane.showMessageDialog(null,"Thieu Thong Tin");
+        }
+        else{
+            String sex = cb_sex.getSelectionModel().getSelectedItem();
+            sex=sex==null?"":sex;
+            LocalDate lcdate = datePicker_DOB.getValue();
+            String date = lcdate==null?"":lcdate.toString();
+            Teacher teacher = new Teacher("1",txt_name.getText(),sex,date,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
+            teacher_dal.Insert(teacher);
+            data = teacher_dal.GetData();
+        }
+
 
 
     }
+
+    @FXML
+    private void DeleteButton(ActionEvent event) throws SQLException {
+        Teacher tc = maintable.getSelectionModel().getSelectedItem();
+        teacher_dal.Delete(tc);
+        data = teacher_dal.GetData();
+    }
+
+    @FXML
+    private void EditButton(ActionEvent event) throws SQLException {
+        Teacher tc = maintable.getSelectionModel().getSelectedItem();
+        String sex = cb_sex.getSelectionModel().getSelectedItem();
+        String date = datePicker_DOB.getValue().toString();
+        Teacher teacher;
+        if (!date.equals("")){
+           teacher = new Teacher("",txt_name.getText(),sex,date,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
+        }else{
+            teacher = new Teacher("",txt_name.getText(),sex,"",txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
+        }
+        teacher_dal.Update(tc.getTeacherId(),teacher);
+        data = teacher_dal.GetData();
+    }
+
 }
