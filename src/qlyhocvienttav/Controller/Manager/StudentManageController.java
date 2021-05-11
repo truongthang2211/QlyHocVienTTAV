@@ -69,7 +69,7 @@ public class StudentManageController implements Initializable {
         // TODO
         ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
         sexCbb.setItems(sexList);
-
+            
 
 
         TableColumn st_id = new TableColumn("Student ID");
@@ -94,7 +94,7 @@ public class StudentManageController implements Initializable {
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         maintable.getColumns().addAll(st_id,class_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
         data = st_dal.GetData();
-      maintable.setItems(data);
+        maintable.setItems(data);
     }
 
     @FXML
