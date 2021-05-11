@@ -96,49 +96,28 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-<<<<<<< HEAD
-                        <JFXTextField fx:id="FeeIdtxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Fee ID">
-=======
                         <JFXTextField fx:id="txt_FeeID" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Fee ID">
->>>>>>> db342fce126da7233efcdf26134bdee96c43c706
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-<<<<<<< HEAD
-                        <JFXTextField fx:id="StudentIDtxt" focusColor="#1f1f1f" labelFloat="true" promptText="Student ID" GridPane.rowIndex="1">
-=======
                         <JFXTextField fx:id="txt_StudentId" focusColor="#1f1f1f" labelFloat="true" promptText="Student ID" GridPane.rowIndex="1">
->>>>>>> db342fce126da7233efcdf26134bdee96c43c706
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-<<<<<<< HEAD
-                        <JFXTextField fx:id="FullNametxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Full name" GridPane.rowIndex="2">
-=======
                         <JFXTextField fx:id="txt_FullName" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Full name" GridPane.rowIndex="2">
->>>>>>> db342fce126da7233efcdf26134bdee96c43c706
                            <GridPane.margin>
                               <Insets right="50.0" />
                            </GridPane.margin>
                         </JFXTextField>
-<<<<<<< HEAD
-                        <JFXTextField fx:id="FeeCompletedtxt" focusColor="#1f1f1f" labelFloat="true" promptText="Số tiền đóng" GridPane.rowIndex="3">
-=======
                         <JFXTextField fx:id="txt_amountOfFee" focusColor="#1f1f1f" labelFloat="true" promptText="Số tiền đóng" GridPane.rowIndex="3">
->>>>>>> db342fce126da7233efcdf26134bdee96c43c706
                            <padding>
                               <Insets right="50.0" />
                            </padding>
                         </JFXTextField>
-<<<<<<< HEAD
-                        <JFXDatePicker fx:id="Timetxt" defaultColor="#1f1f1f" prefHeight="25.0" prefWidth="206.0" promptText="Thời gian" showWeekNumbers="true" GridPane.rowIndex="4" />
-                        <JFXComboBox fx:id="StatusCbb" prefHeight="25.0" prefWidth="121.0" promptText="Status" GridPane.rowIndex="5" />
-=======
                         <JFXDatePicker fx:id="datePickerOfComplete" defaultColor="#1f1f1f" prefHeight="25.0" prefWidth="206.0" promptText="Thời gian" showWeekNumbers="true" GridPane.rowIndex="4" />
                         <JFXTextField fx:id="txt_status" disable="true" editable="false" focusColor="#1f1f1f" labelFloat="true" promptText="Status" GridPane.rowIndex="5" />
->>>>>>> db342fce126da7233efcdf26134bdee96c43c706
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
@@ -151,15 +130,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-<<<<<<< HEAD
-                        <JFXButton onAction="#AddBtn" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
-                        <JFXButton onAction="#EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton onAction="#DeleteBtn" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-=======
                         <JFXButton styleClass="AddButton" onAction="#AddButton" text="Add" GridPane.halignment="CENTER" />
                         <JFXButton styleClass="EditButton" onAction="#EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                         <JFXButton styleClass="DeleteButton" onAction="#DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
->>>>>>> db342fce126da7233efcdf26134bdee96c43c706
                      </children>
                   </GridPane>
                </children>
