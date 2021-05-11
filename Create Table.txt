@@ -79,6 +79,7 @@ create table Score(
 create table Test_Schedule(
 	id varchar(50) not null primary key,
 	testDate date,
+	shift int,
 	kindOfTest varchar(50),
 	teacher_id varchar(50),
 	course_id varchar(50),
@@ -162,9 +163,11 @@ add constraint FK_teacherIdOfSchedule_To_Class
 foreign key (teacher_id) references Teacher(teacher_id);
 
 --------------------------------
-CREATE SEQUENCE seq_student_id start with 1 increment by 1;
+create SEQUENCE seq_student_id start with 1 increment by 1;
 ALTER USER admin quota 100M on system;
 
 --------------------------------
-CREATE SEQUENCE seq_teacher_id start with 1 increment by 1;
-ALTER USER admin quota 100M on system;a
+create SEQUENCE seq_teacher_id start with 1 increment by 1;
+ALTER USER admin quota 100M on system;
+
+alter table Test_Schedule add shift int;
