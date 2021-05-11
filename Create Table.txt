@@ -2,8 +2,7 @@
 -----------------------------
 create table Student(
 	student_id varchar(50) not null primary key,
-	class_id varchar(50) null
-	
+	class_id varchar(50)
 );
 -----------------------------
 create table Personal_Info(
