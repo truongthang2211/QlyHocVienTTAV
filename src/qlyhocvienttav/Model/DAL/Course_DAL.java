@@ -55,7 +55,8 @@ public class Course_DAL {
         try {
             Object arg[]= {course.getCourseName(),course.getFeeOfCourse(),course.getDateStart(),course.getDateEnd(),course.getCourse_id()};
             String sql;
-            sql = String.format("UPDATE Course SET  courseName  = '%s', fee   = '%s',dayStart  =  TO_DATE('%s','YYYY-MM-DD'), dayEnd   = TO_DATE('%s','YYYY-MM-DD') WHERE studentFeeId  = '%s'", arg);
+
+            sql = String.format("UPDATE Course SET  courseName  = '%s', fee   = '%s',dayStart  =  TO_DATE('%s','YYYY-MM-DD'), dayEnd   = TO_DATE('%s','YYYY-MM-DD') WHERE course_id  = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){
@@ -76,8 +77,8 @@ public class Course_DAL {
                     "FROM Course ";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Date dateStart = rs.getDate(3);
-                Date dateEnd = rs.getDate(4);
+                Date dateStart = rs.getDate(4);
+                Date dateEnd = rs.getDate(5);
                 String str_dayStart = dateStart==null?"":dateStart.toString();
 
                 String str_dayEnd = dateEnd==null?"":dateEnd.toString();
