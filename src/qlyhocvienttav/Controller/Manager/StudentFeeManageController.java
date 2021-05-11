@@ -77,7 +77,6 @@ public class StudentFeeManageController implements Initializable {
         maintable.getColumns().addAll(idFee,idStudent,fullNameStudent,amountOfFee,status,dateOfCompleteFee);
         data = stf_dal.GetData();
         maintable.setItems(data);
-
         txt_StudentId.focusedProperty().addListener((obs, oldVal, newVal) -> 
                 {if (oldVal){
                     OutfocusStudentID();
