@@ -69,11 +69,12 @@ public class StudentManageController implements Initializable {
         // TODO
         ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
         sexCbb.setItems(sexList);
-            
+        sexCbb.getSelectionModel().select(0);
 
 
         TableColumn st_id = new TableColumn("Student ID");
         TableColumn class_id = new TableColumn("Class ID");
+        TableColumn course_id = new TableColumn("Course ID");
         TableColumn fullname = new TableColumn("Ho ten");
         TableColumn Sex = new TableColumn("Gioi tinh");
         TableColumn DateofBirth = new TableColumn("Ngay sinh");
@@ -85,6 +86,7 @@ public class StudentManageController implements Initializable {
 
         st_id.setCellValueFactory(new PropertyValueFactory<>("student_id"));
         class_id.setCellValueFactory(new PropertyValueFactory<>("class_id"));
+        course_id.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         Sex.setCellValueFactory(new PropertyValueFactory<>("sex"));
         DateofBirth.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
@@ -92,7 +94,7 @@ public class StudentManageController implements Initializable {
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        maintable.getColumns().addAll(st_id,class_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
+        maintable.getColumns().addAll(st_id,class_id,course_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
         data = st_dal.GetData();
         maintable.setItems(data);
     }

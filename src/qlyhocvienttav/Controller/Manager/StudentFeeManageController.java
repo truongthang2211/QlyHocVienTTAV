@@ -82,6 +82,7 @@ public class StudentFeeManageController implements Initializable {
                 {if (oldVal){
                     OutfocusStudentID();
                 }});
+        datePickerOfComplete.setValue(LocalDate.now());
     }
     @FXML
     private void displaySelected(MouseEvent event) {

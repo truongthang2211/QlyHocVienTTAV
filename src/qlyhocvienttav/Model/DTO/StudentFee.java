@@ -5,6 +5,7 @@ public class StudentFee {
     String idFee;
     String idStudent;
     String nameStudent;
+    String namecourse;
     double amountOfFee;
 
 
