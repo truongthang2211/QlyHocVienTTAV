@@ -76,7 +76,7 @@ public class StudentFeeManageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         
         Txt_FeePay.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            if (!newValue.matches("[\\d\\.]*")) {
+            if (!newValue.matches("[\\d\\.]*") ||   !Txt_amountOfFee.getText().matches("[\\d\\.].+") ) {
                 Txt_FeePay.setText(newValue.replaceAll("[^\\d\\.]", ""));
             }else {
                 int index = Double.parseDouble(Txt_FeePay.getText()) >= Double.parseDouble(Txt_amountOfFee.getText())?0:1;

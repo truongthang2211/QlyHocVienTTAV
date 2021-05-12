@@ -150,10 +150,11 @@ public class StudentManageController implements Initializable {
         
     }
     private void GetCourseToCbb(){
+        courseCbb.getItems().clear();
         Course_DAL course_dal = new Course_DAL();
         ObservableList<Course> CourseList = course_dal.GetData();
-        CourseList.forEach(cs -> {
-            courseCbb.getItems().add(cs.getCourse_id());
+        CourseList.forEach(cr -> {
+            courseCbb.getItems().add(cr.getCourse_id());
         });
         courseCbb.getSelectionModel().select(0);
     }

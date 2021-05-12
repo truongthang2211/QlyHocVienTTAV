@@ -113,7 +113,7 @@
                               <Insets right="50.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="Txt_FeePay" focusColor="#1f1f1f" labelFloat="true" onKeyTyped="#ActionKeyTypeFeePay" promptText="Số tiền đóng" text="0" GridPane.rowIndex="4">
+                        <JFXTextField fx:id="Txt_FeePay" focusColor="#1f1f1f" labelFloat="true" onKeyTyped="#ActionKeyTypeFeePay" promptText="Số tiền đóng" GridPane.rowIndex="4">
                            <padding>
                               <Insets right="50.0" />
                            </padding>
