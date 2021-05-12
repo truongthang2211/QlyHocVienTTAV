@@ -91,13 +91,14 @@ public class Student_DAL{
         
         try {
             this.Data.clear();
-            String sql = "SELECT ST.*,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
-                            "FROM STUDENT ST JOIN PERSONAL_INFO IF ON ST.STUDENT_ID = IF.ID";
+            String sql = "SELECT ST.*,CR.COURSENAME,CR.FEE,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
+                        "FROM STUDENT ST JOIN PERSONAL_INFO IF ON ST.STUDENT_ID = IF.ID "+
+                        "JOIN COURSE CR ON ST.COURSE_ID = CR.COURSE_ID";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Date lcdate = rs.getDate(6);
+                Date lcdate = rs.getDate(8);
                 String date = lcdate==null?"":lcdate.toString();
-                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),date,rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)));
+                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getString(6),rs.getString(7),date,rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);

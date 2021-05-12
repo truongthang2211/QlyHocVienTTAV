@@ -21,6 +21,13 @@ public class Personal_Info {
         this.phoneNumber = phoneNumber;
     }
 
+    public Personal_Info() {
+    }
+
+    public Personal_Info(String fullName) {
+        this.fullName = fullName;
+    }
+    
     public String getId() {
         return id;
     }

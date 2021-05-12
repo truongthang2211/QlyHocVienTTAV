@@ -13,6 +13,7 @@ package qlyhocvienttav.Controller.Manager;
  * @author Thang
  */
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,21 +24,28 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import qlyhocvienttav.Model.DAL.Student_DAL;
 import qlyhocvienttav.Model.DTO.Student;
 
 public class StudentFeeManageController implements Initializable {
     public ObservableList<StudentFee> data;
     StudentFee_DAL stf_dal= new StudentFee_DAL();
-
+    DecimalFormat myFormat = new DecimalFormat("###,##0.00");
     @FXML
     private Label topcenterlabel;
 
@@ -53,28 +61,50 @@ public class StudentFeeManageController implements Initializable {
     private JFXTextField txt_FullName;
 
     @FXML
-    private JFXTextField txt_amountOfFee;
-
-    @FXML
     private JFXDatePicker datePickerOfComplete;
     @FXML
-    private JFXTextField txt_status;
+    private JFXTextField txt_Course;
+    @FXML
+    private JFXComboBox<String> Cbb_Status;
+    @FXML
+    private JFXTextField Txt_Search;
+    @FXML
+    private JFXTextField Txt_amountOfFee;
+    @FXML
+    private JFXTextField Txt_FeePay;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        Txt_FeePay.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("[\\d\\.]*")) {
+                Txt_FeePay.setText(newValue.replaceAll("[^\\d\\.]", ""));
+            }else {
+                int index = Double.parseDouble(Txt_FeePay.getText()) >= Double.parseDouble(Txt_amountOfFee.getText())?0:1;
+                Cbb_Status.getSelectionModel().select(index);
+            }
+        });
+        
+        
+        
+        
         TableColumn idFee = new TableColumn("ID Fee");
         TableColumn idStudent = new TableColumn("MSSV");
         TableColumn fullNameStudent = new TableColumn("Ten Sinh Vien");
+        TableColumn courseName = new TableColumn("Ten khoa hoc");
+        TableColumn FeePay = new TableColumn("So Tien Da Dong");
         TableColumn amountOfFee = new TableColumn("So Tien");
         TableColumn status = new TableColumn("Tinh Trang");
         TableColumn dateOfCompleteFee = new TableColumn("Ngay Nap");
 
         idFee.setCellValueFactory(new PropertyValueFactory<>("idFee"));
-        idStudent.setCellValueFactory(new PropertyValueFactory<>("idStudent"));
-        fullNameStudent.setCellValueFactory(new PropertyValueFactory<>("nameStudent"));
+        idStudent.setCellValueFactory(new PropertyValueFactory<>("student_id"));
+        fullNameStudent.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        courseName.setCellValueFactory(new PropertyValueFactory<>("course_name"));
+        FeePay.setCellValueFactory(new PropertyValueFactory<>("amountOfFeeIsComplete"));
         amountOfFee.setCellValueFactory(new PropertyValueFactory<>("amountOfFee"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         dateOfCompleteFee.setCellValueFactory(new PropertyValueFactory<>("dateOfCompleteFee"));
-        maintable.getColumns().addAll(idFee,idStudent,fullNameStudent,amountOfFee,status,dateOfCompleteFee);
+        maintable.getColumns().addAll(idFee,idStudent,fullNameStudent,courseName,FeePay,amountOfFee,dateOfCompleteFee,status);
         data = stf_dal.GetData();
         maintable.setItems(data);
         txt_StudentId.focusedProperty().addListener((obs, oldVal, newVal) -> 
@@ -82,6 +112,8 @@ public class StudentFeeManageController implements Initializable {
                     OutfocusStudentID();
                 }});
         datePickerOfComplete.setValue(LocalDate.now());
+        Cbb_Status.setItems(FXCollections.observableArrayList("Hoàn thành","Chưa hoàn thành"));
+        Cbb_Status.getSelectionModel().select(1);
     }
     @FXML
     private void displaySelected(MouseEvent event) {
@@ -90,10 +122,9 @@ public class StudentFeeManageController implements Initializable {
             System.out.println("Khong thay st");
         }else {
             txt_FeeID.setText(stf.getIdFee());
-            txt_StudentId.setText(stf.getIdStudent());
+            txt_StudentId.setText(stf.getStudent_id());
 
-            System.out.println(stf.getNameStudent());
-            txt_FullName.setText(stf.getNameStudent());
+            txt_FullName.setText(stf.getFullName());
 
             System.out.println(stf.getDateOfCompleteFee());
             if (stf.getDateOfCompleteFee().equals("")){
@@ -101,8 +132,9 @@ public class StudentFeeManageController implements Initializable {
             }else {
                 datePickerOfComplete.setValue(LocalDate.parse(stf.getDateOfCompleteFee(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
-            txt_status.setText(stf.getStatus());
-            txt_amountOfFee.setText(Double.toString(stf.getAmountOfFee()));
+            Cbb_Status.getSelectionModel().select(stf.getStatus());
+            Txt_amountOfFee.setText(Double.toString(stf.getAmountOfFee()));
+            Txt_FeePay.setText(Double.toString(stf.getAmountOfFeeIsComplete()));
         }
     }
     @FXML
@@ -114,32 +146,46 @@ public class StudentFeeManageController implements Initializable {
 
     @FXML
     private void EditButton(ActionEvent event) throws SQLException {
-        StudentFee stf = maintable.getSelectionModel().getSelectedItem();
-        String date = datePickerOfComplete.getValue().toString();
-        StudentFee stf2 = new StudentFee(stf.getIdFee(),txt_StudentId.getText(),txt_FullName.getText(),Double.parseDouble(txt_amountOfFee.getText()),txt_status.getText(),date);
+        StudentFee stf2 = GetStudentFeeFromGUI();
         stf_dal.Update(stf2);
         data = stf_dal.GetData();
     }
 
     @FXML
     private void AddButton(ActionEvent event) throws SQLException {
-
-        LocalDate lcdate = datePickerOfComplete.getValue();
-        String date = lcdate==null?"":lcdate.toString();
-        StudentFee st = new StudentFee("",txt_StudentId.getText(),txt_FullName.getText(),Double.parseDouble(txt_amountOfFee.getText()),date,txt_status.getText());
+        StudentFee st= GetStudentFeeFromGUI();
         stf_dal.Insert(st);
         data = stf_dal.GetData();
 
 
     }
+    private StudentFee GetStudentFeeFromGUI(){
+        StudentFee st = new StudentFee(txt_FeeID.getText(),txt_StudentId.getText(),Double.parseDouble(Txt_FeePay.getText()),datePickerOfComplete.getValue().toString(),Cbb_Status.getSelectionModel().getSelectedItem());
+        return st;
+    }
     private void OutfocusStudentID(){
+        txt_StudentId.setText(txt_StudentId.getText().toUpperCase());
         Student_DAL st_dal = new Student_DAL();
         ObservableList<Student> studentList = st_dal.GetData();
         for(Student st : studentList){
             if (st.getStudent_id().equalsIgnoreCase(txt_StudentId.getText())){
                 txt_FullName.setText(st.getFullName());
+                txt_Course.setText(st.getCourse_name());
+                Txt_amountOfFee.setText(String.valueOf(st.getAmountOfFee()));
                 return;
             }
         }
+    }
+
+    @FXML
+    private void StatusAction(ActionEvent event) {
+        if (Cbb_Status.getSelectionModel().getSelectedIndex() == 0){
+           Txt_FeePay.setText(Txt_amountOfFee.getText());
+        }
+    }
+
+    @FXML
+    private void ActionKeyTypeFeePay(KeyEvent event) {
+      
     }
 }

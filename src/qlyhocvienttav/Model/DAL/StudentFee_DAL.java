@@ -20,7 +20,7 @@ public class StudentFee_DAL {
 
     public void Insert(StudentFee stf){
         try {
-            Object arg[]= {stf.getIdStudent(),stf.getAmountOfFee(),stf.getStatus(),stf.getDateOfCompleteFee()};
+            Object arg[]= {stf.getStudent_id(),stf.getAmountOfFeeIsComplete(),stf.getStatus(),stf.getDateOfCompleteFee()};
 
             String studentFee_SQL;
             studentFee_SQL = String.format("INSERT INTO StudentFee VALUES ('STF'||to_char(seq_StudentFee_id.nextval),'%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'))",arg);
@@ -55,7 +55,7 @@ public class StudentFee_DAL {
     }
     public boolean Update(StudentFee stf) {
         try {
-            Object arg[]= {stf.getIdStudent(),stf.getAmountOfFee(),stf.getStatus(),stf.getDateOfCompleteFee(),stf.getIdFee(),};
+            Object arg[]= {stf.getStudent_id(),stf.getAmountOfFeeIsComplete(),stf.getStatus(),stf.getDateOfCompleteFee(),stf.getIdFee(),};
             String sql;
             sql = String.format("UPDATE StudentFee SET student_id  = '%s', amountOfFeeIsComplete  = '%s',statusOfFee = '%s', dateOfCompleteFee  = TO_DATE('%s','YYYY-MM-DD') WHERE studentFeeId  = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
@@ -74,13 +74,16 @@ public class StudentFee_DAL {
 
         try {
             this.data.clear();
-            String sql = "SELECT STF.studentFeeId, student_id,IF.fullName,amountOfFeeIsComplete ,statusOfFee,dateOfCompleteFee \n" +
-                    "FROM StudentFee STF JOIN PERSONAL_INFO IF ON STF.student_id  = IF.ID";
+            String sql = "SELECT STF.studentFeeId, STF.student_id,IF.fullName,CR.COURSENAME,amountOfFeeIsComplete ,CR.FEE,dateOfCompleteFee,statusOfFee " +
+                    "FROM StudentFee STF "+
+                    "JOIN STUDENT ST ON ST.STUDENT_ID = STF.STUDENT_ID " +
+                    "JOIN PERSONAL_INFO IF ON ST.student_id  = IF.ID "+
+                    "JOIN COURSE CR ON ST.COURSE_ID = CR.COURSE_ID";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Date lcdate = rs.getDate(6);
+                Date lcdate = rs.getDate(7);
                 String date = lcdate==null?"":lcdate.toString();
-                StudentFee stf = new StudentFee(rs.getString(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getString(5),date);
+                StudentFee stf = new StudentFee(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getDouble(6),date,rs.getString(8));
                 data.add(stf);
             }
         } catch (SQLException ex) {

@@ -10,15 +10,59 @@ package qlyhocvienttav.Model.DTO;
  * @author Thang
  */
 public class Student extends Personal_Info{
-    String student_id, class_id,course_id;
-    public Student(String student_id,String class_id ,String course_id, String fullName, String sex, String dateOfBirth,
-                   String nationality, String address, String email, String phoneNumber) {
+    String student_id, class_id,course_id,course_name;
+    double amountOfFee;
+
+    public Student(String student_id, String class_id, String course_id, String course_name, double amountOfFee, String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
         super(fullName, sex, dateOfBirth, nationality, address, email, phoneNumber);
         this.student_id = student_id;
+        this.class_id = class_id;
         this.course_id = course_id;
-        this.class_id=class_id;
+        this.course_name = course_name;
+        this.amountOfFee = amountOfFee;
     }
 
+    public Student(String student_id, String class_id, String course_id, String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
+        super(fullName, sex, dateOfBirth, nationality, address, email, phoneNumber);
+        this.student_id = student_id;
+        this.class_id = class_id;
+        this.course_id = course_id;
+    }
+
+    
+
+    public Student() {
+    }
+    
+    public Student(String student_id) {
+        this.student_id = student_id;
+    }
+
+    public Student(String student_id, String course_name, double amountOfFee, String fullName) {
+        super(fullName);
+        this.student_id = student_id;
+        this.course_name = course_name;
+        this.amountOfFee = amountOfFee;
+    }
+
+    public String getCourse_name() {
+        return course_name;
+    }
+
+    public void setCourse_name(String course_name) {
+        this.course_name = course_name;
+    }
+
+    public double getAmountOfFee() {
+        return amountOfFee;
+    }
+
+    public void setAmountOfFee(double amountOfFee) {
+        this.amountOfFee = amountOfFee;
+    }
+
+    
+    
     public String getCourse_id() {
         return course_id;
     }

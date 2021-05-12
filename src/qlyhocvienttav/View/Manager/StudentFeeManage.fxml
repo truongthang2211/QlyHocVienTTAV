@@ -52,7 +52,7 @@
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin></TableView>
-                  <JFXTextField fx:id="Searchtxt" maxWidth="-Infinity" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXTextField fx:id="Txt_Search" maxWidth="-Infinity" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
@@ -113,15 +113,15 @@
                               <Insets right="50.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txt_amountOfFee" focusColor="#1f1f1f" labelFloat="true" promptText="Số tiền đóng" GridPane.rowIndex="4">
+                        <JFXTextField fx:id="Txt_FeePay" focusColor="#1f1f1f" labelFloat="true" onKeyTyped="#ActionKeyTypeFeePay" promptText="Số tiền đóng" text="0" GridPane.rowIndex="4">
                            <padding>
                               <Insets right="50.0" />
                            </padding>
                         </JFXTextField>
                         <JFXDatePicker fx:id="datePickerOfComplete" defaultColor="#1f1f1f" prefHeight="25.0" prefWidth="206.0" promptText="Thời gian" showWeekNumbers="true" GridPane.rowIndex="6" />
                         <JFXTextField fx:id="txt_Course" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Course Name" GridPane.rowIndex="3" />
-                        <JFXTextField fx:id="txt_Course1" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Số tiền cần đóng" GridPane.rowIndex="5" />
-                        <JFXComboBox fx:id="Cbb_Status" prefHeight="25.0" prefWidth="113.0" GridPane.rowIndex="7" />
+                        <JFXTextField fx:id="Txt_amountOfFee" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Số tiền cần đóng" GridPane.rowIndex="5" />
+                        <JFXComboBox fx:id="Cbb_Status" onAction="#StatusAction" prefHeight="25.0" prefWidth="113.0" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">

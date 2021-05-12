@@ -1,34 +1,15 @@
 package qlyhocvienttav.Model.DTO;
 
-public class StudentFee {
+public class StudentFee extends Student{
 
     String idFee;
-    String idStudent;
-    String nameStudent;
-    String namecourse;
-    double amountOfFee;
-
-
     double amountOfFeeIsComplete;
     String dateOfCompleteFee;
     String status;
-    StudentFee(){};
-    public StudentFee(String _idFee, String _idStudent, String _nameStudent, double _amountOfStudent, String _status,String _dateOfCompleteFee){
-        idFee=_idFee;
-        idStudent=_idStudent;
-        nameStudent=_nameStudent;
-        amountOfFee=_amountOfStudent;
-        dateOfCompleteFee=_dateOfCompleteFee;
-        status=_status;
-    }
-    public double getAmountOfFeeIsComplete() {
-        return amountOfFeeIsComplete;
-    }
 
-    public void setAmountOfFeeIsComplete(double amountOfFeeIsComplete) {
-        this.amountOfFeeIsComplete = amountOfFeeIsComplete;
-    }
+   
 
+    
     public String getIdFee() {
         return idFee;
     }
@@ -37,21 +18,25 @@ public class StudentFee {
         this.idFee = idFee;
     }
 
-    public String getIdStudent() {
-        return idStudent;
+    public StudentFee(String idFee,String student_id, double amountOfFeeIsComplete, String dateOfCompleteFee, String status ) {
+        super(student_id);
+        this.amountOfFeeIsComplete = amountOfFeeIsComplete;
+        this.dateOfCompleteFee = dateOfCompleteFee;
+        this.status = status;
+         this.idFee = idFee;
     }
 
-    public void setIdStudent(String idStudent) {
-        this.idStudent = idStudent;
+    public StudentFee(String idFee,String student_id,String fullName,String course_name,  double amountOfFeeIsComplete, double amountOfFee,String dateOfCompleteFee, String status) {
+        super(student_id, course_name, amountOfFee, fullName);
+        this.idFee = idFee;
+        this.amountOfFeeIsComplete = amountOfFeeIsComplete;
+        this.dateOfCompleteFee = dateOfCompleteFee;
+        this.status = status;
     }
+    
+ 
 
-    public String getNameStudent() {
-        return nameStudent;
-    }
-
-    public void setNameStudent(String nameStudent) {
-        this.nameStudent = nameStudent;
-    }
+   
 
     public double getAmountOfFee() {
         return amountOfFee;
@@ -59,6 +44,14 @@ public class StudentFee {
 
     public void setAmountOfFee(double amountOfFee) {
         this.amountOfFee = amountOfFee;
+    }
+
+    public double getAmountOfFeeIsComplete() {
+        return amountOfFeeIsComplete;
+    }
+
+    public void setAmountOfFeeIsComplete(double amountOfFeeIsComplete) {
+        this.amountOfFeeIsComplete = amountOfFeeIsComplete;
     }
 
     public String getDateOfCompleteFee() {
@@ -76,5 +69,10 @@ public class StudentFee {
     public void setStatus(String status) {
         this.status = status;
     }
+
+   
+    
+
+    
 
 }
