@@ -19,7 +19,7 @@ import qlyhocvienttav.Model.DTO.Student;
  *
  * @author Thang Nguyen Anh
  */
-public class Student_DAL {
+public class Student_DAL{
     public Student_DAL(){
     };
     ObservableList<Student> Data = FXCollections.observableArrayList();
@@ -31,9 +31,9 @@ public class Student_DAL {
             Object arg_st[]= {st.getCourse_id()};
             Object arg_info[]= {st.getFullName(),st.getSex(),st.getDateOfBirth(),st.getNationality(),st.getAddress(),st.getEmail(),st.getPhoneNumber()};
             String st_sql;
-            st_sql = String.format("INSERT INTO STUDENT VALUES ('HV'||to_char(seq_student_id.currval,'FM00000'),'','%s')", arg_st);
+            st_sql = String.format("INSERT INTO STUDENT VALUES ('HV'||to_char(seq_student_id.currval),'','%s')", arg_st);
             String info_sql;
-            info_sql = String.format("INSERT INTO Personal_Info VALUES ('HV'||to_char(seq_student_id.nextval,'FM00000'),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s')", arg_info);
+            info_sql = String.format("INSERT INTO Personal_Info VALUES ('HV'||to_char(seq_student_id.nextval),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s')", arg_info);
             
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows_info = statement.executeUpdate(info_sql);
@@ -69,14 +69,13 @@ public class Student_DAL {
     }
     public boolean Update(String ID ,Student st) {
         try {
-            Object arg_st[]={st.getClass_id(),st.getCourse_id()};
+            Object arg_st[]={st.getClass_id(),st.getCourse_id(),ID};
             Object arg_info[]= {st.getFullName(),st.getSex(),st.getDateOfBirth(),st.getNationality(),st.getAddress(),st.getEmail(),st.getPhoneNumber(),ID};
-            String st_sql = String.format("UPDATE STUDENT SET CLASS_ID = '%S', COURSE_ID = '%s';",arg_st);
+            String st_sql = String.format("UPDATE STUDENT SET CLASS_ID = '%s', COURSE_ID = '%s' WHERE STUDENT_ID = '%s'",arg_st);
             String info_sql = String.format("UPDATE Personal_Info SET fullName = '%s', sex = '%s', dateOfBirth = TO_DATE('%s','YYYY-MM-DD'), nationality = '%s', address = '%s', email = '%s', phoneNumber = '%s' WHERE ID = '%s'", arg_info);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows_info = statement.executeUpdate(info_sql);
             int rows_st = statement.executeUpdate(st_sql);
-
             if (rows_info > 0 || rows_st >0){
                 System.out.println("Update successfull");
             }
@@ -84,6 +83,7 @@ public class Student_DAL {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        
         return true;
 
     }
@@ -97,7 +97,7 @@ public class Student_DAL {
             while (rs.next()){
                 Date lcdate = rs.getDate(6);
                 String date = lcdate==null?"":lcdate.toString();
-                Data.add(new Student(rs.getString(1),rs.getString(3),rs.getString(4),rs.getString(5),date,rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)));
+                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),date,rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);

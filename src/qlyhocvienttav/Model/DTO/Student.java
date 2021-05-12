@@ -11,11 +11,12 @@ package qlyhocvienttav.Model.DTO;
  */
 public class Student extends Personal_Info{
     String student_id, class_id,course_id;
-    public Student(String student_id, String course_id, String fullName, String sex, String dateOfBirth,
+    public Student(String student_id,String class_id ,String course_id, String fullName, String sex, String dateOfBirth,
                    String nationality, String address, String email, String phoneNumber) {
         super(fullName, sex, dateOfBirth, nationality, address, email, phoneNumber);
         this.student_id = student_id;
         this.course_id = course_id;
+        this.class_id=class_id;
     }
 
     public String getCourse_id() {
