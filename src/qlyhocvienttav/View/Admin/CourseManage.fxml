@@ -104,13 +104,10 @@
                               <Insets right="150.0" />
                            </GridPane.margin>
                         </JFXTextField>
-<<<<<<< HEAD
                          <JFXDatePicker fx:id="dp_DayStart" promptText="Day Start" GridPane.rowIndex="2" />
                          <JFXDatePicker fx:id="dp_dayEnd" promptText="Day End" GridPane.rowIndex="3" />
-=======
                         <JFXDatePicker promptText="Day Start" GridPane.rowIndex="2" />
                         <JFXDatePicker promptText="Day End" GridPane.rowIndex="3" />
->>>>>>> bf192061bae30c5e0c7bce2958d4a140a0d3ec1d
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">

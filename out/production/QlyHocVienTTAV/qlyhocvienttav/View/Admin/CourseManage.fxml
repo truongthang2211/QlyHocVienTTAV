@@ -106,6 +106,8 @@
                         </JFXTextField>
                          <JFXDatePicker fx:id="dp_DayStart" promptText="Day Start" GridPane.rowIndex="2" />
                          <JFXDatePicker fx:id="dp_dayEnd" promptText="Day End" GridPane.rowIndex="3" />
+                        <JFXDatePicker promptText="Day Start" GridPane.rowIndex="2" />
+                        <JFXDatePicker promptText="Day End" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
