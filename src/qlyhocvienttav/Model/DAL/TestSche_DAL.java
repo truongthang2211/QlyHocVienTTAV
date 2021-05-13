@@ -28,9 +28,9 @@ public class TestSche_DAL {
         try {
             Object arg_info[]= {ts.getCourse_ID(),ts.getTestSche_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(), ts.getShift()};
             String ts_sql;
-            ts_sql = String.format("INSERT INTO TestSchedule VALUES ('TC'||to_char(seq_testsche_id.currval))");
+            ts_sql = String.format("INSERT INTO Test_Schedule VALUES ('TC'||to_char(seq_testschedule_id.currval))");
             String infoTestSche_sql;
-            infoTestSche_sql = String.format("INSERT INTO Personal_Info VALUES ('TC'||to_char(seq_testsche_id.nextval),'%s','%s','%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),int)", arg_info);
+            infoTestSche_sql = String.format("INSERT INTO Personal_Info VALUES ('TC'||to_char(seq_testschedule_id.nextval),'%s','%s','%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),int)", arg_info);
 
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows_info = statement.executeUpdate(infoTestSche_sql);
@@ -50,7 +50,7 @@ public class TestSche_DAL {
             Object arg[]= {ts.getTestSche_ID()};
             String info_sql,testsche_sql;
             info_sql = String.format("DELETE FROM Personal_Info WHERE ID = '%s'", arg);
-            testsche_sql = String.format("DELETE FROM TestSchedule WHERE TestSchedule_id = '%s'", arg);
+            testsche_sql = String.format("DELETE FROM Test_Schedule WHERE TestSchedule_id = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int testschedule_rows = statement.executeUpdate(testsche_sql);
             int info_rows = statement.executeUpdate(info_sql);
