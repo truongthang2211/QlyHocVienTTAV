@@ -9,7 +9,6 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
@@ -20,7 +19,7 @@ import qlyhocvienttav.Model.DTO.Student;
  *
  * @author Thang Nguyen Anh
  */
-public class Student_DAL {
+public class Student_DAL{
     public Student_DAL(){
     };
     ObservableList<Student> Data = FXCollections.observableArrayList();
@@ -29,12 +28,12 @@ public class Student_DAL {
     
     public boolean Insert(Student st) {
         try {
-            Object arg_st[]= {st.getClass_id()};
+            Object arg_st[]= {st.getCourse_id()};
             Object arg_info[]= {st.getFullName(),st.getSex(),st.getDateOfBirth(),st.getNationality(),st.getAddress(),st.getEmail(),st.getPhoneNumber()};
             String st_sql;
-            st_sql = String.format("INSERT INTO STUDENT VALUES ('HV'||to_char(seq_student_id.currval,'FM00000'),'%s')", arg_st);
+            st_sql = String.format("INSERT INTO STUDENT VALUES ('HV'||to_char(seq_student_id.currval),'','%s')", arg_st);
             String info_sql;
-            info_sql = String.format("INSERT INTO Personal_Info VALUES ('HV'||to_char(seq_student_id.nextval,'FM00000'),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s')", arg_info);
+            info_sql = String.format("INSERT INTO Personal_Info VALUES ('HV'||to_char(seq_student_id.nextval),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s')", arg_info);
             
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows_info = statement.executeUpdate(info_sql);
@@ -70,18 +69,21 @@ public class Student_DAL {
     }
     public boolean Update(String ID ,Student st) {
         try {
-            Object arg[]= {st.getFullName(),st.getSex(),st.getDateOfBirth(),st.getNationality(),st.getAddress(),st.getEmail(),st.getPhoneNumber(),ID};
-            String sql;
-            sql = String.format("UPDATE Personal_Info SET fullName = '%s', sex = '%s', dateOfBirth = TO_DATE('%s','YYYY-MM-DD'), nationality = '%s', address = '%s', email = '%s', phoneNumber = '%s' WHERE ID = '%s'", arg);
+            Object arg_st[]={st.getClass_id(),st.getCourse_id(),ID};
+            Object arg_info[]= {st.getFullName(),st.getSex(),st.getDateOfBirth(),st.getNationality(),st.getAddress(),st.getEmail(),st.getPhoneNumber(),ID};
+            String st_sql = String.format("UPDATE STUDENT SET CLASS_ID = '%s', COURSE_ID = '%s' WHERE STUDENT_ID = '%s'",arg_st);
+            String info_sql = String.format("UPDATE Personal_Info SET fullName = '%s', sex = '%s', dateOfBirth = TO_DATE('%s','YYYY-MM-DD'), nationality = '%s', address = '%s', email = '%s', phoneNumber = '%s' WHERE ID = '%s'", arg_info);
             Statement statement = LoginViewController.connection.con.createStatement();
-            int rows = statement.executeUpdate(sql);
-            if (rows > 0){
+            int rows_info = statement.executeUpdate(info_sql);
+            int rows_st = statement.executeUpdate(st_sql);
+            if (rows_info > 0 || rows_st >0){
                 System.out.println("Update successfull");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        
         return true;
 
     }
@@ -89,13 +91,14 @@ public class Student_DAL {
         
         try {
             this.Data.clear();
-            String sql = "SELECT ST.*,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
-                            "FROM STUDENT ST JOIN PERSONAL_INFO IF ON ST.STUDENT_ID = IF.ID";
+            String sql = "SELECT ST.*,CR.COURSENAME,CR.FEE,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
+                        "FROM STUDENT ST JOIN PERSONAL_INFO IF ON ST.STUDENT_ID = IF.ID "+
+                        "JOIN COURSE CR ON ST.COURSE_ID = CR.COURSE_ID";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Date lcdate = rs.getDate(5);
+                Date lcdate = rs.getDate(8);
                 String date = lcdate==null?"":lcdate.toString();
-                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),date,rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)));
+                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getString(6),rs.getString(7),date,rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);

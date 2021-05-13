@@ -28,9 +28,9 @@ public class TestSche_DAL {
         try {
             Object arg_info[]= {ts.getCourse_ID(),ts.getTestSche_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(), ts.getShift()};
             String ts_sql;
-            ts_sql = String.format("INSERT INTO TestSchedule VALUES ('TC'||to_char(seq_testsche_id.currval))");
+            ts_sql = String.format("INSERT INTO Test_Schedule VALUES ('TC'||to_char(seq_testschedule_id.currval))");
             String infoTestSche_sql;
-            infoTestSche_sql = String.format("INSERT INTO Personal_Info VALUES ('TC'||to_char(seq_testsche_id.nextval),'%s','%s','%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),int)", arg_info);
+            infoTestSche_sql = String.format("INSERT INTO Personal_Info VALUES ('TC'||to_char(seq_testschedule_id.nextval),'%s','%s','%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),int)", arg_info);
 
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows_info = statement.executeUpdate(infoTestSche_sql);
@@ -43,6 +43,41 @@ public class TestSche_DAL {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
         }
+
+    }
+    public boolean Delete(TestSchedule ts){
+        try {
+            Object arg[]= {ts.getTestSche_ID()};
+            String info_sql,testsche_sql;
+            info_sql = String.format("DELETE FROM Personal_Info WHERE ID = '%s'", arg);
+            testsche_sql = String.format("DELETE FROM Test_Schedule WHERE TestSchedule_id = '%s'", arg);
+            Statement statement = LoginViewController.connection.con.createStatement();
+            int testschedule_rows = statement.executeUpdate(testsche_sql);
+            int info_rows = statement.executeUpdate(info_sql);
+            if (info_rows > 0 && testschedule_rows >0){
+                System.out.println("Delete successfull");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    public boolean Update(String ID ,TestSchedule ts) {
+        try {
+            Object arg[]= {ts.getTestSche_ID(),ts.getCourse_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(),ts.getShift(),ID};
+            String sql;
+            sql = String.format("UPDATE Personal_Info SET TestSchedule_ID = '%s', Teacher_ID = '%s', TestDate = TO_DATE('%s','YYYY-MM-DD'), Course_ID = '%s', Room_ID = '%s', Loai_KT = '%s', Shift = int, WHERE ID = '%s'", arg);
+            Statement statement = LoginViewController.connection.con.createStatement();
+            int rows = statement.executeUpdate(sql);
+            if (rows > 0){
+                System.out.println("Update successfull");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
 
     }
     public void LoadData(){

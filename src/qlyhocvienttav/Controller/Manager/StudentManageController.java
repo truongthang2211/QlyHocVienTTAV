@@ -22,7 +22,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javax.swing.JOptionPane;
+import qlyhocvienttav.Model.DAL.Course_DAL;
 import qlyhocvienttav.Model.DAL.Student_DAL;
+import qlyhocvienttav.Model.DTO.Course;
 import qlyhocvienttav.Model.DTO.Student;
 
 /**
@@ -40,7 +43,6 @@ public class StudentManageController implements Initializable {
     
     Student_DAL st_dal= new Student_DAL();
 
-
     /**
      * Initializes the controller class.
      */
@@ -57,23 +59,27 @@ public class StudentManageController implements Initializable {
     @FXML
     private JFXTextField phonenumberTxt;
     @FXML
-    private JFXComboBox<?> courseTxt;
-    @FXML
     private JFXTextField classTxt;
     @FXML
     private JFXDatePicker dateofbirthDate;
     @FXML
     private JFXComboBox<String> sexCbb;
+    @FXML
+    private JFXComboBox<String> courseCbb;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
         sexCbb.setItems(sexList);
-            
-
-
+        sexCbb.getSelectionModel().select(0);
+        GetCourseToCbb();
+        
+        
+        
+        
         TableColumn st_id = new TableColumn("Student ID");
         TableColumn class_id = new TableColumn("Class ID");
+        TableColumn course_id = new TableColumn("Course ID");
         TableColumn fullname = new TableColumn("Ho ten");
         TableColumn Sex = new TableColumn("Gioi tinh");
         TableColumn DateofBirth = new TableColumn("Ngay sinh");
@@ -85,6 +91,7 @@ public class StudentManageController implements Initializable {
 
         st_id.setCellValueFactory(new PropertyValueFactory<>("student_id"));
         class_id.setCellValueFactory(new PropertyValueFactory<>("class_id"));
+        course_id.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         Sex.setCellValueFactory(new PropertyValueFactory<>("sex"));
         DateofBirth.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
@@ -92,22 +99,19 @@ public class StudentManageController implements Initializable {
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        maintable.getColumns().addAll(st_id,class_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
+        maintable.getColumns().addAll(st_id,class_id,course_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
         data = st_dal.GetData();
         maintable.setItems(data);
     }
 
     @FXML
    private void AddButton(ActionEvent event) throws SQLException {
-       String sex = sexCbb.getSelectionModel().getSelectedItem();
-       sex=sex==null?"":sex;
-       LocalDate lcdate = dateofbirthDate.getValue();
-       String date = lcdate==null?"":lcdate.toString();
-       Student st = new Student("",classTxt.getText(),fullnameTxt.getText(),sex,date,nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText());
-       st_dal.Insert(st);
-       data = st_dal.GetData();
+       if (CheckInputGUI()){
+        Student st = GetStudentFromGUI();
+        st_dal.Insert(st);
+        data = st_dal.GetData();
+       }
        
-
     }
     @FXML
     private void displaySelected(MouseEvent event) {
@@ -118,20 +122,18 @@ public class StudentManageController implements Initializable {
             fullnameTxt.setText(st.getFullName());
             idTxt.setText(st.getStudent_id());
             sexCbb.getSelectionModel().select(st.getSex());
+            courseCbb.getSelectionModel().select(st.getCourse_id());
             nationalTxt.setText(st.getNationality());
             addressTxt.setText(st.getAddress());
             emailTxt.setText(st.getEmail());
             phonenumberTxt.setText(st.getPhoneNumber());
-            if (!st.getDateOfBirth().equals("")){
-                dateofbirthDate.setValue(LocalDate.parse(st.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-            }else {
-                dateofbirthDate.setValue(null);
-            }
+            dateofbirthDate.setValue(LocalDate.parse(st.getDateOfBirth(), DateTimeFormatter.ISO_DATE));
         }
     }
 
     @FXML
     private void DeleteButton(ActionEvent event) throws SQLException {
+        
         Student st = maintable.getSelectionModel().getSelectedItem();
         st_dal.Delete(st);
         data = st_dal.GetData();
@@ -139,12 +141,42 @@ public class StudentManageController implements Initializable {
 
     @FXML
     private void EditButton(ActionEvent event) throws SQLException {
-        Student st = maintable.getSelectionModel().getSelectedItem();
-        String sex = sexCbb.getSelectionModel().getSelectedItem();
-        String date = dateofbirthDate.getValue().toString();
-        Student st2 = new Student("",classTxt.getText(),fullnameTxt.getText(),sex,date,nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText());
-        st_dal.Update(st.getStudent_id(),st2);
-        data = st_dal.GetData();
+        if (CheckInputGUI()){
+            Student st = maintable.getSelectionModel().getSelectedItem();
+            Student st2 = GetStudentFromGUI();
+            st_dal.Update(st.getStudent_id(),st2);
+            data = st_dal.GetData();
+        }
+        
     }
+    private void GetCourseToCbb(){
+        courseCbb.getItems().clear();
+        Course_DAL course_dal = new Course_DAL();
+        ObservableList<Course> CourseList = course_dal.GetData();
+        CourseList.forEach(cr -> {
+            courseCbb.getItems().add(cr.getCourse_id());
+        });
+        courseCbb.getSelectionModel().select(0);
+    }
+    private Student GetStudentFromGUI(){
+        Student st = new Student("",classTxt.getText(),courseCbb.getSelectionModel().getSelectedItem(),fullnameTxt.getText(),sexCbb.getSelectionModel().getSelectedItem(),dateofbirthDate.getValue().toString(),nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText());
+        return st;
+    }
+    private boolean CheckInputGUI(){
+        String ErrorStr ;
+        String date= dateofbirthDate.getValue() == null?"":dateofbirthDate.getValue().toString();
+        String [] ListInput = {courseCbb.getSelectionModel().getSelectedItem(),fullnameTxt.getText(),sexCbb.getSelectionModel().getSelectedItem(),date,nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText()};
+        String [] Property = {"Course", "Full name","Sex","Date of birth","National","Address","Email","Phone numer"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
     
 }
