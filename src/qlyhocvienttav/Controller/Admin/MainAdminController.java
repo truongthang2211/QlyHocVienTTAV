@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class MainAdminController implements Initializable {
 
@@ -63,7 +64,11 @@ public class MainAdminController implements Initializable {
 
     @FXML
     void SignoutButton(ActionEvent event) {
-
+        try {
+            Main.ShowForm("View/LoginView.fxml", false, event);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error at SignoutButton", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
@@ -110,7 +115,7 @@ public class MainAdminController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getResource(fxml));
         } catch (IOException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error at LoadUI() function", JOptionPane.ERROR_MESSAGE);
         }
     }
     private void ChangeScreen(String centerfxml){
