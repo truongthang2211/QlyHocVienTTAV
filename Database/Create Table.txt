@@ -180,4 +180,4 @@ alter table student
 add constraint FK_courseId_To_Student
 foreign key (course_id) references Course(course_id);
 
-reate SEQUENCE seq_Class_id start with 1 increment by 1;
+create SEQUENCE seq_Class_id start with 1 increment by 1;
