@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.Manager.ScheduleManageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
@@ -47,7 +47,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TableView fx:id="maintable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="maintable" onMouseClicked="#displaySelected" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
@@ -99,43 +99,31 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField disable="true" focusColor="#1f1f1f" promptText="Schedule ID">
+                        <JFXTextField fx:id="ScheduleIDTxt" disable="true" focusColor="#1f1f1f" promptText="Schedule ID">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXComboBox focusColor="#1f1f1f" prefHeight="25.0" prefWidth="152.0" promptText="Day" GridPane.rowIndex="1" />
-                        <JFXComboBox focusColor="#1f1f1f" prefHeight="25.0" prefWidth="256.0" promptText="Ca học" GridPane.rowIndex="2" />
-                        <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Class ID" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets right="250.0" />
-                           </GridPane.margin>
-                        </JFXTextField>
-                        <JFXTextField disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Class name" GridPane.rowIndex="4">
+                        <JFXComboBox fx:id="DayCbb" focusColor="#1f1f1f" prefHeight="25.0" prefWidth="100.0" promptText="Day" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="ShiftCbb" focusColor="#1f1f1f" prefHeight="25.0" prefWidth="150.0" promptText="Ca học" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="ClassnameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Class name" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets right="100.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Room ID" GridPane.rowIndex="5">
-                           <GridPane.margin>
-                              <Insets right="250.0" />
-                           </GridPane.margin>
-                        </JFXTextField>
-                        <JFXTextField disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Room name" GridPane.rowIndex="6">
+                        <JFXTextField fx:id="RoomnameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Room name" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets right="100.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField focusColor="#1f1f1f" labelFloat="true" promptText="Teacher ID" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets right="250.0" />
-                           </GridPane.margin>
-                        </JFXTextField>
-                        <JFXTextField disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Teacher fullname" GridPane.rowIndex="8">
+                        <JFXTextField fx:id="TeachernameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Teacher fullname" GridPane.rowIndex="8">
                            <GridPane.margin>
                               <Insets right="100.0" />
                            </GridPane.margin>
                         </JFXTextField>
+                        <JFXComboBox fx:id="ClassIDCbb" prefWidth="100.0" promptText="Class ID" GridPane.rowIndex="3" />
+                        <JFXComboBox fx:id="RoomIDCbb" prefWidth="100.0" promptText="Room ID" GridPane.rowIndex="5" />
+                        <JFXComboBox fx:id="TeacherIDCbb" prefWidth="100.0" promptText="Teacher ID" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
@@ -148,9 +136,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXButton styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
-                        <JFXButton styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <JFXButton onAction="#AddBtn" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
+                        <JFXButton onAction="#EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <JFXButton onAction="#DeleteBtn" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

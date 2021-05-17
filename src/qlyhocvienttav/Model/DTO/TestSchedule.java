@@ -23,6 +23,10 @@ public class TestSchedule {
         this.Shift = Shift;
     }
 
+    public TestSchedule(String string, String string0, String string1, String string2, String string3, String string4, String date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getTestSche_ID() {
         return TestSche_ID;
     }

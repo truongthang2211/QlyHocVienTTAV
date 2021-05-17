@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,10 +7,10 @@ package qlyhocvienttav.Model.DAL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import qlyhocvienttav.Controller.LoginViewController;
-import qlyhocvienttav.Model.DTO.TestSchedule;
+import qlyhocvienttav.Model.DTO.Score;
 
 import javax.swing.*;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,22 +18,21 @@ import java.sql.Statement;
  *
  * @author Khang
  */
-public class TestSche_DAL {
+public class Score_DAL {
+    public  Score_DAL(){};
+    ObservableList<Score> Data = FXCollections.observableArrayList();
 
-    public TestSche_DAL(){};
-    ObservableList<TestSchedule> Data = FXCollections.observableArrayList();
-
-    public void Insert(TestSchedule ts){
+    public void Insert(Score sc){
 
         try {
-            Object arg_info[]= {ts.getCourse_ID(),ts.getTestSche_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(), ts.getShift()};
-            String ts_sql;
+            Object arg_info[]= {sc.getScore_ID(),sc.getStudent_ID(),sc.getTestSchedule_ID(),sc.getListening(),sc.getReading(),sc.getWriting(), sc.getSpeaking()};
+            String sc_sql;
             
-            ts_sql = String.format("INSERT INTO Test_Schedule VALUES ('TC'||to_char(seq_testschedule_id.nextval),'%s','%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%d')", arg_info);
+            sc_sql = String.format("INSERT INTO Score VALUES ('TC'||to_char(seq_score_id.nextval),'%s','%s','%f','%f','%f','%f')", arg_info);
 
             Statement statement = LoginViewController.connection.con.createStatement();
-            //int rows_info = statement.executeUpdate(infoTestSche_sql);
-            int rows_st = statement.executeUpdate(ts_sql);
+            //int rows_info = statement.executeUpdate(infoScore_sql);
+            int rows_st = statement.executeUpdate(sc_sql);
             if (rows_st > 0){
                 System.out.println("Insert successfull");
             }else {
@@ -44,16 +43,16 @@ public class TestSche_DAL {
         }
 
     }
-    public boolean Delete(TestSchedule ts){
+    public boolean Delete(Score sc){
         try {
-            Object arg[]= {ts.getTestSche_ID()};
-            String testsche_sql;
-            //info_sql = String.format("DELETE FROM Test_Schedule WHERE ID = '%s'", arg);
-            testsche_sql = String.format("DELETE FROM Test_Schedule WHERE TestSchedule_ID = '%s'", arg);
+            Object arg[]= {sc.getScore_ID()};
+            String Score_sql;
+            //info_sql = String.format("DELETE FROM Score WHERE ID = '%s'", arg);
+            Score_sql = String.format("DELETE FROM Score WHERE Score_ID = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
-            int testschedule_rows = statement.executeUpdate(testsche_sql);
+            int Score_rows = statement.executeUpdate(Score_sql);
             //int info_rows = statement.executeUpdate(info_sql);
-            if (testschedule_rows >0){
+            if (Score_rows >0){
                 System.out.println("Delete successfull");
             }
         } catch (SQLException ex) {
@@ -62,11 +61,11 @@ public class TestSche_DAL {
         }
         return true;
     }
-    public boolean Update(TestSchedule ts) {
+    public boolean Update(Score sc) {
         try {
-            Object arg[]= {ts.getTestSche_ID(),ts.getCourse_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(),ts.getShift()};
+            Object arg[]= {sc.getScore_ID(),sc.getStudent_ID(),sc.getTestSchedule_ID(),sc.getListening(),sc.getReading(),sc.getWriting(), sc.getSpeaking()};
             String sql;
-            sql = String.format("UPDATE Test_Schedule SET TestSchedule_ID = '%s', Teacher_ID = '%s', TestDate = TO_DATE('%s','YYYY-MM-DD'), Course_ID = '%s', Room_ID = '%s', Loai_KT = '%s', Shift = '%d'", arg);
+            sql = String.format("UPDATE Score SET Score_ID = '%s', Student_ID = '%s', TestSchedule_ID = '%s', Listening = '%f', Reading = '%f', Writing = '%f', Speaking = '%f'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){
@@ -83,21 +82,20 @@ public class TestSche_DAL {
 
         try {
             this.Data.clear();
-            String sql = "SELECT TC.TestSchedule_ID,TEACHER_ID,COURSE_ID,ROOM_ID,LOATKT,TESTDATE,SHIFT \n" + "FROM Test_Schedule";
+            String sql = "SELECT TC.TestSchedule_ID,TEACHER_ID,COURSE_ID,ROOM_ID,LOATKT,TESTDATE \n" + "FROM Score";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Date lcdate = rs.getDate(4);
-                String date = lcdate==null?"":lcdate.toString();
                 
-                TestSchedule ts = new TestSchedule(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(5),rs.getString(6),date,rs.getInt(7));
+                
+                Score sc = new Score(rs.getString(1),rs.getString(2),rs.getString(3),rs.getFloat(5),rs.getFloat(6),rs.getFloat(7),rs.getFloat(8));
                         
-                Data.add(ts);
+                Data.add(sc);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    public ObservableList<TestSchedule> GetData(){
+    public ObservableList<Score> GetData(){
         try{
             LoadData();
         }catch (Exception ex){
