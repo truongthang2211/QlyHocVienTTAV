@@ -52,7 +52,7 @@ public class Account_DAL {
             Object arg[]= {acc.getUsername()};
             String accinf_sql,acc_sql;
             accinf_sql = String.format("DELETE FROM Personal_Info WHERE ID = '%s'", arg);
-            acc_sql = String.format("DELETE FROM ACCOUNT WHERE USERNAME = '%s'", arg);
+            acc_sql = String.format("DELETE FROM ACCOUNT WHERE OWNER = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int acc_rows = statement.executeUpdate(acc_sql);
             int rows = statement.executeUpdate(accinf_sql);
@@ -69,7 +69,7 @@ public class Account_DAL {
         try {
             Object arg_acc[]= {acc.getUsername(),acc.getPassword(),acc.getAcctype(),acc.getOwner(),acc.getCreate_date()};
             String sql;
-            sql = String.format("UPDATE Account SET Password = '%s', acctype = '%s',owner ='%s', create_date = TO_DATE('%s','YYYY-MM-DD') WHERE username = '%s'", arg_acc);
+            sql = String.format("UPDATE Account SET Password = '%s', acctype = '%s', create_date = TO_DATE('%s','YYYY-MM-DD') WHERE username = '%s'", arg_acc);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){
@@ -81,6 +81,33 @@ public class Account_DAL {
         }
         return true;
 
+    }
+    public void LoadData(){
+
+        try {
+            this.Data.clear();
+            String sql = "SELECT USERNAME,PASSWORD, ACCTYPE, CREATE_DATE \n" + "FROM ACCOUNT";
+            ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                Date acdate = rs.getDate(4);
+                String date = acdate==null?"":acdate.toString();
+                
+                Account  ac = new Account(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(5),date);
+                        
+                Data.add(ac);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public ObservableList<Account> GetData(){
+        try{
+            LoadData();
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return this.Data;
     }
     
     
