@@ -56,7 +56,7 @@
                   </JFXButton>
                   <JFXButton onAction="#StudentandManagerManageButton" prefWidth="327.0" styleClass="ListButton" text="Manage Manager &amp; Teacher">
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="ADDRESS_BOOK_ALT" size="25" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="PIED_PIPER_ALT" size="25" />
                      </graphic>
                   </JFXButton>
                   <JFXButton onAction="#CourseButton" prefWidth="327.0" styleClass="ListButton" text="Course Management">

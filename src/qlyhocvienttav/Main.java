@@ -10,11 +10,14 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import qlyhocvienttav.Controller.LoginViewController;
 /**
  *
  * @author Thang
@@ -52,10 +55,17 @@ public class Main extends Application {
         task.setOnSucceeded(event2 -> {
             Parent root = task.getValue();
             Stage stage = new Stage();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    System.out.println("Stage is closing");
+                    LoginViewController.connection.CloseConnection();
+                }
+            }); 
             stage.setScene(new Scene(root));
             stage.show();
             if (!newwindow){
                 ((Node)(event.getSource())).getScene().getWindow().hide();
+                
             }
         });
         Thread thread = new Thread(task);
