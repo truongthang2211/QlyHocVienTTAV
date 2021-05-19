@@ -10,11 +10,11 @@ package qlyhocvienttav.Model.DTO;
  * @author Khang
  */
 public class TestSchedule {
-    String TestSche_ID,Teacher_ID,Course_ID,Room_ID,Loai_KT,TestDate;
+    String id,Teacher_ID,Course_ID,Room_ID,Loai_KT,TestDate;
     //Them ca thi
     int Shift;
-    public TestSchedule(String TestSche_ID,String Teacher_ID,String Course_ID, String Room_ID, String Loai_KT, String TestDate, int Shift){
-        this.TestSche_ID = TestSche_ID;
+    public TestSchedule(String id,String Teacher_ID,String Course_ID, String Room_ID, String Loai_KT, String TestDate, int Shift){
+        this.id = id;
         this.Teacher_ID = Teacher_ID;
         this.Course_ID = Course_ID;
         this.Room_ID = Room_ID;
@@ -27,12 +27,12 @@ public class TestSchedule {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String getTestSche_ID() {
-        return TestSche_ID;
+    public String getid() {
+        return id;
     }
 
-    public void setTestSche_ID(String TestSche_ID) {
-        this.TestSche_ID = TestSche_ID;
+    public void setid(String id) {
+        this.id = id;
     }
 
     public String getTeacher_ID() {

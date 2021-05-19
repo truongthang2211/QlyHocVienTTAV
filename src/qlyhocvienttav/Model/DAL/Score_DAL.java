@@ -28,7 +28,7 @@ public class Score_DAL {
             Object arg_info[]= {sc.getScore_ID(),sc.getStudent_ID(),sc.getTestSchedule_ID(),sc.getListening(),sc.getReading(),sc.getWriting(), sc.getSpeaking()};
             String sc_sql;
             
-            sc_sql = String.format("INSERT INTO Score VALUES ('TC'||to_char(seq_score_id.nextval),'%s','%s','%f','%f','%f','%f')", arg_info);
+            sc_sql = String.format("INSERT INTO Score VALUES ('TC'||to_char(seq_id.nextval),'%s','%s','%f','%f','%f','%f')", arg_info);
 
             Statement statement = LoginViewController.connection.con.createStatement();
             //int rows_info = statement.executeUpdate(infoScore_sql);
@@ -48,7 +48,7 @@ public class Score_DAL {
             Object arg[]= {sc.getScore_ID()};
             String Score_sql;
             //info_sql = String.format("DELETE FROM Score WHERE ID = '%s'", arg);
-            Score_sql = String.format("DELETE FROM Score WHERE Score_ID = '%s'", arg);
+            Score_sql = String.format("DELETE FROM Score WHERE id = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int Score_rows = statement.executeUpdate(Score_sql);
             //int info_rows = statement.executeUpdate(info_sql);
@@ -65,7 +65,7 @@ public class Score_DAL {
         try {
             Object arg[]= {sc.getScore_ID(),sc.getStudent_ID(),sc.getTestSchedule_ID(),sc.getListening(),sc.getReading(),sc.getWriting(), sc.getSpeaking()};
             String sql;
-            sql = String.format("UPDATE Score SET Score_ID = '%s', Student_ID = '%s', TestSchedule_ID = '%s', Listening = '%f', Reading = '%f', Writing = '%f', Speaking = '%f'", arg);
+            sql = String.format("UPDATE Score SET id = '%s', student_id = '%s', test_schedule_id = '%s', listening = '%f', reading = '%f', writing = '%f', speaking = '%f'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){
@@ -82,12 +82,12 @@ public class Score_DAL {
 
         try {
             this.Data.clear();
-            String sql = "SELECT TC.TestSchedule_ID,TEACHER_ID,COURSE_ID,ROOM_ID,LOATKT,TESTDATE \n" + "FROM Score";
+            String sql = "SELECT TC.id,student_id,test_schedule_id,listening,reading,writing,speaking \n" + "FROM Score";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 
                 
-                Score sc = new Score(rs.getString(1),rs.getString(2),rs.getString(3),rs.getFloat(5),rs.getFloat(6),rs.getFloat(7),rs.getFloat(8));
+                Score sc = new Score(rs.getString(1),rs.getString(2),rs.getString(3),rs.getFloat(4),rs.getFloat(5),rs.getFloat(6),rs.getFloat(7));
                         
                 Data.add(sc);
             }

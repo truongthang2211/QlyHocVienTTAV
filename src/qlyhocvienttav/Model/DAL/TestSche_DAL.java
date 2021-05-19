@@ -26,10 +26,10 @@ public class TestSche_DAL {
     public void Insert(TestSchedule ts){
 
         try {
-            Object arg_info[]= {ts.getCourse_ID(),ts.getTestSche_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(), ts.getShift()};
+            Object arg_info[]= {ts.getCourse_ID(),ts.getid(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(), ts.getShift()};
             String ts_sql;
             
-            ts_sql = String.format("INSERT INTO Test_Schedule VALUES ('TC'||to_char(seq_testschedule_id.nextval),'%s','%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%d')", arg_info);
+            ts_sql = String.format("INSERT INTO Test_Schedule VALUES ('TC'||to_char(seq_id.nextval),'%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%d')", arg_info);
 
             Statement statement = LoginViewController.connection.con.createStatement();
             //int rows_info = statement.executeUpdate(infoTestSche_sql);
@@ -46,10 +46,10 @@ public class TestSche_DAL {
     }
     public boolean Delete(TestSchedule ts){
         try {
-            Object arg[]= {ts.getTestSche_ID()};
+            Object arg[]= {ts.getid()};
             String testsche_sql;
             //info_sql = String.format("DELETE FROM Test_Schedule WHERE ID = '%s'", arg);
-            testsche_sql = String.format("DELETE FROM Test_Schedule WHERE TestSchedule_ID = '%s'", arg);
+            testsche_sql = String.format("DELETE FROM Test_Schedule WHERE id = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int testschedule_rows = statement.executeUpdate(testsche_sql);
             //int info_rows = statement.executeUpdate(info_sql);
@@ -64,9 +64,9 @@ public class TestSche_DAL {
     }
     public boolean Update(TestSchedule ts) {
         try {
-            Object arg[]= {ts.getTestSche_ID(),ts.getCourse_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(),ts.getShift()};
+            Object arg[]= {ts.getid(),ts.getCourse_ID(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(),ts.getShift()};
             String sql;
-            sql = String.format("UPDATE Test_Schedule SET TestSchedule_ID = '%s', Teacher_ID = '%s', TestDate = TO_DATE('%s','YYYY-MM-DD'), Course_ID = '%s', Room_ID = '%s', Loai_KT = '%s', Shift = '%d'", arg);
+            sql = String.format("UPDATE Test_Schedule SET id = '%s', teacher_id = '%s', testDate = TO_DATE('%s','YYYY-MM-DD'), course_id = '%s', room_id = '%s', kindofTest = '%s', Shift = '%d'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){
@@ -83,7 +83,7 @@ public class TestSche_DAL {
 
         try {
             this.Data.clear();
-            String sql = "SELECT TC.TestSchedule_ID,TEACHER_ID,COURSE_ID,ROOM_ID,LOATKT,TESTDATE,SHIFT \n" + "FROM Test_Schedule";
+            String sql = "SELECT TC.id,teacher_id,course_id,room_id,kindofTest,testDate,Shift \n" + "FROM Test_Schedule";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Date lcdate = rs.getDate(4);
