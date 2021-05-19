@@ -185,3 +185,5 @@ create SEQUENCE seq_Class_id start with 1 increment by 1;
 create SEQUENCE seq_Room_id start with 1 increment by 1;
 
 create SEQUENCE seq_testschedule_id start with 1 increment by 1;
+
+Alter table student add DayEnroll Date;
