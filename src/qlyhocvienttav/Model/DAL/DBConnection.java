@@ -26,7 +26,7 @@ public class DBConnection {
     public boolean OpenConnection(){
         try {
             this.con = DriverManager.getConnection(dbURL,username,password);
-            System.out.println("connect succesfull");
+            System.out.println("Connect succeedfull");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -36,7 +36,7 @@ public class DBConnection {
     public void CloseConnection(){
         try{
             con.close();
-            System.out.println("connect closeed");
+            System.out.println("Connect closed");
         } catch (SQLException ex){
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
