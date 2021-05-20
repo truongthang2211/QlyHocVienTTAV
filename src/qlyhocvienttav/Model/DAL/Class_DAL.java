@@ -17,10 +17,10 @@ public class Class_DAL {
 
     public void Insert(Class cl){
         try {
-            Object arg[]= {cl.getClassName(),cl.getNumberOfPeople(),cl.getMaxNumberOfPeople(),cl.getCourseId()};
+            Object arg[]= {cl.getClassName(),cl.getMaxNumberOfPeople(),cl.getCourseId(),cl.getBasicGrade()};
 
             String class_SQL;
-            class_SQL = String.format("INSERT INTO Class VALUES ('CL'||to_char(seq_Class_id.nextval),'%s','%s','%s','%s')",arg);
+            class_SQL = String.format("INSERT INTO Class VALUES ('CL'||to_char(seq_Class_id.nextval),'%s','%s','%s',%s)",arg);
 
             Statement statement = LoginViewController.connection.con.createStatement();
 
@@ -52,10 +52,10 @@ public class Class_DAL {
     }
     public boolean Update(Class cl) {
         try {
-            Object arg[]= {cl.getClassName(),cl.getNumberOfPeople(),cl.getMaxNumberOfPeople(),cl.getCourseId(),cl.getClassId()};
+            Object arg[]= {cl.getClassName(),cl.getNumberOfPeople(),cl.getMaxNumberOfPeople(),cl.getCourseId(),cl.getBasicGrade(),cl.getClassId()};
             String sql;
 
-            sql = String.format("UPDATE Class SET  className='%s',numberOfPeople='%s',maxNumberOfPeople='%s',course_id='%s' WHERE  class_id = '%s'", arg);
+            sql = String.format("UPDATE Class SET  className='%s',maxNumberOfPeople='%s',course_id='%s',basic_grade=%s WHERE  class_id = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){
@@ -72,12 +72,14 @@ public class Class_DAL {
 
         try {
             this.data.clear();
-            String sql = "SELECT class_id, className, numberOfPeople, MaxNumberOfPeople, course_id \n" +
-                    "FROM Class ";
+            String sql = "SELECT cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade\n" +
+            "FROM class cl join (select cl.class_id , count (st.student_id) SL\n" +
+            "                    from student st right join class cl on st.class_id = cl.class_id\n" +
+            "                    group by cl.class_id) a on cl.class_id = a.class_id";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
 
-                Class cl = new Class(rs.getString(1),rs.getString(2), Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                Class cl = new Class(rs.getString(1),rs.getString(2), Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(4)),rs.getString(5),rs.getDouble(6));
                 data.add(cl);
             }
         } catch (SQLException ex) {

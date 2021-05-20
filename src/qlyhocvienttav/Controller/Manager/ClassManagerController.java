@@ -1,8 +1,7 @@
 package qlyhocvienttav.Controller.Manager;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,16 +12,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import qlyhocvienttav.Model.DAL.Class_DAL;
-import qlyhocvienttav.Model.DAL.Student_DAL;
 import qlyhocvienttav.Model.DTO.Class;
-import qlyhocvienttav.Model.DTO.Student;
-import qlyhocvienttav.Model.DTO.StudentFee;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
+import qlyhocvienttav.Model.DAL.Course_DAL;
+import qlyhocvienttav.Model.DTO.Course;
 
 
 public class ClassManagerController implements Initializable {
@@ -47,27 +44,32 @@ public class ClassManagerController implements Initializable {
     private JFXTextField txt_maxNumberOfPeople;
 
     @FXML
-    private JFXTextField txt_courseId;
+    private JFXTextField txt_BasicGrade;
+    @FXML
+    private JFXComboBox<String> Cbb_CourseID;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
 
-
+        GetCourseToCbb();
         TableColumn classId = new TableColumn("ID Class");
         TableColumn nameClass = new TableColumn("Name Class");
         TableColumn courseId = new TableColumn("Id Course");
         TableColumn numberOfPeople = new TableColumn("numberOfPeople");
         TableColumn maxNumberOfPeople = new TableColumn("maxNumberOfPeople");
+        TableColumn BasicGrade = new TableColumn("BasicGrade");
 
         classId.setCellValueFactory(new PropertyValueFactory<>("classId"));
         nameClass.setCellValueFactory(new PropertyValueFactory<>("className"));
         courseId.setCellValueFactory(new PropertyValueFactory<>("courseId"));
         numberOfPeople.setCellValueFactory(new PropertyValueFactory<>("numberOfPeople"));
         maxNumberOfPeople.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPeople"));
+        BasicGrade.setCellValueFactory(new PropertyValueFactory<>("BasicGrade"));
 
-        maintable.getColumns().addAll(classId,nameClass,courseId,numberOfPeople,maxNumberOfPeople);
+
+        maintable.getColumns().addAll(classId,nameClass,courseId,numberOfPeople,maxNumberOfPeople,BasicGrade);
         data = class_dal.GetData();
         maintable.setItems(data);
 
@@ -81,7 +83,7 @@ public class ClassManagerController implements Initializable {
             txt_classId.setText(cl.getClassId());
             txt_nameClass.setText(cl.getClassName());
 
-            txt_courseId.setText(cl.getCourseId());
+            Cbb_CourseID.getSelectionModel().select(cl.getCourseId());
             txt_numberOfPeople.setText(Integer.toString(cl.getNumberOfPeople()));
 
             txt_maxNumberOfPeople.setText(Integer.toString(cl.getMaxNumberOfPeople()));
@@ -97,22 +99,44 @@ public class ClassManagerController implements Initializable {
 
     @FXML
     private void EditButton(ActionEvent event) throws SQLException {
-        Class cl = GetClassFromGUI();
-        class_dal.Update(cl);
-        data = class_dal.GetData();
+        if (CheckInputGUI()){
+            Class cl = GetClassFromGUI();
+            class_dal.Update(cl);
+            data = class_dal.GetData();
+        }
     }
 
     @FXML
     private void AddButton(ActionEvent event) throws SQLException {
-        Class cl= GetClassFromGUI();
-        class_dal.Insert(cl);
-        data = class_dal.GetData();
-
-
+        if (CheckInputGUI()){
+            Class cl= GetClassFromGUI();
+            class_dal.Insert(cl);
+            data = class_dal.GetData();
+        }
     }
     private Class GetClassFromGUI(){
-        Class cl = new Class(txt_classId.getText(),txt_nameClass.getText(),Integer.parseInt(txt_numberOfPeople.getText()),Integer.parseInt(txt_maxNumberOfPeople.getText()),txt_courseId.getText());
+        Class cl = new Class(txt_classId.getText(),txt_nameClass.getText(),0,Integer.parseInt(txt_maxNumberOfPeople.getText()),Cbb_CourseID.getSelectionModel().getSelectedItem(),Double.parseDouble(txt_BasicGrade.getText()));
         return cl;
     }
-
+    private boolean CheckInputGUI(){
+        String [] ListInput = {txt_nameClass.getText(),txt_maxNumberOfPeople.getText(),txt_BasicGrade.getText(),Cbb_CourseID.getSelectionModel().getSelectedItem()};
+        String [] Property = {"Class name" , "Max Number of CLass" , "Basic grade" , "Course ID"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                String ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+    private void GetCourseToCbb(){
+        Cbb_CourseID.getItems().clear();
+        Course_DAL course_dal = new Course_DAL();
+        ObservableList<Course> CourseList = course_dal.GetData();
+        CourseList.forEach(cr -> {
+            Cbb_CourseID.getItems().add(cr.getCourse_id());
+        });
+        Cbb_CourseID.getSelectionModel().select(0);
+    }
 }

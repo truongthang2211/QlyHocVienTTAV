@@ -5,17 +5,25 @@ public class Class {
     String className;
     int numberOfPeople;
     int maxNumberOfPeople;
+    double BasicGrade;
     String courseId;
 
-    public Class(String classId, String className, int numberOfPeople, int maxNumberOfPeople, String courseId) {
+    public Class(String classId, String className, int numberOfPeople, int maxNumberOfPeople, String courseId, double BasicGrade) {
         this.classId = classId;
         this.className = className;
         this.numberOfPeople = numberOfPeople;
         this.maxNumberOfPeople = maxNumberOfPeople;
+        this.BasicGrade = BasicGrade;
         this.courseId = courseId;
     }
 
+    public double getBasicGrade() {
+        return BasicGrade;
+    }
 
+    public void setBasicGrade(double BasicGrade) {
+        this.BasicGrade = BasicGrade;
+    }
     public String getClassId() {
         return classId;
     }

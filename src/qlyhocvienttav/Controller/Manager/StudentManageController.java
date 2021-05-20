@@ -163,13 +163,12 @@ public class StudentManageController implements Initializable {
         return st;
     }
     private boolean CheckInputGUI(){
-        String ErrorStr ;
         String date= dateofbirthDate.getValue() == null?"":dateofbirthDate.getValue().toString();
         String [] ListInput = {courseCbb.getSelectionModel().getSelectedItem(),fullnameTxt.getText(),sexCbb.getSelectionModel().getSelectedItem(),date,nationalTxt.getText(),addressTxt.getText(),emailTxt.getText(),phonenumberTxt.getText()};
         String [] Property = {"Course", "Full name","Sex","Date of birth","National","Address","Email","Phone numer"};
         for (int i = 0 ; i< ListInput.length; i++){
             if (ListInput[i] == null || ListInput[i].equals("")){
-                ErrorStr = Property[i] + " can not be empty";
+                String ErrorStr = Property[i] + " can not be empty";
                 JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
