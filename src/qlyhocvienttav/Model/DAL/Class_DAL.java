@@ -52,7 +52,7 @@ public class Class_DAL {
     }
     public boolean Update(Class cl) {
         try {
-            Object arg[]= {cl.getClassName(),cl.getNumberOfPeople(),cl.getMaxNumberOfPeople(),cl.getCourseId(),cl.getBasicGrade(),cl.getClassId()};
+            Object arg[]= {cl.getClassName(),cl.getMaxNumberOfPeople(),cl.getCourseId(),cl.getBasicGrade(),cl.getClassId()};
             String sql;
 
             sql = String.format("UPDATE Class SET  className='%s',maxNumberOfPeople='%s',course_id='%s',basic_grade=%s WHERE  class_id = '%s'", arg);

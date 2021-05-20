@@ -85,7 +85,7 @@ public class ClassManagerController implements Initializable {
 
             Cbb_CourseID.getSelectionModel().select(cl.getCourseId());
             txt_numberOfPeople.setText(Integer.toString(cl.getNumberOfPeople()));
-
+            txt_BasicGrade.setText(String.valueOf(cl.getBasicGrade()));
             txt_maxNumberOfPeople.setText(Integer.toString(cl.getMaxNumberOfPeople()));
 
         }
