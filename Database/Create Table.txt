@@ -187,3 +187,7 @@ create SEQUENCE seq_Room_id start with 1 increment by 1;
 create SEQUENCE seq_testschedule_id start with 1 increment by 1;
 
 Alter table student add DayEnroll Date;
+
+alter table class add basic_grade number;
+
+alter table class drop column numberofpeople;
