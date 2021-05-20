@@ -81,12 +81,6 @@ public class MainAdminController implements Initializable {
         ChangeScreen("../../View/Admin/ViewStudentFee.fxml");
 
     }
-
-    @FXML
-    void StudentandManagerManageButton(ActionEvent event) {
-        ChangeScreen("../../View/Admin/ManagerandTeacherManage.fxml");
-    }
-
     @FXML
     void TestScheduleButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/TestScheduleManage.fxml");
@@ -122,6 +116,16 @@ public class MainAdminController implements Initializable {
         maingrid.getChildren().clear();
         LoadUI(centerfxml);
         maingrid.add(root, 0, 0);
+    }
+
+    @FXML
+    private void ManagerManageButton(ActionEvent event) {
+        ChangeScreen("../../View/Admin/ManagerManage.fxml");
+    }
+
+    @FXML
+    private void TeacherManageButton(ActionEvent event) {
+        ChangeScreen("../../View/Admin/TeacherManage.fxml");
     }
 
 }

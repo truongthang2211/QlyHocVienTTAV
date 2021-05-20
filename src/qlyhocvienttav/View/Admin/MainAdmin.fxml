@@ -54,7 +54,12 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="INFO_CIRCLE" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#StudentandManagerManageButton" prefWidth="327.0" styleClass="ListButton" text="Manage Manager &amp; Teacher">
+                  <JFXButton onAction="#ManagerManageButton" prefWidth="327.0" styleClass="ListButton" text="Manage Manager">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PIED_PIPER_ALT" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#TeacherManageButton" prefWidth="327.0" styleClass="ListButton" text="Manage Teacher">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="PIED_PIPER_ALT" size="25" />
                      </graphic>

@@ -25,7 +25,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class ManagerAndTeacherManageController implements Initializable {
+public class ManagerManageController implements Initializable {
 
     @FXML
     private Label topcenterlabel;
@@ -57,11 +57,6 @@ public class ManagerAndTeacherManageController implements Initializable {
     @FXML
     private JFXTextField txt_phoneNumber;
 
-    @FXML
-    private JFXTextField txt_role;
-
-    @FXML
-    private JFXTextField txt_note;
 
     @FXML
     private JFXButton btn_add;
@@ -73,6 +68,12 @@ public class ManagerAndTeacherManageController implements Initializable {
     private JFXButton btn_delete;
     public ObservableList<Teacher> data;
     Teacher_DAL teacher_dal= new Teacher_DAL();
+    @FXML
+    private JFXComboBox<?> Cbb_Role;
+    @FXML
+    private JFXTextField txt_username;
+    @FXML
+    private JFXTextField txt_pass;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,7 +81,7 @@ public class ManagerAndTeacherManageController implements Initializable {
         cb_sex.setItems(sexList);
 
 
-        TableColumn teacherId = new TableColumn("Teacher ID");
+        TableColumn teacherId = new TableColumn("Manager ID");
         TableColumn fullname = new TableColumn("Ho ten");
         TableColumn Sex = new TableColumn("Gioi tinh");
         TableColumn DateofBirth = new TableColumn("Ngay sinh");
