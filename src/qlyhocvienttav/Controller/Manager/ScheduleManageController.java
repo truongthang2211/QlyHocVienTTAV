@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,8 +19,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import qlyhocvienttav.Model.DAL.Class_DAL;
+import qlyhocvienttav.Model.DAL.Room_DAL;
 import qlyhocvienttav.Model.DAL.Schedule_DAL;
+import qlyhocvienttav.Model.DAL.Teacher_DAL;
 import qlyhocvienttav.Model.DTO.Schedule;
+import qlyhocvienttav.Model.DTO.Class;
+import qlyhocvienttav.Model.DTO.Room;
+import qlyhocvienttav.Model.DTO.Teacher;
 
 /**
  * FXML Controller class
@@ -57,6 +64,8 @@ public class ScheduleManageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        AddDatatoCbb();
+        
         TableColumn scheduleID = new TableColumn("Schedule ID");
         TableColumn Day = new TableColumn("Thứ");
         TableColumn Shift = new TableColumn("Thời gian");
@@ -113,5 +122,44 @@ public class ScheduleManageController implements Initializable {
         ClassnameTxt.setText(sche.getClassName());
         RoomnameTxt.setText(sche.getRoomName());
         TeachernameTxt.setText(sche.getTeacherName());
+    }
+    private void AddDatatoCbb(){
+        ObservableList<Class> Classdata = new Class_DAL().GetData();
+        Classdata.forEach(t -> {
+            ClassIDCbb.getItems().add(t.getClassId());
+        });
+        ObservableList<Room> Roomdata = new Room_DAL().GetData();
+        Roomdata.forEach(t -> {
+            RoomIDCbb.getItems().add(t.getRoomId());
+        });
+        ObservableList<Teacher> Teacherdata = new Teacher_DAL().GetData();
+        Teacherdata.forEach(t -> {
+            TeacherIDCbb.getItems().add(t.getTeacherId());
+        });
+        ClassIDCbb.getSelectionModel().selectedItemProperty().addListener( (Observable, oldValue, newValue) -> 
+            Classdata.forEach(t -> {
+                if (newValue.equals(t.getClassId())){
+                    ClassnameTxt.setText(t.getClassName());
+                }
+            })
+        );
+        RoomIDCbb.getSelectionModel().selectedItemProperty().addListener( (Observable, oldValue, newValue) -> 
+            Roomdata.forEach(t -> {
+                if (newValue.equals(t.getRoomId())){
+                    RoomnameTxt.setText(t.getRoomName());
+                }
+            })
+        );
+        TeacherIDCbb.getSelectionModel().selectedItemProperty().addListener( (Observable, oldValue, newValue) -> 
+            Teacherdata.forEach(t -> {
+                if (newValue.equals(t.getTeacherId())){
+                    TeachernameTxt.setText(t.getFullName());
+                }
+            })
+        );
+        ObservableList<String> DayList = FXCollections.observableArrayList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday");
+        ObservableList<String> ShiftList = FXCollections.observableArrayList("9:00 - 10:30", "13:00 - 14:30", "15:00 - 16:30", "17:30 - 19:00", "19:15 - 20:45");
+        DayCbb.setItems(DayList);
+        ShiftCbb.setItems(ShiftList);
     }
 }
