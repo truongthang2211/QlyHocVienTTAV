@@ -69,7 +69,7 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR_CHECK_ALT" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#StudentAnalysisButton" prefWidth="327.0" styleClass="ListButton" text="Student analysis">
+                  <JFXButton onAction="#StudentAnalysisButton" prefWidth="327.0" styleClass="ListButton" text="Analysis">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="25" />
                      </graphic>

@@ -73,7 +73,7 @@ public class MainAdminController implements Initializable {
 
     @FXML
     void StudentAnalysisButton(ActionEvent event) {
-
+        ChangeScreen("../../View/Admin/Analysis.fxml");
     }
 
     @FXML

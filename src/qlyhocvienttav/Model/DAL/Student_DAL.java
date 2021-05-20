@@ -31,7 +31,7 @@ public class Student_DAL{
             Object arg_st[]= {st.getCourse_id()};
             Object arg_info[]= {st.getFullName(),st.getSex(),st.getDateOfBirth(),st.getNationality(),st.getAddress(),st.getEmail(),st.getPhoneNumber()};
             String st_sql;
-            st_sql = String.format("INSERT INTO STUDENT VALUES ('HV'||to_char(seq_student_id.currval),'','%s')", arg_st);
+            st_sql = String.format("INSERT INTO STUDENT VALUES ('HV'||to_char(seq_student_id.currval),'','%s',SYSDATE)", arg_st);
             String info_sql;
             info_sql = String.format("INSERT INTO Personal_Info VALUES ('HV'||to_char(seq_student_id.nextval),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s')", arg_info);
             
@@ -96,9 +96,9 @@ public class Student_DAL{
                         "JOIN COURSE CR ON ST.COURSE_ID = CR.COURSE_ID";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Date lcdate = rs.getDate(8);
+                Date lcdate = rs.getDate(9);
                 String date = lcdate==null?"":lcdate.toString();
-                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getString(6),rs.getString(7),date,rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12)));
+                Data.add(new Student(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(5),rs.getDouble(6),rs.getString(7),rs.getString(8),date,rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
