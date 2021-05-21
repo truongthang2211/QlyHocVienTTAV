@@ -16,7 +16,9 @@ import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DTO.Account;
+import qlyhocvienttav.Model.DTO.Teacher;
 import qlyhocvienttav.Model.DTO.TestSchedule;
+
 
 /**
  *
@@ -25,7 +27,7 @@ import qlyhocvienttav.Model.DTO.TestSchedule;
 public class Account_DAL {
     public Account_DAL(){};
     ObservableList <Account> Data = FXCollections.observableArrayList();
-    public void Insert(Account acc){
+    public void Insert(Account acc,Teacher tc){
 
         try {
             Object arg_acc[]= {acc.getUsername(),acc.getPassword(),acc.getAcctype(),acc.getOwner(),acc.getCreate_date()};
@@ -33,8 +35,13 @@ public class Account_DAL {
             acc_sql = String.format("INSERT INTO Account VALUES ('AC'||to_char(seq_username.currval))");
             String accinf_sql;
             accinf_sql = String.format("INSERT INTO Personal_Info VALUES ('TC'||to_char(seq_username.nextval),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s',int)", arg_acc);
-
             Statement statement = LoginViewController.connection.con.createStatement();
+            String ins_tb;
+            Object ins_tbl[] = {acc.getOwner()};//,tc.getFullName(),tc.getSex(),tc.getDateOfBirth(),tc.getNationality(),tc.getAddress(),tc.getEmail(),tc.getPhoneNumber()};
+            if(acc.getAcctype().equals("Teacher")){
+                ins_tb= String.format("INSERT INTO TEACHER VALUES('%s')",ins_tbl);
+            }
+
             int rows_info = statement.executeUpdate(accinf_sql);
             int rows_st = statement.executeUpdate(acc_sql);
             if (rows_st > 0 && rows_info >0){
