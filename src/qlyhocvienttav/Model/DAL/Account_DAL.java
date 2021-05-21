@@ -40,8 +40,11 @@ public class Account_DAL {
             Object ins_tbl[] = {acc.getOwner()};//,tc.getFullName(),tc.getSex(),tc.getDateOfBirth(),tc.getNationality(),tc.getAddress(),tc.getEmail(),tc.getPhoneNumber()};
             if(acc.getAcctype().equals("Teacher")){
                 ins_tb= String.format("INSERT INTO TEACHER VALUES('%s')",ins_tbl);
-            }
-
+                int rows_tc=statement.executeUpdate(ins_tb);
+                if(rows_tc>0);
+                System.out.println("Da them vo bang Teacher");
+            }           
+            
             int rows_info = statement.executeUpdate(accinf_sql);
             int rows_st = statement.executeUpdate(acc_sql);
             if (rows_st > 0 && rows_info >0){
