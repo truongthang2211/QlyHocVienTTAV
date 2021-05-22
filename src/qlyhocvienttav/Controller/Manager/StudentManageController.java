@@ -105,7 +105,7 @@ public class StudentManageController implements Initializable {
     }
 
     @FXML
-   private void AddButton(ActionEvent event) throws SQLException {
+    private void AddButton(ActionEvent event) throws SQLException {
        if (CheckInputGUI()){
         Student st = GetStudentFromGUI();
         st_dal.Insert(st);
