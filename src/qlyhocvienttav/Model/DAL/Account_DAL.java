@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DTO.Account;
+import qlyhocvienttav.Model.DTO.Manager;
 import qlyhocvienttav.Model.DTO.Teacher;
 import qlyhocvienttav.Model.DTO.TestSchedule;
 
@@ -27,7 +28,7 @@ import qlyhocvienttav.Model.DTO.TestSchedule;
 public class Account_DAL {
     public Account_DAL(){};
     ObservableList <Account> Data = FXCollections.observableArrayList();
-    public void Insert(Account acc,Teacher tc){
+    public void Insert(Account acc,Teacher tc,Manager mg){
 
         try {
             Object arg_acc[]= {acc.getUsername(),acc.getPassword(),acc.getAcctype(),acc.getOwner(),acc.getCreate_date()};
@@ -43,7 +44,13 @@ public class Account_DAL {
                 int rows_tc=statement.executeUpdate(ins_tb);
                 if(rows_tc>0);
                 System.out.println("Da them vo bang Teacher");
-            }           
+            }  
+            if (acc.getAcctype().equals("Manager")){
+                ins_tb= String.format("INSERT INTO MANAGER VALUES('%s')",ins_tbl);
+                int rows_mg= statement.executeUpdate(ins_tb);
+                if(rows_mg>0);
+                System.out.println("Da them vo bang Manager");
+            }
             
             int rows_info = statement.executeUpdate(accinf_sql);
             int rows_st = statement.executeUpdate(acc_sql);
