@@ -33,12 +33,10 @@ public class Account_DAL {
         try {
             Object arg_acc[]= {acc.getUsername(),acc.getPassword(),acc.getAcctype(),acc.getOwner(),acc.getCreate_date()};
             String acc_sql;
-            acc_sql = String.format("INSERT INTO Account VALUES ('AC'||to_char(seq_username.currval))");
-            String accinf_sql;
-            accinf_sql = String.format("INSERT INTO Personal_Info VALUES ('TC'||to_char(seq_username.nextval),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s',int)", arg_acc);
+            acc_sql = String.format("INSERT INTO Account VALUES ('%s')",arg_acc);
             Statement statement = LoginViewController.connection.con.createStatement();
             String ins_tb;
-            Object ins_tbl[] = {acc.getOwner()};//,tc.getFullName(),tc.getSex(),tc.getDateOfBirth(),tc.getNationality(),tc.getAddress(),tc.getEmail(),tc.getPhoneNumber()};
+            Object ins_tbl[] = {acc.getOwner()};
             if(acc.getAcctype().equals("Teacher")){
                 ins_tb= String.format("INSERT INTO TEACHER VALUES('%s')",ins_tbl);
                 int rows_tc=statement.executeUpdate(ins_tb);
@@ -52,9 +50,8 @@ public class Account_DAL {
                 System.out.println("Da them vo bang Manager");
             }
             
-            int rows_info = statement.executeUpdate(accinf_sql);
             int rows_st = statement.executeUpdate(acc_sql);
-            if (rows_st > 0 && rows_info >0){
+            if (rows_st > 0 ){
                 System.out.println("Insert successfull");
             }else {
                 System.out.println("Insert fail");
