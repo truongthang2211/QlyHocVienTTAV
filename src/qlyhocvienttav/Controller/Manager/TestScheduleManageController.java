@@ -25,7 +25,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
+import qlyhocvienttav.Model.DAL.Course_DAL;
+import qlyhocvienttav.Model.DAL.Room_DAL;
+import qlyhocvienttav.Model.DAL.Teacher_DAL;
 import qlyhocvienttav.Model.DAL.TestSche_DAL;
+import qlyhocvienttav.Model.DTO.Course;
+import qlyhocvienttav.Model.DTO.Room;
+import qlyhocvienttav.Model.DTO.Teacher;
 import qlyhocvienttav.Model.DTO.TestSchedule;
 
 /**
@@ -43,9 +49,8 @@ public class TestScheduleManageController implements Initializable {
     @FXML
     private JFXTextField searchTxt;
     @FXML
-    private JFXTextField courseIDTxt;
-    @FXML
-    private JFXTextField roomIDtxt;
+    private JFXComboBox<String> CourseCbb;
+    
     @FXML
     private JFXTextField testscheduleIDTxt;
     @FXML
@@ -54,16 +59,13 @@ public class TestScheduleManageController implements Initializable {
     private JFXComboBox<String> shiftCbb;
     @FXML
     private JFXTextField kindoftestTxt;
+    
     @FXML
-    private JFXTextField teacherIDtxt;
-    @FXML
-    private JFXButton btn_add;
+    private JFXComboBox<String> Room_Cbb;
 
     @FXML
-    private JFXButton btn_edit;
+    private JFXComboBox<String> Teacher_Cbb;
 
-    @FXML
-    private JFXButton btn_delete;
     /**
      * Initializes the controller class.
      * @param url
@@ -74,26 +76,31 @@ public class TestScheduleManageController implements Initializable {
         // TODO
         ObservableList<String> shiftCbbList = FXCollections.observableArrayList("1","2","3");
         shiftCbb.setItems(shiftCbbList);
+        
+        
          
-        TableColumn id = new TableColumn("Test Schedule ID");
-        TableColumn kindofDate = new TableColumn("Date");
+        TableColumn Test_Sche_ID = new TableColumn("ID"); // Cai tren day la hien thi
+        TableColumn kindofDate = new TableColumn("Date");// del hieu sao cai id no ko hien ki 
         TableColumn Shift = new TableColumn("Ca thi");
         TableColumn room_id = new TableColumn("Phong thi");
         TableColumn course_id = new TableColumn("Ma khoa hoc");
-        TableColumn teacher_id = new TableColumn("Ma giao vien");
+        TableColumn teacher_id = new TableColumn("Ma giao vien");//sua ben dal ko can
         TableColumn kindoftets = new TableColumn("Kieu thi");
         
-        id.setCellValueFactory(new PropertyValueFactory<TestSchedule,String>("Tets Schedule ID"));
-        room_id.setCellValueFactory(new PropertyValueFactory<TestSchedule,String>("Phong thi"));
-        course_id.setCellValueFactory(new PropertyValueFactory<TestSchedule,String>("Ma khoa hoc"));
-        kindofDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
-        teacher_id.setCellValueFactory(new PropertyValueFactory<TestSchedule,String>("Ma giao vien"));
-        kindoftets.setCellValueFactory(new PropertyValueFactory<>("Kieu thi"));
-        Shift.setCellValueFactory(new PropertyValueFactory<>("Ca thi"));
+        Test_Sche_ID.setCellValueFactory(new PropertyValueFactory<>("TestSche_ID"));
+        room_id.setCellValueFactory(new PropertyValueFactory<>("Room_ID"));
+        course_id.setCellValueFactory(new PropertyValueFactory<>("Course_ID"));
+        kindofDate.setCellValueFactory(new PropertyValueFactory<>("TestDate"));
+        teacher_id.setCellValueFactory(new PropertyValueFactory<>("Teacher_ID"));
+        kindoftets.setCellValueFactory(new PropertyValueFactory<>("Loai_KT"));
+        Shift.setCellValueFactory(new PropertyValueFactory<>("Shift"));
         
-        maintable.getColumns().addAll(id,kindofDate,course_id,Shift,room_id,teacher_id,kindoftets);
+        maintable.getColumns().addAll(Test_Sche_ID,kindofDate,course_id,Shift,room_id,teacher_id,kindoftets);
         data=testsche_dal.GetData();
         maintable.setItems(data);
+        GetCourseToCbb();
+        GetTeacherToCbb();
+        GetRoomToCbb();
     }    
     
     @FXML
@@ -103,11 +110,11 @@ public class TestScheduleManageController implements Initializable {
             System.out.println("Khong thay ts");
         }else {
             testscheduleIDTxt.setText(ts.getid());
-            courseIDTxt.setText(ts.getCourse_ID());
+            CourseCbb.getSelectionModel().select(ts.getCourse_ID());
             shiftCbb.getSelectionModel().select(ts.getShift());
             
-            teacherIDtxt.setText(ts.getTeacher_ID());
-            roomIDtxt.setText(ts.getRoom_ID());
+            Teacher_Cbb.getSelectionModel().select(ts.getTeacher_ID());
+            Room_Cbb.getSelectionModel().select(ts.getRoom_ID());
             kindoftestTxt.setText(ts.getLoai_KT());
             
             DatePicker.setValue(LocalDate.parse(ts.getTestDate(), DateTimeFormatter.ISO_DATE));
@@ -143,13 +150,44 @@ public class TestScheduleManageController implements Initializable {
     
     
     private TestSchedule GetTestScheduleFromGUI(){
-        TestSchedule ts = new TestSchedule(testscheduleIDTxt.getText(),shiftCbb.getSelectionModel().getSelectedItem(),courseIDTxt.getText(),DatePicker.getValue().toString(),teacherIDtxt.getText(),roomIDtxt.getText(),kindoftestTxt.getText());
+        String date= DatePicker.getValue() == null?"":DatePicker.getValue().toString();
+        TestSchedule ts = new TestSchedule(testscheduleIDTxt.getText(),Teacher_Cbb.getSelectionModel().getSelectedItem(),CourseCbb.getSelectionModel().getSelectedItem(),Room_Cbb.getSelectionModel().getSelectedItem(),kindoftestTxt.getText(),date,shiftCbb.getSelectionModel().getSelectedItem());
         return ts;
+    }
+    
+    private void GetCourseToCbb(){
+        CourseCbb.getItems().clear();
+        Course_DAL course_dal = new Course_DAL();
+        ObservableList<Course> CourseList = course_dal.GetData();
+        CourseList.forEach(cr -> {
+            CourseCbb.getItems().add(cr.getCourse_id());
+        });
+        CourseCbb.getSelectionModel().select(0);
+    }
+    
+    private void GetTeacherToCbb(){
+        Teacher_Cbb.getItems().clear();
+        Teacher_DAL teacher_dal = new Teacher_DAL();
+        ObservableList<Teacher> CourseList = teacher_dal.GetData();
+        CourseList.forEach(cr -> {
+            Teacher_Cbb.getItems().add(cr.getTeacherId());
+        });
+        Teacher_Cbb.getSelectionModel().select(0);
+    }
+    
+    private void GetRoomToCbb(){
+        Room_Cbb.getItems().clear();
+        Room_DAL room_dal = new Room_DAL();
+        ObservableList<Room> CourseList = room_dal.GetData();
+        CourseList.forEach(cr -> {
+            Room_Cbb.getItems().add(cr.getRoomId());
+        });
+        Room_Cbb.getSelectionModel().select(0);
     }
     
     private boolean CheckInputGUI(){
         String date= DatePicker.getValue() == null?"":DatePicker.getValue().toString();
-        String [] ListInput = {shiftCbb.getSelectionModel().getSelectedItem(),teacherIDtxt.getText(),date,testscheduleIDTxt.getText(),courseIDTxt.getText(),roomIDtxt.getText(),kindoftestTxt.getText()};
+        String [] ListInput = {testscheduleIDTxt.getText(), shiftCbb.getSelectionModel().getSelectedItem(),Teacher_Cbb.getSelectionModel().getSelectedItem(),date,CourseCbb.getSelectionModel().getSelectedItem(),Room_Cbb.getSelectionModel().getSelectedItem(),kindoftestTxt.getText()};
         String [] Property = {"Test Schedule ID", "Date","Shift","Course ID","Teacher ID","Room ID","Kind of test"};
         for (int i = 0 ; i< ListInput.length; i++){
             if (ListInput[i] == null || ListInput[i].equals("")){

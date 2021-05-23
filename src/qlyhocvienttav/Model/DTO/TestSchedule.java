@@ -10,11 +10,11 @@ package qlyhocvienttav.Model.DTO;
  * @author Khang
  */
 public class TestSchedule {
-    String id,Teacher_ID,Course_ID,Room_ID,Loai_KT,TestDate;
+    String TestSche_ID,Teacher_ID,Course_ID,Room_ID,Loai_KT,TestDate;
     //Them ca thi
-    int Shift;
-    public TestSchedule(String id,String Teacher_ID,String Course_ID, String Room_ID, String Loai_KT, String TestDate, int Shift){
-        this.id = id;
+    String Shift;
+    public TestSchedule(String id,String Teacher_ID,String Course_ID, String Room_ID, String Loai_KT, String TestDate, String Shift){
+        this.TestSche_ID = id;
         this.Teacher_ID = Teacher_ID;
         this.Course_ID = Course_ID;
         this.Room_ID = Room_ID;
@@ -23,16 +23,12 @@ public class TestSchedule {
         this.Shift = Shift;
     }
 
-    public TestSchedule(String string, String string0, String string1, String string2, String string3, String string4, String date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public String getid() {
-        return id;
+        return TestSche_ID;
     }
 
     public void setid(String id) {
-        this.id = id;
+        this.TestSche_ID = id;
     }
 
     public String getTeacher_ID() {
@@ -47,7 +43,7 @@ public class TestSchedule {
         return Course_ID;
     }
     
-    public int getShift(){
+    public String getShift(){
         return Shift;
     }
     
@@ -79,7 +75,7 @@ public class TestSchedule {
         this.TestDate = TestDate;
     }
     
-    public void setShift(int Shift){
+    public void setShift(String Shift){
         this.Shift = Shift;
     }
     

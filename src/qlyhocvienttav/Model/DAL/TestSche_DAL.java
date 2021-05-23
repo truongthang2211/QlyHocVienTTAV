@@ -26,10 +26,10 @@ public class TestSche_DAL {
     public void Insert(TestSchedule ts){
 
         try {
-            Object arg_info[]= {ts.getCourse_ID(),ts.getid(),ts.getTeacher_ID(),ts.getRoom_ID(),ts.getLoai_KT(),ts.getTestDate(), ts.getShift()};
+            Object arg_info[]= {ts.getTestDate(),ts.getLoai_KT(),ts.getTeacher_ID(),ts.getCourse_ID(),ts.getRoom_ID(), ts.getShift()};
             String ts_sql;
             
-            ts_sql = String.format("INSERT INTO Test_Schedule VALUES ('TC'||to_char(seq_id.nextval),'%s','%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%d')", arg_info);
+            ts_sql = String.format("INSERT INTO Test_Schedule VALUES ('TC'||to_char(seq_testschedule_id.nextval),TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s','%s')", arg_info);
 
             Statement statement = LoginViewController.connection.con.createStatement();
             //int rows_info = statement.executeUpdate(infoTestSche_sql);
@@ -86,10 +86,10 @@ public class TestSche_DAL {
             String sql = "SELECT id,teacher_id,course_id,room_id,kindofTest,testDate,Shift \n" + "FROM Test_Schedule";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-                Date lcdate = rs.getDate(4);
+                Date lcdate = rs.getDate("testDate");
                 String date = lcdate==null?"":lcdate.toString();
                 
-                TestSchedule ts = new TestSchedule(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(5),rs.getString(6),date,rs.getInt(7));
+                TestSchedule ts = new TestSchedule(rs.getString("id"),rs.getString("teacher_id"),rs.getString("course_id"),rs.getString("room_id"),rs.getString("kindofTest"),date,rs.getString("Shift"));
                         
                 Data.add(ts);
             }

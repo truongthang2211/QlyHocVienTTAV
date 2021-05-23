@@ -5,8 +5,7 @@
         <group>
             <file>file:/D:/QlyHocVienTTAV/src/qlyhocvienttav/Model/DAL/TestSche_DAL.java</file>
             <file>file:/D:/QlyHocVienTTAV/src/qlyhocvienttav/Model/DTO/TestSchedule.java</file>
-            <file>file:/D:/QlyHocVienTTAV/src/qlyhocvienttav/Model/DAL/Student_DAL.java</file>
-            <file>file:/D:/QlyHocVienTTAV/src/qlyhocvienttav/Controller/Admin/TestScheduleManageController.java</file>
+            <file>file:/D:/QlyHocVienTTAV/src/qlyhocvienttav/Controller/Manager/TestScheduleManageController.java</file>
         </group>
     </open-files>
 </project-private>

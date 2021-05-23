@@ -48,7 +48,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <TableView fx:id="maintable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                        <TableView fx:id="maintable" onMouseClicked="#displaySelected" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                             <GridPane.margin>
                                 <Insets top="5.0" />
                             </GridPane.margin>
@@ -109,22 +109,10 @@
                                         <Insets right="100.0" />
                                     </GridPane.margin>
                                 </JFXTextField>
-                                <JFXTextField fx:id="roomIDtxt" focusColor="#1f1f1f" labelFloat="true" promptText="Room ID" GridPane.rowIndex="4">
-                                    <GridPane.margin>
-                                        <Insets right="250.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
-                                <JFXTextField fx:id="teacherIDTxt" focusColor="#1f1f1f" labelFloat="true" promptText="Teacher ID" GridPane.rowIndex="6">
-                                    <GridPane.margin>
-                                        <Insets right="250.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
-                                <JFXTextField fx:id="courseIDTxt" focusColor="#1f1f1f" labelFloat="true" promptText="Course ID" GridPane.rowIndex="5">
-                                    <GridPane.margin>
-                                        <Insets right="100.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
                                 <JFXDatePicker fx:id="DatePicker" promptText="Date" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="CourseCbb" prefHeight="25.0" prefWidth="145.0" promptText="Course ID" GridPane.rowIndex="5" />
+                        <JFXComboBox fx:id="Room_Cbb" prefWidth="145.0" promptText="Room ID" GridPane.rowIndex="4" />
+                        <JFXComboBox fx:id="Teacher_Cbb" prefHeight="25.0" prefWidth="145.0" promptText="Teacher ID" GridPane.rowIndex="6" />
                             </children>
                         </GridPane>
                         <GridPane GridPane.rowIndex="1">
