@@ -28,6 +28,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("./View/LoginView.fxml"));
         Scene scene = new Scene(root);
+        
         stage.setScene(scene);
         //stage.setResizable(false);
         stage.show();
@@ -70,13 +71,33 @@ public class Main extends Application {
         });
         Thread thread = new Thread(task);
         thread.start();
+    }
+    public static void ShowForm(Parent root , boolean newwindow, ActionEvent event) throws IOException{
+        
+        Task<Parent> task = new Task<Parent>() {
+            @Override
+            protected Parent call() throws Exception {
+                return root;
+            }
+        };
 
-
-//            Parent root = FXMLLoader.load(Main.class.getResource(fxml));
-//            Scene scene = new Scene(root);
-//            Stage stage = new Stage();
-//            stage.setScene(scene);
-//            stage.show();
+        task.setOnSucceeded(event2 -> {
+            Stage stage = new Stage();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    System.out.println("Stage is closing");
+                    LoginViewController.connection.CloseConnection();
+                }
+            }); 
+            stage.setScene(new Scene(root));
+            stage.show();
+            if (!newwindow){
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+                
+            }
+        });
+        Thread thread = new Thread(task);
+        thread.start();
     }
 }
 

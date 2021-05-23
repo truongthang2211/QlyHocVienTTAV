@@ -11,7 +11,7 @@ package qlyhocvienttav.Model.DTO;
  */
 public class Manager extends Personal_Info {
     String manager_ID;
-    Manager(String manager_ID,String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber)
+    public Manager(String manager_ID,String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber)
     {
         super(fullName, sex, dateOfBirth, nationality, address, email, phoneNumber);
         this.manager_ID=manager_ID;

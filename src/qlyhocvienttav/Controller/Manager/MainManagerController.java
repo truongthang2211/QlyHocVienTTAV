@@ -17,7 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Main;
+import qlyhocvienttav.Model.DTO.Account;
 
 /**
  * FXML Controller class
@@ -30,7 +32,10 @@ public class MainManagerController implements Initializable {
      * Initializes the controller class.
      * 
      */
+    
+    Account account;
     private Parent root = null;
+    private FXMLLoader loader = null;
     @FXML
     private ImageView logo;
     @FXML
@@ -44,7 +49,7 @@ public class MainManagerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ChangeScreen("../../View/Manager/Info.fxml");
+       
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
         rootgrid.setPrefWidth(Main.width);
@@ -54,10 +59,13 @@ public class MainManagerController implements Initializable {
     @FXML
     private void InfoButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/Info.fxml");
+        InfoController ctro = loader.getController();
+        ctro.SetInfo(account);
     }
     public void LoadUI(String fxml){
         try {
-            root = FXMLLoader.load(getClass().getResource(fxml));
+            loader= new FXMLLoader(getClass().getResource(fxml));
+            root = loader.load();
         } catch (IOException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
@@ -71,6 +79,7 @@ public class MainManagerController implements Initializable {
 
     @FXML
     private void SignoutButton(ActionEvent event) throws IOException {
+        LoginViewController.connection.CloseConnection();
         Main.ShowForm("View/LoginView.fxml", false, event);
     }
 
@@ -106,6 +115,14 @@ public class MainManagerController implements Initializable {
     @FXML
     private void ViewTeacherButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/ViewTeacher.fxml");
+    }
+    public void ShowForm(ActionEvent event,Parent root,Account ac) throws IOException{
+        this.account = ac;
+        ChangeScreen("../../View/Manager/Info.fxml");
+        InfoController ctro = loader.getController();
+        ctro.SetInfo(account);
+        Main.ShowForm(root, false, event);
+       
     }
 }
 

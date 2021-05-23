@@ -1,31 +1,34 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package qlyhocvienttav.Model.DAL;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import qlyhocvienttav.Controller.LoginViewController;
-import qlyhocvienttav.Model.DTO.Student;
-import qlyhocvienttav.Model.DTO.Teacher;
-
-import javax.swing.*;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javax.swing.JOptionPane;
+import qlyhocvienttav.Controller.LoginViewController;
+import qlyhocvienttav.Model.DTO.Manager;
 
-
-public class Teacher_DAL {
-    public Teacher_DAL(){};
-
-    ObservableList<Teacher> Data = FXCollections.observableArrayList();
-
-    public void Insert(Teacher teacher){
+/**
+ *
+ * @author Thang
+ */
+public class Manager_DAL {
+    ObservableList<Manager> Data = FXCollections.observableArrayList();
+    public void Insert(Manager manager){
 
         try {
-            Object arg_info[]= {teacher.getFullName(),teacher.getSex(),teacher.getDateOfBirth(),teacher.getNationality(),teacher.getAddress(),teacher.getEmail(),teacher.getPhoneNumber()};
+            Object arg_info[]= {manager.getFullName(),manager.getSex(),manager.getDateOfBirth(),manager.getNationality(),manager.getAddress(),manager.getEmail(),manager.getPhoneNumber()};
             String teacher_sql;
-            teacher_sql = String.format("INSERT INTO Teacher VALUES ('TC'||to_char(seq_teacher_id.currval))");
+            teacher_sql = String.format("INSERT INTO Manager VALUES ('MNG'||to_char(seq_manager_id.currval))");
             String infoTeacher_sql;
-            infoTeacher_sql = String.format("INSERT INTO Personal_Info VALUES ('TC'||to_char(seq_teacher_id.nextval),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s')", arg_info);
+            infoTeacher_sql = String.format("INSERT INTO Personal_Info VALUES ('MNG'||to_char(seq_manager_id.nextval),'%s','%s',TO_DATE('%s','YYYY-MM-DD'),'%s','%s','%s','%s')", arg_info);
 
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows_info = statement.executeUpdate(infoTeacher_sql);
@@ -40,12 +43,12 @@ public class Teacher_DAL {
         }
 
     }
-    public boolean Delete(Teacher teacher){
+    public boolean Delete(Manager manager){
         try {
-            Object arg[]= {teacher.getTeacherId()};
+            Object arg[]= {manager.getManager_ID()};
             String info_sql,teacher_sql;
             info_sql = String.format("DELETE FROM Personal_Info WHERE ID = '%s'", arg);
-            teacher_sql = String.format("DELETE FROM Teacher WHERE teacher_id = '%s'", arg);
+            teacher_sql = String.format("DELETE FROM Manager WHERE manager_id = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int teacher_rows = statement.executeUpdate(teacher_sql);
             int info_rows = statement.executeUpdate(info_sql);
@@ -58,9 +61,9 @@ public class Teacher_DAL {
         }
         return true;
     }
-    public boolean Update(Teacher teacher) {
+    public boolean Update(Manager manager) {
         try {
-            Object arg[]= {teacher.getFullName(),teacher.getSex(),teacher.getDateOfBirth(),teacher.getNationality(),teacher.getAddress(),teacher.getEmail(),teacher.getPhoneNumber(),teacher.getTeacherId() };
+            Object arg[]= {manager.getFullName(),manager.getSex(),manager.getDateOfBirth(),manager.getNationality(),manager.getAddress(),manager.getEmail(),manager.getPhoneNumber(),manager.getManager_ID()};
             String sql;
             sql = String.format("UPDATE Personal_Info SET fullName = '%s', sex = '%s', dateOfBirth = TO_DATE('%s','YYYY-MM-DD'), nationality = '%s', address = '%s', email = '%s', phoneNumber = '%s' WHERE ID = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
@@ -79,20 +82,20 @@ public class Teacher_DAL {
 
         try {
             this.Data.clear();
-            String sql = "SELECT TC.Teacher_ID,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
-                    "FROM Teacher TC JOIN PERSONAL_INFO IF ON TC.TEACHER_ID = IF.ID";
+            String sql = "SELECT MNG.Manager_ID,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
+                    "FROM Manager MNG JOIN PERSONAL_INFO IF ON MNG.Manager_ID = IF.ID";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Date lcdate = rs.getDate(4);
                 String date = lcdate==null?"":lcdate.toString();
-                Teacher t = new Teacher(rs.getString(1),rs.getString(2),rs.getString(3),date,rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+                Manager t = new Manager(rs.getString(1),rs.getString(2),rs.getString(3),date,rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
                 Data.add(t);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    public ObservableList<Teacher> GetData(){
+    public ObservableList<Manager> GetData(){
         try{
             LoadData();
         }catch (Exception ex){
@@ -101,5 +104,4 @@ public class Teacher_DAL {
 
         return this.Data;
     }
-
 }

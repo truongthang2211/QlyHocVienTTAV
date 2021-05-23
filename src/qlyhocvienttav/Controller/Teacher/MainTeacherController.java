@@ -14,14 +14,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.VPos;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Main;
+import qlyhocvienttav.Model.DTO.Account;
 
 /**
  * FXML Controller class
@@ -29,9 +27,8 @@ import qlyhocvienttav.Main;
  * @author Thang
  */
 public class MainTeacherController implements Initializable {
-
-    private Label topcenterlabel;
-
+    private FXMLLoader loader = null;
+    Account account;
     private Parent root = null;
     @FXML
     private GridPane rootgrid;
@@ -47,7 +44,6 @@ public class MainTeacherController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ChangeScreen("../../View/Teacher/Info.fxml");
         
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
@@ -55,8 +51,8 @@ public class MainTeacherController implements Initializable {
     }    
     public void LoadUI(String fxml){
         try {
-            root = FXMLLoader.load(getClass().getResource(fxml));
-            
+            loader= new FXMLLoader(getClass().getResource(fxml));
+            root = loader.load();
         } catch (IOException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,6 +61,8 @@ public class MainTeacherController implements Initializable {
     @FXML
     private void InfoButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/Info.fxml");
+        InfoController ctro = loader.getController();
+        ctro.SetInfo(account);
     }
 
 
@@ -86,6 +84,7 @@ public class MainTeacherController implements Initializable {
 
     @FXML
     private void SignoutButton(ActionEvent event) throws IOException {
+        LoginViewController.connection.CloseConnection();
         Main.ShowForm("View/LoginView.fxml", false, event);
     }
 
@@ -97,5 +96,13 @@ public class MainTeacherController implements Initializable {
         maingrid.getChildren().clear();
         LoadUI(centerfxml);
         maingrid.add(root, 0, 0);
+    }
+    public void ShowForm(ActionEvent event,Parent root,Account ac) throws IOException{
+        this.account = ac;
+        ChangeScreen("../../View/Teacher/Info.fxml");
+        InfoController ctro = loader.getController();
+        ctro.SetInfo(account);
+        Main.ShowForm(root, false, event);
+        
     }
 }

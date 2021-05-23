@@ -13,16 +13,24 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import qlyhocvienttav.Controller.Admin.MainAdminController;
+import qlyhocvienttav.Controller.Manager.MainManagerController;
+import qlyhocvienttav.Controller.Teacher.MainTeacherController;
 
 import qlyhocvienttav.Main;
+import qlyhocvienttav.Model.DAL.Account_DAL;
 import qlyhocvienttav.Model.DAL.DBConnection;
+import qlyhocvienttav.Model.DTO.Account;
 /**
  * FXML Controller class
  *
@@ -50,22 +58,45 @@ public class LoginViewController implements Initializable {
             @Override
             public Void call() {
                 try {
-                    String Role = "";
-                    if (username.getText().equals("manager") && password.getText().equals("manager")){
-                        Role = "Manager/MainManager";
-                    }else if (username.getText().equals("teacher") && password.getText().equals("teacher")){
-                        Role = "Teacher/MainTeacher";
-                    }else if (username.getText().equals("admin") && password.getText().equals("admin")){
-                        Role = "Admin/MainAdmin";
-                    }else {
-                        warninglabel.visibleProperty().set(true);
-//                        return null;
-                    }
                     if ( connection.OpenConnection()){
-                        Main.ShowForm("View/"+Role +".fxml", false,event);
+                        ObservableList<Account> data= new Account_DAL().GetData();
+                        boolean flag = false;
+                        String Role = "";
+                        Account ac = new Account();
+                        String Type="";
+                        for (Account a : data){
+                            if (username.getText().equals(a.getUsername()) && password.getText().equals(a.getPassword())){
+                                Type = a.getAcctype();
+                                Role = Type + "/" +"Main"+ Type ;
+                                flag = true;
+                                ac = a;
+                                break;
+                            }
+                        }                   
+                        if (flag){
+                            FXMLLoader loader;
+                            loader = new FXMLLoader(getClass().getResource("../View/"+Role +".fxml"));
+                            Parent root = loader.load();
+                            if (Type.equals("Manager")){
+                                MainManagerController managerController = loader.getController();
+                                managerController.ShowForm(event,root,ac);
+                            }else if (Type.equals("Teacher")){
+                                MainTeacherController teacherController = loader.getController();
+                                teacherController.ShowForm(event,root,ac);
+                            }else if (Type.equals("Admin")){
+                                MainAdminController adminController = loader.getController();
+                                adminController.ShowForm(event,root,ac);
+                            }
+
+                        }else {
+                            warninglabel.visibleProperty().set(true);
+                            LoginViewController.connection.CloseConnection();
+
+                        }
                     }
                    
                 } catch (IOException ex) {
+                    connection.CloseConnection();
                     Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 loginbutton.disableProperty().set(false);

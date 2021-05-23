@@ -28,7 +28,7 @@ public class DBConnection {
             this.con = DriverManager.getConnection(dbURL,username,password);
             System.out.println("Connect succeedfull");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error at OpenConnection()", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;

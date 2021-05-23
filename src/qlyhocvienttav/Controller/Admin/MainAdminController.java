@@ -12,13 +12,14 @@ import qlyhocvienttav.Main;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import qlyhocvienttav.Controller.LoginViewController;
+import qlyhocvienttav.Model.DTO.Account;
 
 public class MainAdminController implements Initializable {
-
     private Parent root = null;
+    private FXMLLoader loader = null;
+    Account account;
 
     @FXML
     private GridPane rootgrid;
@@ -52,8 +53,9 @@ public class MainAdminController implements Initializable {
 
     @FXML
     void InfoButton(ActionEvent event) {
-        ChangeScreen("../../View/Admin/info.fxml");
-
+        ChangeScreen("../../View/Admin/Info.fxml");
+        InfoController ctro = loader.getController();
+        ctro.SetInfo(account);
     }
 
     @FXML
@@ -63,12 +65,9 @@ public class MainAdminController implements Initializable {
     }
 
     @FXML
-    void SignoutButton(ActionEvent event) {
-        try {
-            Main.ShowForm("View/LoginView.fxml", false, event);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error at SignoutButton", JOptionPane.ERROR_MESSAGE);
-        }
+    void SignoutButton(ActionEvent event) throws IOException {
+        LoginViewController.connection.CloseConnection();
+        Main.ShowForm("View/LoginView.fxml", false, event);
     }
 
     @FXML
@@ -100,14 +99,14 @@ public class MainAdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ChangeScreen("../../View/Admin/Info.fxml");
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
         rootgrid.setPrefWidth(Main.width);
     }
     public void LoadUI(String fxml){
         try {
-            root = FXMLLoader.load(getClass().getResource(fxml));
+            loader= new FXMLLoader(getClass().getResource(fxml));
+            root = loader.load();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,ex.toString(),"Error at LoadUI() function", JOptionPane.ERROR_MESSAGE);
         }
@@ -127,5 +126,12 @@ public class MainAdminController implements Initializable {
     private void TeacherManageButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/TeacherManage.fxml");
     }
-
+    public void ShowForm(ActionEvent event,Parent root,Account ac) throws IOException{
+        this.account = ac;
+        ChangeScreen("../../View/Admin/Info.fxml");
+        InfoController ctro = loader.getController();
+        ctro.SetInfo(account);
+        Main.ShowForm(root, false, event);
+        
+    }
 }
