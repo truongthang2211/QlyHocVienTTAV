@@ -83,7 +83,7 @@ public class TestSche_DAL {
 
         try {
             this.Data.clear();
-            String sql = "SELECT TC.id,teacher_id,course_id,room_id,kindofTest,testDate,Shift \n" + "FROM Test_Schedule";
+            String sql = "SELECT id,teacher_id,course_id,room_id,kindofTest,testDate,Shift \n" + "FROM Test_Schedule";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Date lcdate = rs.getDate(4);

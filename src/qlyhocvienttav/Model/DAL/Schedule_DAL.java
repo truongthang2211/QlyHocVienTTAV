@@ -64,13 +64,16 @@ public class Schedule_DAL {
         return true;
 
     }
-    public void LoadData(){
+    public void LoadData(String tcid){
 
         try {
             this.data.clear();
             String sql = "select schedule_id, dayOfSchedule, timeOfSchedule, sche.class_id , cl.className, sche.room_id, room.room_name, sche.teacher_id , ps.fullName " +
                     "from schedule sche join class cl on sche.class_id = cl.class_id "+
                     "join room on sche.room_id = room.room_id join personal_info ps on sche.teacher_id = ps.id ";
+            if (!tcid.equals("Default")){
+                sql += ("where sche.teacher_id = " + tcid);
+            }
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Schedule sche = new Schedule(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
@@ -81,12 +84,11 @@ public class Schedule_DAL {
         }
     }
     public ObservableList<Schedule> GetData(){
-        try{
-            LoadData();
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
-        }
-
+        LoadData("Default");
+        return this.data;
+    }
+    public ObservableList<Schedule> GetDataByTeacher(String TeacherID){
+        LoadData(TeacherID);
         return this.data;
     }
 }

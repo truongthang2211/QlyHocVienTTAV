@@ -80,11 +80,6 @@ public class MainAdminController implements Initializable {
         ChangeScreen("../../View/Admin/ViewStudentFee.fxml");
 
     }
-    @FXML
-    void TestScheduleButton(ActionEvent event) {
-        ChangeScreen("../../View/Admin/TestScheduleManage.fxml");
-
-    }
 
     @FXML
     void ViewScheduleButton(ActionEvent event) {

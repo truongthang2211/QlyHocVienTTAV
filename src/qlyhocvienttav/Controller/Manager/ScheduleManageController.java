@@ -72,14 +72,14 @@ public class ScheduleManageController implements Initializable {
         TableColumn classID = new TableColumn("Class ID");
         TableColumn roomID = new TableColumn("Room ID");
         TableColumn teacherID = new TableColumn("Teacher ID");
-
+        
 
         scheduleID.setCellValueFactory(new PropertyValueFactory<>("ScheduleID"));
         Day.setCellValueFactory(new PropertyValueFactory<>("Day"));
         Shift.setCellValueFactory(new PropertyValueFactory<>("Shift"));
-        classID.setCellValueFactory(new PropertyValueFactory<>("ClassID"));
-        roomID.setCellValueFactory(new PropertyValueFactory<>("RoomID"));
-        teacherID.setCellValueFactory(new PropertyValueFactory<>("TeacherID"));
+        classID.setCellValueFactory(new PropertyValueFactory<>("ClassId"));
+        roomID.setCellValueFactory(new PropertyValueFactory<>("RoomId"));
+        teacherID.setCellValueFactory(new PropertyValueFactory<>("TeacherId"));
         maintable.getColumns().addAll(scheduleID,Day,Shift,classID,roomID,teacherID);
         data = sche_dal.GetData();
         maintable.setItems(data);

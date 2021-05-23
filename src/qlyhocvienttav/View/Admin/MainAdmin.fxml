@@ -69,11 +69,6 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="BOOK" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#TestScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Test schedule Management">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR_CHECK_ALT" size="25" />
-                     </graphic>
-                  </JFXButton>
                   <JFXButton onAction="#StudentAnalysisButton" prefWidth="327.0" styleClass="ListButton" text="Analysis">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="25" />

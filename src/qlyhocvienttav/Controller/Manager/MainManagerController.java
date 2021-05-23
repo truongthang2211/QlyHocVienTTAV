@@ -124,5 +124,11 @@ public class MainManagerController implements Initializable {
         Main.ShowForm(root, false, event);
        
     }
+
+    @FXML
+    private void TestScheduleButton(ActionEvent event) {
+        ChangeScreen("../../View/Manager/TestScheduleManage.fxml");
+
+    }
 }
 

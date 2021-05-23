@@ -73,7 +73,9 @@ public class MainTeacherController implements Initializable {
 
     @FXML
     private void ScheduleButton(ActionEvent event) {
-        
+        ChangeScreen("../../View/Teacher/Schedule.fxml");
+        ScheduleController ctrol = loader.getController();
+        ctrol.SetAccount(account);
     }
 
     @FXML
