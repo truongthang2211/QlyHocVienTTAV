@@ -5,13 +5,20 @@
  */
 package qlyhocvienttav.Controller.Teacher;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import qlyhocvienttav.Model.DAL.Schedule_DAL;
 import qlyhocvienttav.Model.DTO.Account;
 import qlyhocvienttav.Model.DTO.Schedule;
@@ -36,9 +43,46 @@ public class ScheduleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        data = sche_dal.GetDataByTeacher(account.getOwner());
     }    
     public void SetAccount (Account ac){
         this.account = ac;
+    }
+    public void Start(){
+        data = sche_dal.GetDataByTeacher(account.getOwner());
+        String [] DayList = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"};
+        String [] ShiftList = {"9:00 - 10:30", "13:00 - 14:30", "15:00 - 16:30", "17:30 - 19:00", "19:15 - 20:45"};
+        
+        for (Schedule sche : data){
+            int rows =0, columns=0 ;
+            for (int i = 0 ; i < DayList.length; ++i){
+                if (sche.getDay().equals(DayList[i])){
+                    columns = i;
+                    break;
+                }
+            }
+            for (int i = 0 ; i < DayList.length; ++i){
+                if (sche.getShift().equals(ShiftList[i])){
+                    rows = i;
+                    break;
+                }
+            }
+            Schedule_Grid.add(CreateAnchor(sche.getClassName(),sche.getRoomName()),columns+1,rows+1);
+
+        }
+    }
+    AnchorPane CreateAnchor(String ClassName, String Room){
+        AnchorPane anchor = new AnchorPane();
+        anchor.setStyle("-fx-background-color: gray");
+        Label Class = new Label(ClassName);
+        Label RoomLb = new Label(Room);
+        Class.setStyle("-fx-font-size: 18; -fx-font-weight: Bold");        
+        RoomLb.setStyle("-fx-font-size: 18; -fx-font-weight: Bold"); 
+
+        VBox vbox = new VBox(10,Class, RoomLb);
+        vbox.setAlignment(Pos.CENTER);
+        AnchorPane.setLeftAnchor(vbox, 70.0);
+        AnchorPane.setTopAnchor(vbox, 60.0);
+        anchor.getChildren().add(vbox);       
+        return anchor;
     }
 }

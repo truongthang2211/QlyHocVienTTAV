@@ -72,7 +72,7 @@ public class Schedule_DAL {
                     "from schedule sche join class cl on sche.class_id = cl.class_id "+
                     "join room on sche.room_id = room.room_id join personal_info ps on sche.teacher_id = ps.id ";
             if (!tcid.equals("Default")){
-                sql += ("where sche.teacher_id = " + tcid);
+                sql += ("where sche.teacher_id = '" + tcid + "'");
             }
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
