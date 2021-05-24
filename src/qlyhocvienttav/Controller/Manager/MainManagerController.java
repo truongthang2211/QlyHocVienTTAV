@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +50,12 @@ public class MainManagerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Platform.runLater(() -> {
+            ChangeScreen("../../View/Manager/Info.fxml");
+            InfoController ctro = loader.getController();
+            ctro.SetAccount(account);
+        });
+        
        
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
@@ -60,7 +67,7 @@ public class MainManagerController implements Initializable {
     private void InfoButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/Info.fxml");
         InfoController ctro = loader.getController();
-        ctro.SetInfo(account);
+        ctro.SetAccount(account);
     }
     public void LoadUI(String fxml){
         try {
@@ -105,6 +112,8 @@ public class MainManagerController implements Initializable {
     @FXML
     private void ChangePasswordButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/ChangePass.fxml");
+        ChangePassController ctrol = new ChangePassController();
+        ctrol.SetAccount(account);
     }
     private void ChangeScreen(String centerfxml){
         maingrid.getChildren().clear();
@@ -116,19 +125,15 @@ public class MainManagerController implements Initializable {
     private void ViewTeacherButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/ViewTeacher.fxml");
     }
-    public void ShowForm(ActionEvent event,Parent root,Account ac) throws IOException{
-        this.account = ac;
-        ChangeScreen("../../View/Manager/Info.fxml");
-        InfoController ctro = loader.getController();
-        ctro.SetInfo(account);
-        Main.ShowForm(root, false, event);
-       
-    }
+
 
     @FXML
     private void TestScheduleButton(ActionEvent event) {
         ChangeScreen("../../View/Manager/TestScheduleManage.fxml");
 
+    }
+    public void SetAccount(Account ac){
+        this.account = ac;
     }
 }
 

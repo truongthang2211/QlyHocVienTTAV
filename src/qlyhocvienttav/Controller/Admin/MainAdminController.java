@@ -12,6 +12,7 @@ import qlyhocvienttav.Main;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DTO.Account;
@@ -36,7 +37,7 @@ public class MainAdminController implements Initializable {
 
     @FXML
     void ChangePasswordButton(ActionEvent event) {
-
+        ChangeScreen("../../View/Admin/ChangePass.fxml");
     }
 
     @FXML
@@ -55,7 +56,7 @@ public class MainAdminController implements Initializable {
     void InfoButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/Info.fxml");
         InfoController ctro = loader.getController();
-        ctro.SetInfo(account);
+        ctro.setAccount(account);
     }
 
     @FXML
@@ -94,6 +95,11 @@ public class MainAdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Platform.runLater(()->{
+            ChangeScreen("../../View/Admin/Info.fxml");
+            InfoController ctro = loader.getController();
+            ctro.setAccount(account);
+        });
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
         rootgrid.setPrefWidth(Main.width);
@@ -121,12 +127,7 @@ public class MainAdminController implements Initializable {
     private void TeacherManageButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/TeacherManage.fxml");
     }
-    public void ShowForm(ActionEvent event,Parent root,Account ac) throws IOException{
+    public void SetAccount (Account ac){
         this.account = ac;
-        ChangeScreen("../../View/Admin/Info.fxml");
-        InfoController ctro = loader.getController();
-        ctro.SetInfo(account);
-        Main.ShowForm(root, false, event);
-        
     }
 }

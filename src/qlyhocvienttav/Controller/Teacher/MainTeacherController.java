@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +45,11 @@ public class MainTeacherController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Platform.runLater(()->{
+            ChangeScreen("../../View/Teacher/Info.fxml");
+            InfoController ctro = loader.getController();
+            ctro.setAccount(account);
+        });
         
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
@@ -62,7 +68,7 @@ public class MainTeacherController implements Initializable {
     private void InfoButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/Info.fxml");
         InfoController ctro = loader.getController();
-        ctro.SetInfo(account);
+        ctro.setAccount(account);
     }
 
 
@@ -100,12 +106,7 @@ public class MainTeacherController implements Initializable {
         LoadUI(centerfxml);
         maingrid.add(root, 0, 0);
     }
-    public void ShowForm(ActionEvent event,Parent root,Account ac) throws IOException{
-        this.account = ac;
-        ChangeScreen("../../View/Teacher/Info.fxml");
-        InfoController ctro = loader.getController();
-        ctro.SetInfo(account);
-        Main.ShowForm(root, false, event);
-        
+    public void SetAccount (Account ac){
+        this.account =ac;
     }
 }

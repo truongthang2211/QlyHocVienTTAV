@@ -7,6 +7,7 @@ package qlyhocvienttav.Controller.Manager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -19,7 +20,7 @@ import qlyhocvienttav.Model.DTO.Account;
  * @author Thang
  */
 public class InfoController implements Initializable {
-
+    Account account ;
     @FXML
     private Label topcenterlabel;
     @FXML
@@ -51,16 +52,22 @@ public class InfoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Platform.runLater(() -> {
+            SetInfo();
+        });
     }    
-    public void SetInfo(Account ac){
-        txt_Fullname.setText(ac.getFullName());
-        txt_National.setText(ac.getNationality());
-        txt_Address.setText(ac.getAddress());
-        txt_Email.setText(ac.getEmail());
-        txt_Phone.setText(ac.getPhoneNumber());
-        txt_Dateofbirth.setText(ac.getDateOfBirth());
-        txt_Sex.setText(ac.getSex());
-        txt_Role.setText(ac.getAcctype());
-        txt_Owner.setText(ac.getOwner());
+    public void SetInfo(){
+        txt_Fullname.setText(this.account.getFullName());
+        txt_National.setText(this.account.getNationality());
+        txt_Address.setText(this.account.getAddress());
+        txt_Email.setText(this.account.getEmail());
+        txt_Phone.setText(this.account.getPhoneNumber());
+        txt_Dateofbirth.setText(this.account.getDateOfBirth());
+        txt_Sex.setText(this.account.getSex());
+        txt_Role.setText(this.account.getAcctype());
+        txt_Owner.setText(this.account.getOwner());
+    }
+    public void SetAccount (Account ac){
+        this.account = ac;
     }
 }

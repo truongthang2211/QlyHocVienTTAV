@@ -79,13 +79,16 @@ public class LoginViewController implements Initializable {
                             Parent root = loader.load();
                             if (Type.equals("Manager")){
                                 MainManagerController managerController = loader.getController();
-                                managerController.ShowForm(event,root,ac);
+                                managerController.SetAccount(ac);
+                                Main.ShowForm(root, false, event);
                             }else if (Type.equals("Teacher")){
                                 MainTeacherController teacherController = loader.getController();
-                                teacherController.ShowForm(event,root,ac);
+                                teacherController.SetAccount(ac);
+                                Main.ShowForm(root, false, event);
                             }else if (Type.equals("Admin")){
                                 MainAdminController adminController = loader.getController();
-                                adminController.ShowForm(event,root,ac);
+                                adminController.SetAccount(ac);
+                                Main.ShowForm(root, false, event);
                             }
 
                         }else {
