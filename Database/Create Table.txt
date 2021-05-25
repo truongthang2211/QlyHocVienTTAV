@@ -210,3 +210,5 @@ insert into personal_info values (
 );
 insert into admin values ('ADMIN01');
 insert into account values ('admin','admin','Admin',sysdate,'ADMIN01');
+
+create SEQUENCE seq_Schedule_id start with 1 increment by 1;
