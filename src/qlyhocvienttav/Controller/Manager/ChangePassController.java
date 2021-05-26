@@ -8,6 +8,7 @@ package qlyhocvienttav.Controller.Manager;
 import com.jfoenix.controls.JFXPasswordField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,7 +43,7 @@ public class ChangePassController implements Initializable {
 
     @FXML
     private void Save_Btn(ActionEvent event) {
-        String info = "";
+        String info = "Your current password wrong!";
         if (account.getPassword().equals(Current_Txt.getText())){
             if (New_Txt.getText().equals(Confirm_Txt.getText())){
                 account.setPassword(New_Txt.getText());
@@ -53,11 +54,12 @@ public class ChangePassController implements Initializable {
                 }
                 JOptionPane.showMessageDialog(null,info,"Successfull", JOptionPane.INFORMATION_MESSAGE);
             }else {
-                JOptionPane.showMessageDialog(null,info,"Your confirm password not equal your new password!", JOptionPane.INFORMATION_MESSAGE);
+                info = "Your confirm password not equal your new password!";
+                JOptionPane.showMessageDialog(null,info,"Error!", JOptionPane.INFORMATION_MESSAGE);
             }
             
         }else {
-            JOptionPane.showMessageDialog(null,info,"Your current password wrong!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,info,"Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     public void SetAccount (Account ac){

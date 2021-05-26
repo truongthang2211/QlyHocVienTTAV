@@ -53,9 +53,9 @@ public class MainAdminController implements Initializable {
     }
 
     @FXML
-    void InfoButton(ActionEvent event) {
-        ChangeScreen("../../View/Admin/Info.fxml");
-        InfoController ctro = loader.getController();
+    void ProfileButton(ActionEvent event) {
+        ChangeScreen("../../View/Admin/Profile.fxml");
+        ProfileController ctro = loader.getController();
         ctro.setAccount(account);
     }
 
@@ -96,8 +96,8 @@ public class MainAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Platform.runLater(()->{
-            ChangeScreen("../../View/Admin/Info.fxml");
-            InfoController ctro = loader.getController();
+            ChangeScreen("../../View/Admin/Profile.fxml");
+            ProfileController ctro = loader.getController();
             ctro.setAccount(account);
         });
         logo.fitWidthProperty().bind(logogrid.widthProperty());

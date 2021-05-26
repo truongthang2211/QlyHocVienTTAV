@@ -19,7 +19,7 @@ import qlyhocvienttav.Model.DTO.Account;
  *
  * @author Thang
  */
-public class InfoController implements Initializable {
+public class ProfileController implements Initializable {
     Account account;
     @FXML
     private Label topcenterlabel;

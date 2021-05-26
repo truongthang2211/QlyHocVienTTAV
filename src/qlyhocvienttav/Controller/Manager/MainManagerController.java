@@ -51,8 +51,8 @@ public class MainManagerController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Platform.runLater(() -> {
-            ChangeScreen("../../View/Manager/Info.fxml");
-            InfoController ctro = loader.getController();
+            ChangeScreen("../../View/Manager/Profile.fxml");
+            ProfileController ctro = loader.getController();
             ctro.SetAccount(account);
         });
         
@@ -62,13 +62,6 @@ public class MainManagerController implements Initializable {
         rootgrid.setPrefWidth(Main.width);
 
     }    
-
-    @FXML
-    private void InfoButton(ActionEvent event) {
-        ChangeScreen("../../View/Manager/Info.fxml");
-        InfoController ctro = loader.getController();
-        ctro.SetAccount(account);
-    }
     public void LoadUI(String fxml){
         try {
             loader= new FXMLLoader(getClass().getResource(fxml));
@@ -79,40 +72,40 @@ public class MainManagerController implements Initializable {
     }
 
     @FXML
-    private void Student_management_Button(ActionEvent event) {
+    private void StudentManagement_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/StudentManage.fxml");
 
     }
 
     @FXML
-    private void SignoutButton(ActionEvent event) throws IOException {
+    private void Signout_Button(ActionEvent event) throws IOException {
         LoginViewController.connection.CloseConnection();
         Main.ShowForm("View/LoginView.fxml", false, event);
     }
 
     @FXML
-    private void StudentFeeButton(ActionEvent event) {
+    private void StudentFee_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/StudentFeeManage.fxml");
     }
 
     @FXML
-    private void ScheduleButton(ActionEvent event) {
+    private void Schedule_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/ScheduleManage.fxml");
     }
 
     @FXML
-    private void RoomButton(ActionEvent event) {
+    private void Room_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/RoomManage.fxml");
     }
 
     @FXML
-    private void ClassButton(ActionEvent event) {
+    private void Class_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/ClassManage.fxml");
     }
     @FXML
-    private void ChangePasswordButton(ActionEvent event) {
+    private void ChangePassword_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/ChangePass.fxml");
-        ChangePassController ctrol = new ChangePassController();
+        ChangePassController ctrol = loader.getController();
         ctrol.SetAccount(account);
     }
     private void ChangeScreen(String centerfxml){
@@ -122,18 +115,25 @@ public class MainManagerController implements Initializable {
     }
 
     @FXML
-    private void ViewTeacherButton(ActionEvent event) {
+    private void ViewTeacher_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/ViewTeacher.fxml");
     }
 
 
     @FXML
-    private void TestScheduleButton(ActionEvent event) {
+    private void TestSchedule_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/TestScheduleManage.fxml");
 
     }
     public void SetAccount(Account ac){
         this.account = ac;
+    }
+
+    @FXML
+    private void Profile_Button(ActionEvent event) {
+        ChangeScreen("../../View/Manager/Profile.fxml");
+        ProfileController ctro = loader.getController();
+        ctro.SetAccount(account);
     }
 }
 

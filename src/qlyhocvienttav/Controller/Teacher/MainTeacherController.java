@@ -46,8 +46,8 @@ public class MainTeacherController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Platform.runLater(()->{
-            ChangeScreen("../../View/Teacher/Info.fxml");
-            InfoController ctro = loader.getController();
+            ChangeScreen("../../View/Teacher/Profile.fxml");
+            ProfileController ctro = loader.getController();
             ctro.setAccount(account);
         });
         
@@ -65,9 +65,9 @@ public class MainTeacherController implements Initializable {
     }
 
     @FXML
-    private void InfoButton(ActionEvent event) {
-        ChangeScreen("../../View/Teacher/Info.fxml");
-        InfoController ctro = loader.getController();
+    private void ProfileButton(ActionEvent event) {
+        ChangeScreen("../../View/Teacher/Profile.fxml");
+        ProfileController ctro = loader.getController();
         ctro.setAccount(account);
     }
 
@@ -88,7 +88,7 @@ public class MainTeacherController implements Initializable {
     @FXML
     private void ChangePasswordButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/ChangePass.fxml");
-
+        
     }
 
     @FXML

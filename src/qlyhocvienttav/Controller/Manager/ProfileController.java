@@ -19,7 +19,7 @@ import qlyhocvienttav.Model.DTO.Account;
  *
  * @author Thang
  */
-public class InfoController implements Initializable {
+public class ProfileController implements Initializable {
     Account account ;
     @FXML
     private Label topcenterlabel;
@@ -53,10 +53,10 @@ public class InfoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Platform.runLater(() -> {
-            SetInfo();
+            SetProfile();
         });
     }    
-    public void SetInfo(){
+    public void SetProfile(){
         txt_Fullname.setText(this.account.getFullName());
         txt_National.setText(this.account.getNationality());
         txt_Address.setText(this.account.getAddress());
