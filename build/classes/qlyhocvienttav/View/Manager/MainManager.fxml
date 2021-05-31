@@ -48,52 +48,52 @@
             </GridPane>
             <VBox GridPane.rowIndex="1">
                <children>
-                  <JFXButton onAction="#InfoButton" prefWidth="327.0" styleClass="ListButton" text="Profile">
+                  <JFXButton onAction="#Profile_Button" prefWidth="327.0" styleClass="ListButton" text="Profile">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="INFO_CIRCLE" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#Student_management_Button" prefWidth="327.0" styleClass="ListButton" text="Student management">
+                  <JFXButton onAction="#StudentManagement_Button" prefWidth="327.0" styleClass="ListButton" text="Student management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#ViewTeacherButton" prefWidth="327.0" styleClass="ListButton" text="View teacher">
+                  <JFXButton onAction="#ViewTeacher_Button" prefWidth="327.0" styleClass="ListButton" text="View teacher">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="USER" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#StudentFeeButton" prefWidth="327.0" styleClass="ListButton" text="Student's fee management">
+                  <JFXButton onAction="#StudentFee_Button" prefWidth="327.0" styleClass="ListButton" text="Student's fee management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="MONEY" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#RoomButton" prefWidth="327.0" styleClass="ListButton" text="Room management">
+                  <JFXButton onAction="#Room_Button" prefWidth="327.0" styleClass="ListButton" text="Room management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="SQUARE" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#ClassButton" prefWidth="327.0" styleClass="ListButton" text="Class management">
+                  <JFXButton onAction="#Class_Button" prefWidth="327.0" styleClass="ListButton" text="Class management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#ScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Schedule management">
+                  <JFXButton onAction="#Schedule_Button" prefWidth="327.0" styleClass="ListButton" text="Schedule management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#TestScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Test schedule Management">
+                  <JFXButton onAction="#TestSchedule_Button" prefWidth="327.0" styleClass="ListButton" text="Test schedule Management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR_CHECK_ALT" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#ChangePasswordButton" prefWidth="327.0" styleClass="ListButton" text="Change password">
+                  <JFXButton onAction="#ChangePassword_Button" prefWidth="327.0" styleClass="ListButton" text="Change password">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="COG" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#SignoutButton" prefWidth="327.0" styleClass="ListButton" text="Sign out">
+                  <JFXButton onAction="#Signout_Button" prefWidth="327.0" styleClass="ListButton" text="Sign out">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="USER_SECRET" size="25" />
                      </graphic>

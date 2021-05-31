@@ -44,7 +44,7 @@
             </GridPane>
             <VBox GridPane.rowIndex="1">
                <children>
-                  <JFXButton onAction="#InfoButton" prefWidth="327.0" styleClass="ListButton" text="Profile">
+                  <JFXButton onAction="#ProfileButton" prefWidth="327.0" styleClass="ListButton" text="Profile">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="INFO_CIRCLE" size="25" />
                      </graphic>
