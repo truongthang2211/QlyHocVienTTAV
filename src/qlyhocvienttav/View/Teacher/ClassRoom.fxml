@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.Teacher.ClassRoomController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -31,12 +31,12 @@
             <Insets bottom="20.0" left="20.0" />
          </padding>
          <children>
-            <Label fx:id="topcenterlabel" text="Class" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+            <Label fx:id="topcenterlabel" text="ClassRoom" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="816.0" GridPane.rowIndex="1">
+            <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
@@ -51,11 +51,11 @@
                      </GridPane.margin>
                   </JFXTextField>
                   <FontAwesomeIconView glyphName="SEARCH" size="20" GridPane.halignment="RIGHT" />
-                  <JFXListView GridPane.rowIndex="1">
+                  <TableView fx:id="class_table" onMouseClicked="#DisplayStudent" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets top="10.0" />
+                        <Insets top="5.0" />
                      </GridPane.margin>
-                  </JFXListView>
+                  </TableView>
                </children>
             </GridPane>
          </children>
@@ -69,8 +69,37 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <padding>
-            <Insets left="20.0" right="20.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" />
          </padding>
+         <children>
+            <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <JFXTextField maxWidth="-Infinity" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" />
+                     </GridPane.margin>
+                  </JFXTextField>
+                  <FontAwesomeIconView glyphName="SEARCH" size="20" GridPane.halignment="RIGHT" />
+                  <TableView fx:id="student_table" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
+                  </TableView>
+               </children>
+            </GridPane>
+            <Label fx:id="topcenterlabel1" text="Student">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
       </GridPane>
    </children>
 </GridPane>

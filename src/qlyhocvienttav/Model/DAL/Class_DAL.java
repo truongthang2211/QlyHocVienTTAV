@@ -68,17 +68,28 @@ public class Class_DAL {
         return true;
 
     }
-    public void LoadData(){
+    public void LoadData(String ID){
 
         try {
             this.data.clear();
-            String sql = "SELECT cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade\n" +
-            "FROM class cl join (select cl.class_id , count (st.student_id) SL\n" +
-            "                    from student st right join class cl on st.class_id = cl.class_id\n" +
-            "                    group by cl.class_id) a on cl.class_id = a.class_id";
+            String sql="";
+            if(ID.equals("Default")){
+                sql = "SELECT cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade\n" +
+                "FROM class cl join (select cl.class_id , count (st.student_id) SL\n" +
+                "                    from student st right join class cl on st.class_id = cl.class_id\n" +
+                "                    group by cl.class_id) a on cl.class_id = a.class_id";
+                
+            }else {
+                 sql = "SELECT cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade\n" +
+"                FROM class cl join (select cl.class_id , count (st.student_id) SL\n" +
+"                                    from student st right join class cl on st.class_id = cl.class_id\n" +
+"                                    group by cl.class_id) a on cl.class_id = a.class_id\n" +
+"                                    join schedule sche on sche.class_id = cl.class_id\n" +
+"                                    where sche.teacher_id = 'TC22'\n" +
+"                                    group by cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade";
+            }
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
-
                 Class cl = new Class(rs.getString(1),rs.getString(2), Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(4)),rs.getString(5),rs.getDouble(6));
                 data.add(cl);
             }
@@ -88,11 +99,15 @@ public class Class_DAL {
     }
     public ObservableList<Class> GetData(){
         try{
-            LoadData();
+            LoadData("Default");
         }catch (Exception ex){
             JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
         }
 
+        return this.data;
+    }
+    public ObservableList<Class> GetDataByTeacherID(String TeacherID){
+        LoadData(TeacherID);
         return this.data;
     }
 }

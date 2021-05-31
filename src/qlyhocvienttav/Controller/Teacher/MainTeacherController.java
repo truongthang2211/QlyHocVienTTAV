@@ -74,7 +74,9 @@ public class MainTeacherController implements Initializable {
 
     @FXML
     private void ClassButton(ActionEvent event) {
-        ChangeScreen("../../View/Teacher/Class.fxml");
+        ChangeScreen("../../View/Teacher/ClassRoom.fxml");
+        ClassRoomController ctrol = loader.getController();
+        ctrol.setAccount(account);
     }
 
     @FXML
