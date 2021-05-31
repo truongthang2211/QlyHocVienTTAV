@@ -117,7 +117,7 @@ public class Account_DAL {
             while (rs.next()){
                 Date lcdate = rs.getDate(9);
                 String date = lcdate==null?"":lcdate.toString();
-                Account  ac = new Account(rs.getString("username"),rs.getString("password"),rs.getString("kindofaccount"),rs.getString("ID"),rs.getString(7),rs.getString(8),date,rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13));
+                Account  ac = new Account(rs.getString("username"),rs.getString("password"),rs.getString("kindofaccount"),rs.getString("ID"),rs.getString(4),rs.getString(7),rs.getString(8),date,rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13));
                         
                 Data.add(ac);
             }

@@ -23,14 +23,21 @@ public class Account extends Personal_Info{
         this.create_date = create_date;
     }
 
-    public Account(String username, String password, String acctype, String owner, String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
+    public Account(String username, String password, String acctype, String owner,String create_date ,String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
+        super(fullName, sex, dateOfBirth, nationality, address, email, phoneNumber);
+        this.username = username;
+        this.password = password;
+        this.acctype = acctype;
+        this.owner = owner;
+        this.create_date = create_date;
+    }
+    public Account(String username, String password, String acctype, String owner ,String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
         super(fullName, sex, dateOfBirth, nationality, address, email, phoneNumber);
         this.username = username;
         this.password = password;
         this.acctype = acctype;
         this.owner = owner;
     }
-    
     public String getUsername() {
         return username;
     }

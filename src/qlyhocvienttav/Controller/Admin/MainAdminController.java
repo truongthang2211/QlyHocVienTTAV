@@ -84,7 +84,7 @@ public class MainAdminController implements Initializable {
 
     @FXML
     void ViewScheduleButton(ActionEvent event) {
-
+        ChangeScreen("../../View/Admin/ViewSchedule.fxml");
     }
 
     @FXML
