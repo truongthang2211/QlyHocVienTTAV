@@ -154,5 +154,4 @@ public class TeacherManageController implements Initializable {
         acc_dal.Delete(acc);
         data = acc_dal.GetTeacherData();
     }
-    
 }

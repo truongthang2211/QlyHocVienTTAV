@@ -135,7 +135,7 @@
                               <Insets right="200.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXComboBox fx:id="courseCbb" focusColor="#1f1f1f" promptText="Cousre" GridPane.rowIndex="8" />
+                        <JFXComboBox fx:id="courseCbb" focusColor="#1f1f1f" promptText="Course" GridPane.rowIndex="8" />
                         <JFXTextField fx:id="classTxt" focusColor="#1f1f1f" focusTraversable="false" labelFloat="true" promptText="Class" GridPane.rowIndex="9">
                            <GridPane.margin>
                               <Insets right="200.0" />

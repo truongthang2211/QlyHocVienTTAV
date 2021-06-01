@@ -48,7 +48,7 @@
             </GridPane>
             <VBox GridPane.rowIndex="1">
                <children>
-                  <JFXButton onAction="#InfoButton" prefWidth="327.0" styleClass="ListButton" text="Information">
+                  <JFXButton onAction="#InfoButton" prefWidth="327.0" styleClass="ListButton" text="Profile">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="INFO_CIRCLE" size="25" />
                      </graphic>
@@ -81,6 +81,11 @@
                   <JFXButton onAction="#ScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Schedule management">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#TestScheduleButton" prefWidth="327.0" styleClass="ListButton" text="Test schedule Management">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR_CHECK_ALT" size="25" />
                      </graphic>
                   </JFXButton>
                   <JFXButton onAction="#ChangePasswordButton" prefWidth="327.0" styleClass="ListButton" text="Change password">

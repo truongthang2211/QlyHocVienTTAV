@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DTO.Student;
 import qlyhocvienttav.Model.DTO.Teacher;
+import sun.rmi.runtime.Log;
 
 import javax.swing.*;
 import java.sql.Date;
@@ -75,6 +76,50 @@ public class Teacher_DAL {
         return true;
 
     }
+
+    public ObservableList<Teacher> FindData(String dataFind) {
+        if (Data == null){
+            return null;
+        }
+            ObservableList<Teacher> list_teacherFind = FXCollections.observableArrayList();
+
+            Data.forEach((Teacher t) -> {
+                if (t.checkContain(dataFind)){
+                    list_teacherFind.add(t);
+                }
+            });
+
+
+        return list_teacherFind;
+    }
+
+    //    public ObservableList<Teacher> FindData(String data){
+//        ObservableList<Teacher> list_teacher = FXCollections.observableArrayList();
+//        try{
+//            String sql = "SELECT TC.Teacher_ID,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
+//                    "FROM Teacher TC JOIN PERSONAL_INFO IF ON TC.TEACHER_ID = IF.ID \n"
+//                    +"WHERE TC.Teacher_ID Like %" + data + "% \n"
+//                    +"OR FULLNAME Like %" + data + "% \n"
+//                    + "OR Sex Like %" + data + "% \n"
+//                    +"OR DateOfBird Like %" + data + "% \n"
+//                    +"OR Address Like %" + data + "% \n"
+//                    +"OR Email Like %" + data + "% \n"
+//                    +"OR PhoneNumber Like %" + data + "% \n";
+//
+//            ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
+//            while(rs.next()){
+//                Date lcdate = rs.getDate(4);
+//                String date = lcdate==null?"":lcdate.toString();
+//                Teacher t = new Teacher(rs.getString(1),rs.getString(2),rs.getString(3),date,rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+//                list_teacher.add(t);
+//            }
+//
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+//        }
+//        return list_teacher;
+//    }
     public void LoadData(){
 
         try {
