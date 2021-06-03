@@ -77,21 +77,21 @@ public class Teacher_DAL {
 
     }
 
-    public ObservableList<Teacher> FindData(String dataFind) {
-        if (Data == null){
-            return null;
-        }
-            ObservableList<Teacher> list_teacherFind = FXCollections.observableArrayList();
-
-            Data.forEach((Teacher t) -> {
-                if (t.checkContain(dataFind)){
-                    list_teacherFind.add(t);
-                }
-            });
-
-
-        return list_teacherFind;
-    }
+//    public ObservableList<Teacher> FindData(String dataFind) {
+//        if (Data == null){
+//            return null;
+//        }
+//            ObservableList<Teacher> list_teacherFind = FXCollections.observableArrayList();
+//
+//            Data.forEach((Teacher t) -> {
+//                if (t.checkContain(dataFind)){
+//                    list_teacherFind.add(t);
+//                }
+//            });
+//
+//
+//        return list_teacherFind;
+//    }
 
     //    public ObservableList<Teacher> FindData(String data){
 //        ObservableList<Teacher> list_teacher = FXCollections.observableArrayList();

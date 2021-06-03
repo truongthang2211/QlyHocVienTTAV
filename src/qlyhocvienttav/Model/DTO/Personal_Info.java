@@ -92,4 +92,26 @@ public class Personal_Info {
         this.phoneNumber = phoneNumber;
     }
     
+      public boolean checkContain(String str){
+//          id.toUpperCase().contains(str.toUpperCase()) == true 
+//                ||
+        if (
+            fullName.toUpperCase().contains(str.toUpperCase())==true ||
+                sex.toUpperCase().contains(str.toUpperCase())==true ||
+                dateOfBirth.toUpperCase().contains(str.toUpperCase())==true ||
+                nationality.toUpperCase().contains(str.toUpperCase())==true ||
+                address.toUpperCase().contains(str.toUpperCase())==true ||
+                email.toUpperCase().contains(str.toUpperCase())==true ||
+                phoneNumber.toUpperCase().contains(str.toUpperCase())==true
+
+        ){
+   
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+ 
 }

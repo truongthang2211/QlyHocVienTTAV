@@ -14,24 +14,7 @@ public class Teacher extends Personal_Info{
     public void setTeacherId(String _teacherId){
         this.teacherId=_teacherId;
     }
-    public boolean checkContain(String str){
-
-        if (teacherId.toUpperCase().contains(str.toUpperCase()) == true ||
-            fullName.toUpperCase().contains(str.toUpperCase())==true ||
-                sex.toUpperCase().contains(str.toUpperCase())==true ||
-                dateOfBirth.toUpperCase().contains(str.toUpperCase())==true ||
-                nationality.toUpperCase().contains(str.toUpperCase())==true ||
-                address.toUpperCase().contains(str.toUpperCase())==true ||
-                email.toUpperCase().contains(str.toUpperCase())==true ||
-                phoneNumber.toUpperCase().contains(str.toUpperCase())==true
-
-        ){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+  
 
 }
 

@@ -45,6 +45,8 @@ public class TeacherManageController implements Initializable {
     @FXML
     private JFXDatePicker datePicker_DOB;
     @FXML
+    private JFXTextField txt_findData;
+    @FXML
     private JFXComboBox<String> cb_sex;
     @FXML
     private JFXTextField txt_national;
@@ -154,4 +156,21 @@ public class TeacherManageController implements Initializable {
         acc_dal.Delete(acc);
         data = acc_dal.GetTeacherData();
     }
+    @FXML
+    public void FindData(MouseEvent event) {
+        String dataFind = txt_findData.getText();
+        if (data == null){
+            return;
+        }
+        
+            ObservableList<Account> list_teacherFind = FXCollections.observableArrayList();
+
+            data.forEach((Account t) -> {
+                if (t.checkContain(dataFind)){
+                    list_teacherFind.add(t);
+                }
+            });
+            maintable.setItems(list_teacherFind);
+    }
+
 }
