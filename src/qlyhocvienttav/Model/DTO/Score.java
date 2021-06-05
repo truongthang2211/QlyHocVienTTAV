@@ -16,7 +16,7 @@ public class Score {
 
     public Score(String Score_ID, String Student_ID, String TestSchedule_ID, float Listening, float Writing, float Reading, float Speaking) {
         this.Score_ID = Score_ID;
-        this.Student_ID = Student_ID;
+        this.Student_ID = Student_ID;   
         this.TestSchedule_ID = TestSchedule_ID;
         this.Listening = Listening;
         this.Writing = Writing;

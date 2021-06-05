@@ -22,6 +22,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Model.DAL.Account_DAL;
@@ -158,7 +160,11 @@ public class TeacherManageController implements Initializable {
     }
     @FXML
     public void FindData(MouseEvent event) {
-        String dataFind = txt_findData.getText();
+        
+    }
+    @FXML
+    private void Search(KeyEvent event) {
+         String dataFind = txt_findData.getText();
         if (data == null){
             return;
         }
