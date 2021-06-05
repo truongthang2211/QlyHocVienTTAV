@@ -77,7 +77,7 @@ public class Account_DAL {
         try {
             Object arg_acc[]= {acc.getPassword(),acc.getAcctype(),acc.getOwner(),acc.getUsername()};
             String sql;
-            sql = String.format("UPDATE Account SET Password = '%s', acctype = '%s', Owner_ID = '%s' WHERE username = '%s'", arg_acc);
+            sql = String.format("UPDATE Account SET Password = '%s', kindOfAccount  = '%s', Owner_ID = '%s' WHERE username = '%s'", arg_acc);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){

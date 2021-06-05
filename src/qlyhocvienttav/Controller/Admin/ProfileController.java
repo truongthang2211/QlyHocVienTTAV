@@ -66,6 +66,7 @@ public class ProfileController implements Initializable {
         txt_Sex.setText(this.account.getSex());
         txt_Role.setText(this.account.getAcctype());
         txt_Owner.setText(this.account.getOwner());
+        txt_Createdate.setText(this.account.getCreate_date());
     }
 
     public void setAccount(Account account) {
