@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:controller="qlyhocvienttav.Controller.Teacher.ScoreManageController" prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.Teacher.ScoreManageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
@@ -61,7 +61,7 @@
             </GridPane>
          </children>
       </GridPane>
-      <GridPane GridPane.columnIndex="1">
+      <GridPane minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -95,32 +95,32 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="StudentID_Txt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Student ID">
+                        <JFXTextField fx:id="StudentID_Txt" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Student ID">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="StudentName_Txt" editable="false" focusColor="#1f1f1f" focusTraversable="false" labelFloat="true" promptText="Sdtudent name" GridPane.rowIndex="1">
+                        <JFXTextField fx:id="StudentName_Txt" editable="false" focusColor="#1f1f1f" focusTraversable="false" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Sdtudent name" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets right="150.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="Listening_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Listening" GridPane.rowIndex="2">
+                        <JFXTextField fx:id="Listening_Txt" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Listening" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets right="300.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="Writting_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Writing" GridPane.rowIndex="3">
+                        <JFXTextField fx:id="Writting_Txt" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Writing" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets right="300.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="Reading_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Reading" GridPane.rowIndex="4">
+                        <JFXTextField fx:id="Reading_Txt" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Reading" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets right="300.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="Speaking_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Speaking" GridPane.rowIndex="5">
+                        <JFXTextField fx:id="Speaking_Txt" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Speaking" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets right="300.0" />
                            </GridPane.margin>
@@ -137,7 +137,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXButton fx:id="EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <JFXButton fx:id="EditBtn" minHeight="-Infinity" minWidth="-Infinity" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>
