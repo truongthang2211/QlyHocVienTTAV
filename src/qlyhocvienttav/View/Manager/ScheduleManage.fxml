@@ -99,31 +99,31 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="ScheduleIDTxt" disable="true" focusColor="#1f1f1f" promptText="Schedule ID">
+                        <JFXTextField fx:id="ScheduleIDTxt" disable="true" focusColor="#1f1f1f" minHeight="-Infinity" minWidth="-Infinity" promptText="Schedule ID">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXComboBox fx:id="DayCbb" focusColor="#1f1f1f" prefHeight="25.0" prefWidth="100.0" promptText="Day" GridPane.rowIndex="1" />
-                        <JFXComboBox fx:id="ShiftCbb" focusColor="#1f1f1f" prefHeight="25.0" prefWidth="150.0" promptText="Ca học" GridPane.rowIndex="2" />
-                        <JFXTextField fx:id="ClassnameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Class name" GridPane.rowIndex="4">
+                        <JFXComboBox fx:id="DayCbb" focusColor="#1f1f1f" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" promptText="Day" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="ShiftCbb" focusColor="#1f1f1f" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Ca học" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="ClassnameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Class name" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets right="100.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="RoomnameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Room name" GridPane.rowIndex="6">
+                        <JFXTextField fx:id="RoomnameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Room name" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets right="100.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="TeachernameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Teacher fullname" GridPane.rowIndex="8">
+                        <JFXTextField fx:id="TeachernameTxt" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Teacher fullname" GridPane.rowIndex="8">
                            <GridPane.margin>
                               <Insets right="100.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXComboBox fx:id="ClassIDCbb" prefWidth="100.0" promptText="Class ID" GridPane.rowIndex="3" />
-                        <JFXComboBox fx:id="RoomIDCbb" prefWidth="100.0" promptText="Room ID" GridPane.rowIndex="5" />
-                        <JFXComboBox fx:id="TeacherIDCbb" prefWidth="100.0" promptText="Teacher ID" GridPane.rowIndex="7" />
+                        <JFXComboBox fx:id="ClassIDCbb" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" promptText="Class ID" GridPane.rowIndex="3" />
+                        <JFXComboBox fx:id="RoomIDCbb" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" promptText="Room ID" GridPane.rowIndex="5" />
+                        <JFXComboBox fx:id="TeacherIDCbb" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" promptText="Teacher ID" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
@@ -136,9 +136,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXButton onAction="#AddBtn" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
-                        <JFXButton onAction="#EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton onAction="#DeleteBtn" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#AddBtn" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#DeleteBtn" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

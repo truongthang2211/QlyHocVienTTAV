@@ -98,21 +98,21 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <JFXTextField fx:id="testscheduleIDTxt" focusColor="#1f1f1f" promptText="Test Schedule ID">
+                                <JFXTextField fx:id="testscheduleIDTxt" focusColor="#1f1f1f" minHeight="-Infinity" minWidth="-Infinity" promptText="Test Schedule ID">
                                     <GridPane.margin>
                                         <Insets right="250.0" />
                                     </GridPane.margin>
                                 </JFXTextField>
-                                <JFXComboBox fx:id="shiftCbb" focusColor="#1f1f1f" prefHeight="25.0" prefWidth="256.0" promptText="Ca thi" GridPane.rowIndex="2" />
-                                <JFXTextField fx:id="kindoftestTxt" focusColor="#1f1f1f" labelFloat="true" promptText="Kind of Test" GridPane.rowIndex="3">
+                                <JFXComboBox fx:id="shiftCbb" focusColor="#1f1f1f" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" promptText="Ca thi" GridPane.rowIndex="2" />
+                                <JFXTextField fx:id="kindoftestTxt" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Kind of Test" GridPane.rowIndex="3">
                                     <GridPane.margin>
                                         <Insets right="100.0" />
                                     </GridPane.margin>
                                 </JFXTextField>
-                                <JFXDatePicker fx:id="DatePicker" promptText="Date" GridPane.rowIndex="1" />
-                        <JFXComboBox fx:id="CourseCbb" prefHeight="25.0" prefWidth="145.0" promptText="Course ID" GridPane.rowIndex="5" />
-                        <JFXComboBox fx:id="Room_Cbb" prefWidth="145.0" promptText="Room ID" GridPane.rowIndex="4" />
-                        <JFXComboBox fx:id="Teacher_Cbb" prefHeight="25.0" prefWidth="145.0" promptText="Teacher ID" GridPane.rowIndex="6" />
+                                <JFXDatePicker fx:id="DatePicker" minHeight="-Infinity" minWidth="-Infinity" promptText="Date" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="CourseCbb" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="145.0" promptText="Course ID" GridPane.rowIndex="5" />
+                        <JFXComboBox fx:id="Room_Cbb" minHeight="-Infinity" minWidth="-Infinity" prefWidth="145.0" promptText="Room ID" GridPane.rowIndex="4" />
+                        <JFXComboBox fx:id="Teacher_Cbb" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="145.0" promptText="Teacher ID" GridPane.rowIndex="6" />
                             </children>
                         </GridPane>
                         <GridPane GridPane.rowIndex="1">
@@ -125,9 +125,9 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <JFXButton onAction="#AddBtn" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
-                                <JFXButton onAction="#EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                                <JFXButton onAction="#DeleteBtn" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                                <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#AddBtn" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
+                                <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#DeleteBtn" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                             </children>
                         </GridPane>
                     </children>

@@ -98,30 +98,30 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="txt_FeeID" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Fee ID">
+                        <JFXTextField fx:id="txt_FeeID" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Fee ID">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txt_StudentId" focusColor="#1f1f1f" labelFloat="true" promptText="Student ID" GridPane.rowIndex="1">
+                        <JFXTextField fx:id="txt_StudentId" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Student ID" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txt_FullName" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Full name" GridPane.rowIndex="2">
+                        <JFXTextField fx:id="txt_FullName" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Full name" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets right="50.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="Txt_FeePay" focusColor="#1f1f1f" labelFloat="true" onKeyTyped="#ActionKeyTypeFeePay" promptText="Số tiền đóng" GridPane.rowIndex="4">
+                        <JFXTextField fx:id="Txt_FeePay" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#ActionKeyTypeFeePay" promptText="Số tiền đóng" GridPane.rowIndex="4">
                            <padding>
                               <Insets right="50.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXDatePicker fx:id="datePickerOfComplete" defaultColor="#1f1f1f" prefHeight="25.0" prefWidth="206.0" promptText="Thời gian" showWeekNumbers="true" GridPane.rowIndex="6" />
-                        <JFXTextField fx:id="txt_Course" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Course Name" GridPane.rowIndex="3" />
-                        <JFXTextField fx:id="Txt_amountOfFee" disable="true" focusColor="#1f1f1f" labelFloat="true" promptText="Số tiền cần đóng" GridPane.rowIndex="5" />
-                        <JFXComboBox fx:id="Cbb_Status" onAction="#StatusAction" prefHeight="25.0" prefWidth="113.0" GridPane.rowIndex="7" />
+                        <JFXDatePicker fx:id="datePickerOfComplete" defaultColor="#1f1f1f" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="206.0" promptText="Thời gian" showWeekNumbers="true" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="txt_Course" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Course Name" GridPane.rowIndex="3" />
+                        <JFXTextField fx:id="Txt_amountOfFee" disable="true" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Số tiền cần đóng" GridPane.rowIndex="5" />
+                        <JFXComboBox fx:id="Cbb_Status" minHeight="-Infinity" minWidth="-Infinity" onAction="#StatusAction" prefHeight="25.0" prefWidth="113.0" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
@@ -134,9 +134,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXButton onAction="#AddButton" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
-                        <JFXButton onAction="#EditButton" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton onAction="#DeleteButton" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#AddButton" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#EditButton" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#DeleteButton" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>
