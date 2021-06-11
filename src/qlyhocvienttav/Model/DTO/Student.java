@@ -88,5 +88,29 @@ public class Student extends Personal_Info{
     public void setClass_id(String class_id) {
         this.class_id = class_id;
     }
+
+    @Override
+    public boolean checkContain(String str) {
+         if (
+            fullName.toUpperCase().contains(str.toUpperCase())==true ||
+                sex.toUpperCase().contains(str.toUpperCase())==true ||
+                dateOfBirth.toUpperCase().contains(str.toUpperCase())==true ||
+                nationality.toUpperCase().contains(str.toUpperCase())==true ||
+                address.toUpperCase().contains(str.toUpperCase())==true ||
+                email.toUpperCase().contains(str.toUpperCase())==true ||
+                phoneNumber.toUpperCase().contains(str.toUpperCase())==true||
+                class_id.toUpperCase().contains(str.toUpperCase())==true ||
+                course_id.toUpperCase().contains(str.toUpperCase())==true ||
+                course_name.toUpperCase().contains(str.toUpperCase())==true ||
+                String.valueOf(amountOfFee).toUpperCase().contains(str.toUpperCase())==true
+        ){
+   
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
 }

@@ -183,6 +183,23 @@ public class StudentFeeManageController implements Initializable {
            Txt_FeePay.setText(Txt_amountOfFee.getText());
         }
     }
+    
+    @FXML
+    private void Search(KeyEvent event) {
+         String dataFind = Txt_Search.getText();
+        if (data == null){
+            return;
+        }
+        
+            ObservableList<StudentFee> list_StudentFeeFind = FXCollections.observableArrayList();
+
+            data.forEach((StudentFee t) -> {
+                if (t.checkContain(dataFind)){
+                    list_StudentFeeFind.add(t);
+                }
+            });
+            maintable.setItems(list_StudentFeeFind);
+    }
 
     @FXML
     private void ActionKeyTypeFeePay(KeyEvent event) {

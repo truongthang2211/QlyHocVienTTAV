@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import qlyhocvienttav.Model.DAL.Class_DAL;
 import qlyhocvienttav.Model.DAL.Room_DAL;
@@ -42,6 +43,8 @@ public class ScheduleManageController implements Initializable {
     private TableView<Schedule> maintable;
     @FXML
     private JFXTextField ScheduleIDTxt;
+    @FXML
+    private JFXTextField txt_findData;
     @FXML
     private JFXComboBox<String> DayCbb;
     @FXML
@@ -161,5 +164,21 @@ public class ScheduleManageController implements Initializable {
         ObservableList<String> ShiftList = FXCollections.observableArrayList("9:00 - 10:30", "13:00 - 14:30", "15:00 - 16:30", "17:30 - 19:00", "19:15 - 20:45");
         DayCbb.setItems(DayList);
         ShiftCbb.setItems(ShiftList);
+    }
+     @FXML
+    private void Search(KeyEvent event) {
+         String dataFind = txt_findData.getText();
+        if (data == null){
+            return;
+        }
+        
+            ObservableList<Schedule> list_ScheduleFind = FXCollections.observableArrayList();
+
+            data.forEach((Schedule t) -> {
+                if (t.checkContain(dataFind)){
+                    list_ScheduleFind.add(t);
+                }
+            });
+            maintable.setItems(list_ScheduleFind);
     }
 }

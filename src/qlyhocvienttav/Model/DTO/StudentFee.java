@@ -71,7 +71,24 @@ public class StudentFee extends Student{
     }
 
    
-    
+    public boolean checkContain(String str){
+//          id.toUpperCase().contains(str.toUpperCase()) == true 
+//                ||
+
+
+        if (
+                idFee.toUpperCase().contains(str.toUpperCase())==true ||    
+                String.valueOf(amountOfFeeIsComplete).toUpperCase().contains(str.toUpperCase())==true ||
+                status.toUpperCase().contains(str.toUpperCase())==true ||
+                dateOfCompleteFee.toUpperCase().contains(str.toUpperCase())==true
+        ){
+
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     
 

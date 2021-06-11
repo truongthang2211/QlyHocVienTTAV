@@ -52,7 +52,7 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </TableView>
-                  <JFXTextField maxWidth="-Infinity" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXTextField fx:id="txt_findData" maxWidth="-Infinity" onKeyReleased="#Search" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>

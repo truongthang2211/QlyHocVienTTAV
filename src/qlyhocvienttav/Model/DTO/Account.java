@@ -77,5 +77,26 @@ public class Account extends Personal_Info{
     public void setCreate_date(String create_date) {
         this.create_date = create_date;
     }
+
+    @Override
+    public boolean checkContain(String str) {
+         if (
+            fullName.toUpperCase().contains(str.toUpperCase())==true ||
+                sex.toUpperCase().contains(str.toUpperCase())==true ||
+                dateOfBirth.toUpperCase().contains(str.toUpperCase())==true ||
+                nationality.toUpperCase().contains(str.toUpperCase())==true ||
+                address.toUpperCase().contains(str.toUpperCase())==true ||
+                email.toUpperCase().contains(str.toUpperCase())==true ||
+                phoneNumber.toUpperCase().contains(str.toUpperCase())==true
+
+        ){
+   
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
 }

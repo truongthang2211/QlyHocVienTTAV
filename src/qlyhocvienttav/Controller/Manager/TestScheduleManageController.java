@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Model.DAL.Course_DAL;
@@ -47,7 +48,7 @@ public class TestScheduleManageController implements Initializable {
     @FXML
     private TableView<TestSchedule> maintable;
     @FXML
-    private JFXTextField searchTxt;
+    private JFXTextField Txt_Search;
     @FXML
     private JFXComboBox<String> CourseCbb;
     
@@ -197,5 +198,21 @@ public class TestScheduleManageController implements Initializable {
             }
         }
         return true;
+    }
+     @FXML
+    private void Search(KeyEvent event) {
+         String dataFind = Txt_Search.getText();
+        if (data == null){
+            return;
+        }
+        
+            ObservableList<TestSchedule> list_TestScheduleFind = FXCollections.observableArrayList();
+
+            data.forEach((TestSchedule t) -> {
+                if (t.checkContain(dataFind)){
+                    list_TestScheduleFind.add(t);
+                }
+            });
+            maintable.setItems(list_TestScheduleFind);
     }
 }

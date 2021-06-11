@@ -104,5 +104,31 @@ public class Schedule {
     public void setTeacherName(String TeacherName) {
         this.TeacherName = TeacherName;
     }
-    
+    public boolean checkContain(String str){
+//          id.toUpperCase().contains(str.toUpperCase()) == true 
+//                ||
+//    String ScheduleID, Day ,  Shift , ClassId, ClassName, RoomId, RoomName, TeacherId, TeacherName;
+
+
+        if (
+            ScheduleID.toUpperCase().contains(str.toUpperCase())==true ||
+                Day.toUpperCase().contains(str.toUpperCase())==true ||
+                Shift.toUpperCase().contains(str.toUpperCase())==true ||
+                ClassId.toUpperCase().contains(str.toUpperCase())==true ||
+                ClassName.toUpperCase().contains(str.toUpperCase())==true ||
+                RoomName.toUpperCase().contains(str.toUpperCase())==true ||
+                RoomId.toUpperCase().contains(str.toUpperCase())==true ||
+                TeacherId.toUpperCase().contains(str.toUpperCase())==true ||
+                TeacherName.toUpperCase().contains(str.toUpperCase())==true
+                
+
+        ){
+   
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
