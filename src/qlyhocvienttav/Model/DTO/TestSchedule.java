@@ -78,5 +78,26 @@ public class TestSchedule {
     public void setShift(String Shift){
         this.Shift = Shift;
     }
-    
+    public boolean checkContain(String str){
+//          id.toUpperCase().contains(str.toUpperCase()) == true 
+//                ||
+
+        if (
+                TestSche_ID.toUpperCase().contains(str.toUpperCase())==true ||
+                Teacher_ID.toUpperCase().contains(str.toUpperCase())==true ||
+                Course_ID.toUpperCase().contains(str.toUpperCase())==true ||
+                Room_ID.toUpperCase().contains(str.toUpperCase())==true ||
+                Loai_KT.toUpperCase().contains(str.toUpperCase())==true ||
+                TestDate.toUpperCase().contains(str.toUpperCase())==true ||
+                Shift.toUpperCase().contains(str.toUpperCase())==true
+
+        ){
+   
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

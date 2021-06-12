@@ -24,6 +24,27 @@ public class Manager extends Personal_Info {
     public void setManager_ID(String manager_ID) {
         this.manager_ID = manager_ID;
     }
+
+    @Override
+    public boolean checkContain(String str) {
+         if (
+            fullName.toUpperCase().contains(str.toUpperCase())==true ||
+                sex.toUpperCase().contains(str.toUpperCase())==true ||
+                dateOfBirth.toUpperCase().contains(str.toUpperCase())==true ||
+                nationality.toUpperCase().contains(str.toUpperCase())==true ||
+                address.toUpperCase().contains(str.toUpperCase())==true ||
+                email.toUpperCase().contains(str.toUpperCase())==true ||
+                phoneNumber.toUpperCase().contains(str.toUpperCase())==true
+
+        ){
+   
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
     
 }

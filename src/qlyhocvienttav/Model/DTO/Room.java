@@ -35,7 +35,20 @@ public class Room {
         this.capacity = capacity;
     }
 
-
+    public boolean checkContain(String str){
+//          id.toUpperCase().contains(str.toUpperCase()) == true 
+//                ||
+        if (
+            roomId.toUpperCase().contains(str.toUpperCase())==true ||
+            roomName.toUpperCase().contains(str.toUpperCase())==true ||
+            String.valueOf(capacity).toUpperCase().contains(str.toUpperCase())==true
+        ){        
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 
 

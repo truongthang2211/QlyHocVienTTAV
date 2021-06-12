@@ -17,8 +17,11 @@ import qlyhocvienttav.Model.DTO.Class;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.scene.input.KeyEvent;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Model.DAL.Course_DAL;
+import qlyhocvienttav.Model.DTO.Account;
 import qlyhocvienttav.Model.DTO.Course;
 
 
@@ -33,7 +36,8 @@ public class ClassManagerController implements Initializable {
 
     @FXML
     private JFXTextField txt_classId;
-
+    @FXML
+    private JFXTextField txt_findData;
     @FXML
     private JFXTextField txt_nameClass;
 
@@ -138,5 +142,22 @@ public class ClassManagerController implements Initializable {
             Cbb_CourseID.getItems().add(cr.getCourse_id());
         });
         Cbb_CourseID.getSelectionModel().select(0);
+    }
+    
+    @FXML
+    private void Search(KeyEvent event) {
+         String dataFind = txt_findData.getText();
+        if (data == null){
+            return;
+        }
+        
+            ObservableList<Class> list_ClassFind = FXCollections.observableArrayList();
+
+            data.forEach((Class t) -> {
+                if (t.checkContain(dataFind)){
+                    list_ClassFind.add(t);
+                }
+            });
+            maintable.setItems(list_ClassFind);
     }
 }

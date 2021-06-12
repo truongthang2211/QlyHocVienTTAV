@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Model.DAL.Course_DAL;
@@ -58,6 +59,8 @@ public class StudentManageController implements Initializable {
     private JFXTextField addressTxt;
     @FXML
     private JFXTextField phonenumberTxt;
+    @FXML
+    private JFXTextField Txt_Search;
     @FXML
     private JFXTextField classTxt;
     @FXML
@@ -176,6 +179,21 @@ public class StudentManageController implements Initializable {
         return true;
     }
     
-    
+    @FXML
+    private void Search(KeyEvent event) {
+         String dataFind = Txt_Search.getText();
+        if (data == null){
+            return;
+        }
+        
+            ObservableList<Student> list_StudentFind = FXCollections.observableArrayList();
+
+            data.forEach((Student t) -> {
+                if (t.checkContain(dataFind)){
+                    list_StudentFind.add(t);
+                }
+            });
+            maintable.setItems(list_StudentFind);
+    }
     
 }

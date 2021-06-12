@@ -63,6 +63,29 @@ public class Class {
     public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
+    
+    
+    public boolean checkContain(String str){
+//          id.toUpperCase().contains(str.toUpperCase()) == true 
+//                ||
 
+
+        if (
+            classId.toUpperCase().contains(str.toUpperCase())==true ||
+                className.toUpperCase().contains(str.toUpperCase())==true ||
+                String.valueOf(numberOfPeople).toUpperCase().contains(str.toUpperCase())==true ||
+                String.valueOf(maxNumberOfPeople).toUpperCase().contains(str.toUpperCase())==true ||
+                String.valueOf(BasicGrade).toUpperCase().contains(str.toUpperCase())==true ||
+                courseId.toUpperCase().contains(str.toUpperCase())==true
+
+        ){
+   
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }

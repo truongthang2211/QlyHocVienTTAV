@@ -1,5 +1,6 @@
 package qlyhocvienttav.Controller.Manager;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,12 +13,15 @@ import qlyhocvienttav.Model.DTO.Teacher;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.scene.input.KeyEvent;
 
 public class ViewTeacherController implements Initializable {
 
     public ObservableList<Teacher> data;
     Teacher_DAL teacher_dal= new Teacher_DAL();
-
+    @FXML
+    private JFXTextField Txt_Search;
     @FXML
     private Label topcenterlabel;
 
@@ -51,5 +55,22 @@ public class ViewTeacherController implements Initializable {
 
         data = teacher_dal.GetData();
         maintable.setItems(data);
+    }
+    
+    @FXML
+    private void Search(KeyEvent event) {
+         String dataFind = Txt_Search.getText();
+        if (data == null){
+            return;
+        }
+        
+            ObservableList<Teacher> list_TeacherFind = FXCollections.observableArrayList();
+
+            data.forEach((Teacher t) -> {
+                if (t.checkContain(dataFind)){
+                    list_TeacherFind.add(t);
+                }
+            });
+            maintable.setItems(list_TeacherFind);
     }
 }

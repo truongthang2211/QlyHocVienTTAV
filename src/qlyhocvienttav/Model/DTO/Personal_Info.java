@@ -9,7 +9,7 @@ package qlyhocvienttav.Model.DTO;
  *
  * @author Thang
  */
-public class Personal_Info {
+public abstract class Personal_Info {
     String id, fullName, sex,dateOfBirth, nationality,address,email,phoneNumber;
     public Personal_Info( String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
         this.fullName = fullName;
@@ -92,26 +92,6 @@ public class Personal_Info {
         this.phoneNumber = phoneNumber;
     }
     
-      public boolean checkContain(String str){
-//          id.toUpperCase().contains(str.toUpperCase()) == true 
-//                ||
-        if (
-            fullName.toUpperCase().contains(str.toUpperCase())==true ||
-                sex.toUpperCase().contains(str.toUpperCase())==true ||
-                dateOfBirth.toUpperCase().contains(str.toUpperCase())==true ||
-                nationality.toUpperCase().contains(str.toUpperCase())==true ||
-                address.toUpperCase().contains(str.toUpperCase())==true ||
-                email.toUpperCase().contains(str.toUpperCase())==true ||
-                phoneNumber.toUpperCase().contains(str.toUpperCase())==true
-
-        ){
-   
-            
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    public abstract boolean checkContain(String str);
  
 }
