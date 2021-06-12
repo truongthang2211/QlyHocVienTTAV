@@ -212,3 +212,25 @@ insert into admin values ('ADMIN01');
 insert into account values ('admin','admin','Admin',sysdate,'ADMIN01');
 
 create SEQUENCE seq_Schedule_id start with 1 increment by 1;
+
+--triggger
+
+create or replace trigger std_class 
+after insert or update on Test_Schedule   
+for each row
+declare
+    tongdiem test_schedule.speaking%type;
+    bsgr class.basic_grade%type;
+    clsid class.class_id%type;
+begin
+    select sum(speaking, reading, writing, listening) into tongdiem
+    from test_schedule 
+    select class_id,basic_grade into clsid,bsgr
+    from class
+    if((tongdiem/4)  = bsgr then
+    begin 
+    update student 
+    set class_id=clsid
+    where student.student_id = test_schedule.student_id and test_schedule.testchedule_id=class.testchedule_id
+    end;
+end;
