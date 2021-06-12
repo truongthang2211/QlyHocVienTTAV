@@ -41,8 +41,8 @@ public class ViewRoomController implements Initializable {
         TableColumn capacity = new TableColumn("Suc chua");
         
         
-        roomid.setCellValueFactory(new PropertyValueFactory<Class,String>("Room_ID"));
-        roomname.setCellValueFactory(new PropertyValueFactory<>("roomname"));
+        roomid.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+        roomname.setCellValueFactory(new PropertyValueFactory<>("roomName"));
         capacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         
          maintable.getColumns().addAll(roomid,roomname,capacity);

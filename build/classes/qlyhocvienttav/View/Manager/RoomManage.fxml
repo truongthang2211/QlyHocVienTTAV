@@ -92,17 +92,17 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="txt_roomId" focusColor="#1f1f1f" labelFloat="true" promptText="Room ID">
+                        <JFXTextField fx:id="txt_roomId" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Room ID">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txt_nameRoom" focusColor="#1f1f1f" labelFloat="true" promptText="Name" GridPane.rowIndex="1">
+                        <JFXTextField fx:id="txt_nameRoom" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Name" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets right="150.0" />
                            </GridPane.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txt_capacity" focusColor="#1f1f1f" labelFloat="true" promptText="Sức chứa" GridPane.rowIndex="2">
+                        <JFXTextField fx:id="txt_capacity" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Sức chứa" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets right="300.0" />
                            </GridPane.margin>
@@ -119,9 +119,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXButton styleClass="AddButton" onAction="#AddBtn" text="Add" GridPane.halignment="CENTER" />
-                        <JFXButton styleClass="EditButton" onAction="#EditBtn" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton styleClass="DeleteButton" onAction="#DeleteBtn" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#AddBtn" styleClass="AddButton" text="Add" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#EditBtn" styleClass="EditButton" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <JFXButton minHeight="-Infinity" minWidth="-Infinity" onAction="#DeleteBtn" styleClass="DeleteButton" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

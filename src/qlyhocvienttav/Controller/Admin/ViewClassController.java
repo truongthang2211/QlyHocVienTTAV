@@ -43,12 +43,12 @@ public class ViewClassController implements Initializable {
         TableColumn courseID = new TableColumn("Course ID");
         TableColumn basic_grade = new TableColumn("Diem dau vao");
         
-        classId.setCellValueFactory(new PropertyValueFactory<Class,String>("Class_ID"));
-        classname.setCellValueFactory(new PropertyValueFactory<>("Classname"));
-        numofPeople.setCellValueFactory(new PropertyValueFactory<>("numofpeople"));
-        MaximumPeople.setCellValueFactory(new PropertyValueFactory<>("maxnumberofpeople"));
-        courseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
-        basic_grade.setCellValueFactory(new PropertyValueFactory<>("basic_grade"));
+        classId.setCellValueFactory(new PropertyValueFactory<Class,String>("classId"));
+        classname.setCellValueFactory(new PropertyValueFactory<>("className"));
+        numofPeople.setCellValueFactory(new PropertyValueFactory<>("numberOfPeople"));
+        MaximumPeople.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPeople"));
+        courseID.setCellValueFactory(new PropertyValueFactory<>("courseId"));
+        basic_grade.setCellValueFactory(new PropertyValueFactory<>("BasicGrade"));
         
         maintable.getColumns().addAll(classId,classname,numofPeople,MaximumPeople,courseID,basic_grade);
 
