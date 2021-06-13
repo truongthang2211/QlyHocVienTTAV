@@ -99,8 +99,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <JFXTextField fx:id="idTxt" editable="false" focusColor="#1f1f1f" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" promptText="ID ">
@@ -139,16 +137,6 @@
                         <JFXTextField fx:id="classTxt" focusColor="#1f1f1f" focusTraversable="false" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Class" GridPane.rowIndex="9">
                            <GridPane.margin>
                               <Insets right="200.0" />
-                           </GridPane.margin>
-                        </JFXTextField>
-                        <JFXTextField focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Cấm thi" GridPane.rowIndex="10">
-                           <GridPane.margin>
-                              <Insets right="200.0" />
-                           </GridPane.margin>
-                        </JFXTextField>
-                        <JFXTextField fx:id="GhichuTxt" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Ghi chú" GridPane.rowIndex="11">
-                           <GridPane.margin>
-                              <Insets right="50.0" />
                            </GridPane.margin>
                         </JFXTextField>
                      </children>
