@@ -90,7 +90,8 @@ public class MainTeacherController implements Initializable {
     @FXML
     private void ChangePasswordButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/ChangePass.fxml");
-        
+        ChangePassController ctro = loader.getController();
+        ctro.SetAccount(account);
     }
 
     @FXML

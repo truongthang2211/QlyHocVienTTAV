@@ -3,9 +3,7 @@ package qlyhocvienttav.Model.DAL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import qlyhocvienttav.Controller.LoginViewController;
-import qlyhocvienttav.Model.DTO.Student;
 import qlyhocvienttav.Model.DTO.Teacher;
-import sun.rmi.runtime.Log;
 
 import javax.swing.*;
 import java.sql.Date;

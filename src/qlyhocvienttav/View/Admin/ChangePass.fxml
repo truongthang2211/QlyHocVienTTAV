@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:controller="qlyhocvienttav.Controller.Admin.ChangePassController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1476.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qlyhocvienttav.Controller.Admin.ChangePassController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
@@ -46,9 +46,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXPasswordField focusColor="#1f1f1f" labelFloat="true" promptText="Current password" />
-                  <JFXPasswordField focusColor="#1f1f1f" labelFloat="true" promptText="New password" GridPane.rowIndex="1" />
-                  <JFXPasswordField focusColor="#1f1f1f" labelFloat="true" promptText="Confirm password" GridPane.rowIndex="2" />
+                  <JFXPasswordField fx:id="Current_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Current password" />
+                  <JFXPasswordField fx:id="New_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="New password" GridPane.rowIndex="1" />
+                  <JFXPasswordField fx:id="Confirm_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Confirm password" GridPane.rowIndex="2" />
                   <JFXButton onAction="#SaveButton" prefHeight="48.0" prefWidth="134.0" styleClass="LoginButton" text="SAVE" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                </children>
             </GridPane>

@@ -13,6 +13,31 @@ public class Analysis {
     String CourseName,CourseID;
     double Revenue;
     public double jan,feb,march,april,may,jun,july,aug,sep,oc,no,dec;
+    
+    String ClassName;
+    int SoLuongHS;
+
+    public String getClassName() {
+        return ClassName;
+    }
+
+    public void setClassName(String ClassName) {
+        this.ClassName = ClassName;
+    }
+
+    public int getSoLuongHS() {
+        return SoLuongHS;
+    }
+
+    public void setSoLuongHS(int SoLuongHS) {
+        this.SoLuongHS = SoLuongHS;
+    }
+
+    public Analysis(String ClassName, int SoLuongHS) {
+        this.ClassName = ClassName;
+        this.SoLuongHS = SoLuongHS;
+    }
+    
     public String getCourseName() {
         return CourseName;
     }

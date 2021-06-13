@@ -38,6 +38,8 @@ public class MainAdminController implements Initializable {
     @FXML
     void ChangePasswordButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/ChangePass.fxml");
+        ChangePassController ctro = loader.getController();
+        ctro.SetAccount(account);
     }
 
     @FXML

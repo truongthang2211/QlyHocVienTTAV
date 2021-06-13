@@ -1,5 +1,6 @@
 package qlyhocvienttav.Model.DAL;
 
+import java.io.InputStream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import qlyhocvienttav.Controller.LoginViewController;
@@ -13,6 +14,7 @@ import qlyhocvienttav.Model.DTO.Analysis;
 
 public class Analysis_DAL {
     public Analysis_DAL(){};
+    public InputStream inPutStream;
     ObservableList<Analysis> data = FXCollections.observableArrayList();
 
   
@@ -31,6 +33,7 @@ public class Analysis_DAL {
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Analysis anal = new Analysis(rs.getString(1),rs.getString(2),rs.getDouble(3));
+                inPutStream = rs.getBinaryStream(1);
                 data.add(anal);
             }
         } catch (SQLException ex) {
@@ -84,6 +87,26 @@ public class Analysis_DAL {
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Analysis anal = new Analysis(rs.getDouble(1),rs.getDouble(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getDouble(9),rs.getDouble(10),rs.getDouble(11),rs.getDouble(12));
+                
+                data.add(anal);
+            }
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return this.data;
+    }
+    public ObservableList<Analysis> GetClassData(){
+        try {
+            this.data.clear();
+            String sql = "SELECT cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade\n" +
+"                FROM class cl join (select cl.class_id , count (st.student_id) SL\n" +
+"                                    from student st right join class cl on st.class_id = cl.class_id\n" +
+"                                    group by cl.class_id) a on cl.class_id = a.class_id";
+            ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                Analysis anal = new Analysis(rs.getString(2),rs.getInt(3));
                 data.add(anal);
             }
         } catch (SQLException ex) {
