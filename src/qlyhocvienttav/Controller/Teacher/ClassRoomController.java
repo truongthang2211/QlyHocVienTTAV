@@ -50,7 +50,7 @@ public class ClassRoomController implements Initializable {
         Platform.runLater(() ->{
             CreateClassTable();
             CreateStudentTable();
-            student_data = new Student_DAL().GetData();
+            //student_data = new Student_DAL().GetData();
         });
     }    
 
