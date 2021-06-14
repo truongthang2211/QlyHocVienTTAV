@@ -50,7 +50,7 @@ public class ClassRoomController implements Initializable {
         Platform.runLater(() ->{
             CreateClassTable();
             CreateStudentTable();
-            student_data = new Student_DAL().GetData();
+            //student_data = new Student_DAL().GetData();
         });
     }    
 
@@ -61,9 +61,9 @@ public class ClassRoomController implements Initializable {
         TableColumn classId = new TableColumn("ID Class");
         TableColumn nameClass = new TableColumn("Name Class");
         TableColumn courseId = new TableColumn("Id Course");
-        TableColumn numberOfPeople = new TableColumn("numberOfPeople");
-        TableColumn maxNumberOfPeople = new TableColumn("maxNumberOfPeople");
-        TableColumn BasicGrade = new TableColumn("BasicGrade");
+        TableColumn numberOfPeople = new TableColumn("Amount");
+        TableColumn maxNumberOfPeople = new TableColumn("Capacity");
+        TableColumn BasicGrade = new TableColumn("Basic Grade");
 
         classId.setCellValueFactory(new PropertyValueFactory<>("classId"));
         nameClass.setCellValueFactory(new PropertyValueFactory<>("className"));
@@ -88,13 +88,13 @@ public class ClassRoomController implements Initializable {
         TableColumn st_id = new TableColumn("Student ID");
         TableColumn class_id = new TableColumn("Class ID");
         TableColumn course_id = new TableColumn("Course ID");
-        TableColumn fullname = new TableColumn("Ho ten");
-        TableColumn Sex = new TableColumn("Gioi tinh");
-        TableColumn DateofBirth = new TableColumn("Ngay sinh");
-        TableColumn national = new TableColumn("Quoc tich");
-        TableColumn address = new TableColumn("Dia chi");
+        TableColumn fullname = new TableColumn("Full Name");
+        TableColumn Sex = new TableColumn("Gender");
+        TableColumn DateofBirth = new TableColumn("DoB");
+        TableColumn national = new TableColumn("Nationality");
+        TableColumn address = new TableColumn("Address");
         TableColumn email = new TableColumn("Email");
-        TableColumn phonenumber = new TableColumn("SDT");
+        TableColumn phonenumber = new TableColumn("Phone");
 
 
         st_id.setCellValueFactory(new PropertyValueFactory<>("student_id"));
@@ -108,9 +108,14 @@ public class ClassRoomController implements Initializable {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         student_table.getColumns().addAll(st_id,class_id,course_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
+<<<<<<< HEAD
         Student_DAL studentdata = new Student_DAL();
         studentdata.GetData();
         student_table.setItems( student_data);
+=======
+        Student_DAL student_data = new Student_DAL();
+        student_table.setItems(student_data.GetData());
+>>>>>>> 454403911bd941d30eabbbb171c167ac238a65fc
         
     }
 }

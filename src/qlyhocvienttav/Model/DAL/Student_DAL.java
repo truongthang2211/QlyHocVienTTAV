@@ -91,9 +91,9 @@ public class Student_DAL{
         
         try {
             this.Data.clear();
-            String sql = "SELECT ST.STUDENT_ID,CS.COURSENAME,Cs.FEE,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
-                        "FROM STUDENT ST,PERSONAL_INFO PI,CLASS CL, COURSE CS \n"+
-                    "WHERE ST.STUDENT_ID=PI.ID AND ST.CLASS_ID=CL.CLASS_ID AND CL.COURSE_ID=CS.COURSE_ID  ";
+            String sql = "SELECT ST.*,CR.COURSENAME,CR.FEE,FULLNAME,SEX,DATEOFBIRth,NATIONALITY,ADDRESS,EMAIL,PHONENUMBER \n" +
+                        "FROM STUDENT ST JOIN PERSONAL_INFO IF ON ST.STUDENT_ID = IF.ID "+
+                        "JOIN COURSE CR ON ST.COURSE_ID = CR.COURSE_ID";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Date lcdate = rs.getDate(9);

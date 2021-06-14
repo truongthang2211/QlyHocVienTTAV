@@ -103,6 +103,8 @@ public class MainTeacherController implements Initializable {
     @FXML
     private void ScoreButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/ScoreManage.fxml");
+        ScoreManageController ctrol = loader.getController();
+        ctrol.setAccount(account);
     }
     private void ChangeScreen(String centerfxml){
         maingrid.getChildren().clear();

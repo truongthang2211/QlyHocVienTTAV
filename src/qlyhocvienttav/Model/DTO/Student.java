@@ -91,6 +91,7 @@ public class Student extends Personal_Info{
 
     @Override
     public boolean checkContain(String str) {
+        
          if (
             fullName.toUpperCase().contains(str.toUpperCase())==true ||
                 sex.toUpperCase().contains(str.toUpperCase())==true ||

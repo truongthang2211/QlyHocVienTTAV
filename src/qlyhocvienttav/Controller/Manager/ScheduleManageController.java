@@ -71,8 +71,8 @@ public class ScheduleManageController implements Initializable {
         AddDatatoCbb();
         
         TableColumn scheduleID = new TableColumn("Schedule ID");
-        TableColumn Day = new TableColumn("Thứ");
-        TableColumn Shift = new TableColumn("Thời gian");
+        TableColumn Day = new TableColumn("Day");
+        TableColumn Shift = new TableColumn("Shift");
         TableColumn classID = new TableColumn("Class ID");
         TableColumn roomID = new TableColumn("Room ID");
         TableColumn teacherID = new TableColumn("Teacher ID");
