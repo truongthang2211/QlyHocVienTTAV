@@ -213,6 +213,8 @@ insert into account values ('admin','admin','Admin',sysdate,'ADMIN01');
 
 create SEQUENCE seq_Schedule_id start with 1 increment by 1;
 
+create SEQUENCE score_seq_id start with 1 increment by 1;
+
 --triggger
 
 create or replace trigger std_class 
