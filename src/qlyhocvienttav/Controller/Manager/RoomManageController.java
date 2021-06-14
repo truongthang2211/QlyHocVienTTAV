@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.scene.input.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class RoomManageController implements Initializable {
     @FXML
@@ -54,23 +55,29 @@ public class RoomManageController implements Initializable {
     }
     @FXML
     private void AddBtn(ActionEvent event) {
+        if(CheckInputGUI()){
         Room room = GetRoomFromGUI();
         room_dal.Insert(room);
         data = room_dal.GetData();
+        }
     }
 
     @FXML
     private void EditBtn(ActionEvent event) {
+        if(CheckInputGUI()){
         Room room = GetRoomFromGUI();
         room_dal.Update(room);
         data = room_dal.GetData();
+        }
     }
 
     @FXML
     private void DeleteBtn(ActionEvent event) {
+        if(CheckInputGUI()){
         Room room = GetRoomFromGUI();
         room_dal.Delete(room);
         data = room_dal.GetData();
+        }
     }
     private Room GetRoomFromGUI(){
         Room room = new Room(txt_roomId.getText(),txt_nameRoom.getText(),Integer.parseInt(txt_capacity.getText()));
@@ -99,5 +106,18 @@ public class RoomManageController implements Initializable {
                 }
             });
             maintable.setItems(list_RoomFind);
+    }
+    private boolean CheckInputGUI(){
+        //String date= DayCbb.getValue() == null?"":DayCbb.getValue().toString();
+        String [] ListInput = {txt_nameRoom.getText(),txt_capacity.getText()};
+        String [] Property = {"Room Name","Capacity"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                String ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
     }
 }

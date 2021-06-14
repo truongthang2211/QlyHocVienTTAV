@@ -61,9 +61,9 @@ public class ClassManagerController implements Initializable {
         TableColumn classId = new TableColumn("ID Class");
         TableColumn nameClass = new TableColumn("Name Class");
         TableColumn courseId = new TableColumn("Id Course");
-        TableColumn numberOfPeople = new TableColumn("numberOfPeople");
-        TableColumn maxNumberOfPeople = new TableColumn("maxNumberOfPeople");
-        TableColumn BasicGrade = new TableColumn("BasicGrade");
+        TableColumn numberOfPeople = new TableColumn("Number Of People");
+        TableColumn maxNumberOfPeople = new TableColumn("Max Number Of People");
+        TableColumn BasicGrade = new TableColumn("Basic Grade");
 
         classId.setCellValueFactory(new PropertyValueFactory<>("classId"));
         nameClass.setCellValueFactory(new PropertyValueFactory<>("className"));
@@ -160,4 +160,6 @@ public class ClassManagerController implements Initializable {
             });
             maintable.setItems(list_ClassFind);
     }
+    
+    
 }

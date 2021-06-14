@@ -39,6 +39,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javax.swing.JOptionPane;
 import qlyhocvienttav.Model.DAL.Student_DAL;
 import qlyhocvienttav.Model.DTO.Student;
 
@@ -139,24 +140,30 @@ public class StudentFeeManageController implements Initializable {
     }
     @FXML
     private void DeleteButton(ActionEvent event) throws SQLException {
+        if(CheckInputGUI()){
         StudentFee stf = maintable.getSelectionModel().getSelectedItem();
         stf_dal.Delete(stf);
         data = stf_dal.GetData();
+        }
     }
 
     @FXML
     private void EditButton(ActionEvent event) throws SQLException {
+        if(CheckInputGUI()){
         StudentFee stf2 = GetStudentFeeFromGUI();
         stf_dal.Update(stf2);
         data = stf_dal.GetData();
+        
+        }
     }
 
     @FXML
     private void AddButton(ActionEvent event) throws SQLException {
+        if(CheckInputGUI()){
         StudentFee st= GetStudentFeeFromGUI();
         stf_dal.Insert(st);
         data = stf_dal.GetData();
-
+        }
 
     }
     private StudentFee GetStudentFeeFromGUI(){
@@ -205,4 +212,19 @@ public class StudentFeeManageController implements Initializable {
     private void ActionKeyTypeFeePay(KeyEvent event) {
       
     }
+    
+    private boolean CheckInputGUI(){
+        String date= datePickerOfComplete.getValue() == null?"":datePickerOfComplete.getValue().toString();
+        String [] ListInput = {txt_StudentId.getText(),Txt_FeePay.getText(),date,Cbb_Status.getSelectionModel().getSelectedItem()};
+        String [] Property = {"Student ID","Date Complete","Fee Pay","Status"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                String ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

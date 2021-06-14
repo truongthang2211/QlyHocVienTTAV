@@ -51,7 +51,7 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </TableView>
-                  <JFXTextField fx:id="txt_findData" onKeyReleased="#Search" maxWidth="-Infinity" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXTextField fx:id="txt_findData" maxWidth="-Infinity" onKeyReleased="#Search" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
@@ -92,7 +92,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="txt_roomId" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Room ID">
+                        <JFXTextField fx:id="txt_roomId" disable="true" editable="false" focusColor="#1f1f1f" labelFloat="true" minHeight="-Infinity" minWidth="-Infinity" promptText="Room ID">
                            <GridPane.margin>
                               <Insets right="250.0" />
                            </GridPane.margin>

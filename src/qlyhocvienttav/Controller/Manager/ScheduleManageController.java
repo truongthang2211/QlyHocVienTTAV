@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javax.swing.JOptionPane;
 import qlyhocvienttav.Model.DAL.Class_DAL;
 import qlyhocvienttav.Model.DAL.Room_DAL;
 import qlyhocvienttav.Model.DAL.Schedule_DAL;
@@ -90,23 +91,29 @@ public class ScheduleManageController implements Initializable {
 
     @FXML
     private void AddBtn(ActionEvent event) {
+        if(CheckInputGUI()){
         Schedule sche = GetScheduleFromGUI();
         sche_dal.Insert(sche);
         data = sche_dal.GetData();
+        }
     }
 
     @FXML
     private void EditBtn(ActionEvent event) {
+        if(CheckInputGUI()){
         Schedule sche = GetScheduleFromGUI();
         sche_dal.Update(sche);
         data = sche_dal.GetData();
+        }
     }
 
     @FXML
     private void DeleteBtn(ActionEvent event) {
+        if(CheckInputGUI()){
         Schedule sche = GetScheduleFromGUI();
         sche_dal.Delete(sche);
         data = sche_dal.GetData();
+        }
     }
     private Schedule GetScheduleFromGUI(){
         Schedule ans = new Schedule(ScheduleIDTxt.getText(),DayCbb.getSelectionModel().getSelectedItem(),ShiftCbb.getSelectionModel().getSelectedItem(),ClassIDCbb.getSelectionModel().getSelectedItem(),RoomIDCbb.getSelectionModel().getSelectedItem(),TeacherIDCbb.getSelectionModel().getSelectedItem());
@@ -180,5 +187,18 @@ public class ScheduleManageController implements Initializable {
                 }
             });
             maintable.setItems(list_ScheduleFind);
+    }
+    private boolean CheckInputGUI(){
+        String date= DayCbb.getValue() == null?"":DayCbb.getValue().toString();
+        String [] ListInput = {date,ShiftCbb.getSelectionModel().getSelectedItem(),ClassIDCbb.getSelectionModel().getSelectedItem(),RoomIDCbb.getSelectionModel().getSelectedItem(),TeacherIDCbb.getSelectionModel().getSelectedItem()};
+        String [] Property = {"Date","Shift","Class ID","Room ID","Teacher ID"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                String ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
     }
 }

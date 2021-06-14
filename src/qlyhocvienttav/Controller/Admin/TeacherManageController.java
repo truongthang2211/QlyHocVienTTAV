@@ -123,10 +123,7 @@ public class TeacherManageController implements Initializable {
     @FXML
     private void AddButton(ActionEvent event) {
          System.out.println("click add button");
-        if (txt_name.getText().equals("")||datePicker_DOB.getValue()==null){
-            JOptionPane.showMessageDialog(null,"Thieu Thong Tin");
-        }
-        else{
+        if(CheckInputGUI()){
             String sex = cb_sex.getSelectionModel().getSelectedItem();
             sex=sex==null?"":sex;
             LocalDate lcdate = datePicker_DOB.getValue();
@@ -139,17 +136,20 @@ public class TeacherManageController implements Initializable {
 
     @FXML
     private void EditButton(ActionEvent event) {
-         String sex = cb_sex.getSelectionModel().getSelectedItem();
+        if(CheckInputGUI()){
+        String sex = cb_sex.getSelectionModel().getSelectedItem();
         sex=sex==null?"":sex;
         LocalDate lcdate = datePicker_DOB.getValue();
         String date = lcdate==null?"":lcdate.toString();
         Account acc = new Account(txt_username.getText(),txt_pass.getText(),"Teacher",txt_id.getText(),txt_name.getText(),sex,date,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
         acc_dal.Update(acc);
         data = acc_dal.GetTeacherData();
+        }
     }
 
     @FXML
     private void DeleteButton(ActionEvent event) {
+        if(CheckInputGUI()){
         String sex = cb_sex.getSelectionModel().getSelectedItem();
         sex=sex==null?"":sex;
         LocalDate lcdate = datePicker_DOB.getValue();
@@ -157,7 +157,9 @@ public class TeacherManageController implements Initializable {
         Account acc = new Account(txt_username.getText(),txt_pass.getText(),"Teacher",txt_id.getText(),txt_name.getText(),sex,date,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
         acc_dal.Delete(acc);
         data = acc_dal.GetTeacherData();
+        }
     }
+    
     @FXML
     public void FindData(MouseEvent event) {
         
@@ -178,5 +180,17 @@ public class TeacherManageController implements Initializable {
             });
             maintable.setItems(list_teacherFind);
     }
-
+    private boolean CheckInputGUI(){
+        String date= datePicker_DOB.getValue() == null?"":datePicker_DOB.getValue().toString();
+        String [] ListInput = {txt_name.getText(),date,cb_sex.getSelectionModel().getSelectedItem(),txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText(),txt_username.getText(),txt_pass.getText()};
+        String [] Property = {"Full name","Date of birth","Sex","National","Address","Email","Phone number", "Username","Password"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                String ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
 }
