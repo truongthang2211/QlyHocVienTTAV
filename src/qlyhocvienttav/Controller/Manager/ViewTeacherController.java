@@ -31,13 +31,13 @@ public class ViewTeacherController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TableColumn teacherId = new TableColumn("Teacher ID");
-        TableColumn fullname = new TableColumn("Ho ten");
-        TableColumn Sex = new TableColumn("Gioi tinh");
-        TableColumn DateofBirth = new TableColumn("Ngay sinh");
-        TableColumn national = new TableColumn("Quoc tich");
-        TableColumn address = new TableColumn("Dia chi");
+        TableColumn fullname = new TableColumn("Full Name");
+        TableColumn Sex = new TableColumn("Gender");
+        TableColumn DateofBirth = new TableColumn("DOB");
+        TableColumn national = new TableColumn("Nationality");
+        TableColumn address = new TableColumn("Address");
         TableColumn email = new TableColumn("Email");
-        TableColumn phonenumber = new TableColumn("SDT");
+        TableColumn phonenumber = new TableColumn("Phone");
 
         teacherId.setCellValueFactory(new PropertyValueFactory<Teacher,String>("teacherId"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));

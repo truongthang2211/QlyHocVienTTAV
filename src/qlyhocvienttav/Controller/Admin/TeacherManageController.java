@@ -76,7 +76,7 @@ public class TeacherManageController implements Initializable {
         TableColumn fullname = new TableColumn("Full Name");
         TableColumn Sex = new TableColumn("Gender");
         TableColumn DateofBirth = new TableColumn("Date of birth");
-        TableColumn national = new TableColumn("National");
+        TableColumn national = new TableColumn("Nationality");
         TableColumn address = new TableColumn("Address");
         TableColumn email = new TableColumn("Email");
         TableColumn phonenumber = new TableColumn("Phone");

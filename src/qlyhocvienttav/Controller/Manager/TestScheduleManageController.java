@@ -82,11 +82,11 @@ public class TestScheduleManageController implements Initializable {
          
         TableColumn Test_Sche_ID = new TableColumn("ID"); 
         TableColumn kindofDate = new TableColumn("Date");
-        TableColumn Shift = new TableColumn("Ca thi");
-        TableColumn room_id = new TableColumn("Phong thi");
-        TableColumn course_id = new TableColumn("Ma khoa hoc");
-        TableColumn teacher_id = new TableColumn("Ma giao vien");
-        TableColumn kindoftets = new TableColumn("Kieu thi");
+        TableColumn Shift = new TableColumn("Shift");
+        TableColumn room_id = new TableColumn("Room ID");
+        TableColumn course_id = new TableColumn("Course ID");
+        TableColumn teacher_id = new TableColumn("Teacher ID");
+        TableColumn kindoftets = new TableColumn("Test Type");
         
         Test_Sche_ID.setCellValueFactory(new PropertyValueFactory<>("TestSche_ID"));
         room_id.setCellValueFactory(new PropertyValueFactory<>("Room_ID"));

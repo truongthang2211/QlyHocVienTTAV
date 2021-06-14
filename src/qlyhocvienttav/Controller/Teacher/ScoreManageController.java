@@ -61,14 +61,14 @@ public class ScoreManageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        TableColumn Student_ID = new TableColumn("Mã học viên");
-        TableColumn Student_Name = new TableColumn("Tên học viên");
+        TableColumn Student_ID = new TableColumn("Student ID");
+        TableColumn Student_Name = new TableColumn("Full Name");
 
-        TableColumn Listening = new TableColumn("Nghe");
-        TableColumn Writing = new TableColumn("Viết");
-        TableColumn Reading = new TableColumn("Đọc ");
-        TableColumn Speaking = new TableColumn("Nói ");
-        TableColumn TestSchedule_ID= new TableColumn("Mã kỳ thi ");
+        TableColumn Listening = new TableColumn("Listening");
+        TableColumn Writing = new TableColumn("Writing");
+        TableColumn Reading = new TableColumn("Reading");
+        TableColumn Speaking = new TableColumn("Speaking");
+        TableColumn TestSchedule_ID= new TableColumn("Test ID");
         
         Student_Name.setCellValueFactory(new PropertyValueFactory<>("Student_Name"));
         Student_ID.setCellValueFactory(new PropertyValueFactory<>("Student_ID"));

@@ -88,13 +88,13 @@ public class StudentFeeManageController implements Initializable {
         
         
         TableColumn idFee = new TableColumn("ID Fee");
-        TableColumn idStudent = new TableColumn("MSSV");
-        TableColumn fullNameStudent = new TableColumn("Ten Sinh Vien");
-        TableColumn courseName = new TableColumn("Ten khoa hoc");
-        TableColumn FeePay = new TableColumn("So Tien Da Dong");
-        TableColumn amountOfFee = new TableColumn("So Tien");
-        TableColumn status = new TableColumn("Tinh Trang");
-        TableColumn dateOfCompleteFee = new TableColumn("Ngay Nap");
+        TableColumn idStudent = new TableColumn("Student ID");
+        TableColumn fullNameStudent = new TableColumn("Full Name");
+        TableColumn courseName = new TableColumn("Course Name");
+        TableColumn FeePay = new TableColumn("Fee Paid");
+        TableColumn amountOfFee = new TableColumn("Amount ");
+        TableColumn status = new TableColumn("Status");
+        TableColumn dateOfCompleteFee = new TableColumn("Paid day");
 
         idFee.setCellValueFactory(new PropertyValueFactory<>("idFee"));
         idStudent.setCellValueFactory(new PropertyValueFactory<>("student_id"));

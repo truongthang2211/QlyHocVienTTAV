@@ -51,10 +51,10 @@ public class CourseManageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         TableColumn courseID = new TableColumn("ID");
-        TableColumn courseName = new TableColumn("Môn Học");
-        TableColumn fee = new TableColumn("Phí");
-        TableColumn dateStart = new TableColumn("Ngày Bắt Đầu");
-        TableColumn dateEnd = new TableColumn("Ngày Kết Thúc");
+        TableColumn courseName = new TableColumn("Course Name");
+        TableColumn fee = new TableColumn("Fee");
+        TableColumn dateStart = new TableColumn("Start Date");
+        TableColumn dateEnd = new TableColumn("Finish Day");
 
         courseName.setCellValueFactory(new PropertyValueFactory<Teacher,String>("courseName"));
         courseID.setCellValueFactory(new PropertyValueFactory<Teacher,String>("course_id"));

@@ -37,13 +37,13 @@ public class ViewStudentFeeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         TableColumn feeid = new TableColumn("ID Fee");
-        TableColumn stdid = new TableColumn("MSSV");
-        TableColumn stdname = new TableColumn("Ten Sinh Vien");
-        TableColumn coursename = new TableColumn("Ten khoa hoc");
-        TableColumn feepaid= new TableColumn("So Tien Da Dong");
-        TableColumn amount = new TableColumn("So Tien");
-        TableColumn status = new TableColumn("Tinh Trang");
-        TableColumn datecompl = new TableColumn("Ngay Nap");
+        TableColumn stdid = new TableColumn("Student ID");
+        TableColumn stdname = new TableColumn("Full Name");
+        TableColumn coursename = new TableColumn("Coure Name");
+        TableColumn feepaid= new TableColumn("Fee Paid");
+        TableColumn amount = new TableColumn("Amount");
+        TableColumn status = new TableColumn("Status");
+        TableColumn datecompl = new TableColumn("Paid Day");
 
         feeid.setCellValueFactory(new PropertyValueFactory<>("idFee"));
         stdid.setCellValueFactory(new PropertyValueFactory<>("student_id"));
