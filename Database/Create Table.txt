@@ -174,7 +174,7 @@ create SEQUENCE seq_StudentFee_id start with 1 increment by 1;
 
 create SEQUENCE seq_Course_id start with 1 increment by 1;
 
-alter table student add course_id varchar(50)
+alter table student add course_id varchar(50);
 
 alter table student 
 add constraint FK_courseId_To_Student
