@@ -215,6 +215,8 @@ create SEQUENCE seq_Schedule_id start with 1 increment by 1;
 
 create SEQUENCE score_seq_id start with 1 increment by 1;
 
+Alter table student modify (dayenroll invisible); alter table student modify (dayenroll visible);
+
 --triggger
 
 create or replace trigger std_class 
