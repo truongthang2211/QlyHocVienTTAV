@@ -14,12 +14,15 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DAL.Analysis_DAL;
 import qlyhocvienttav.Model.DTO.Analysis;
@@ -46,17 +49,44 @@ public class AnalysisController implements Initializable {
     Connection connect = LoginViewController.connection.con;
     @FXML
     private PieChart ClassPieChart;
+    @FXML
+    private Tab Revenue_Tab;
+    @FXML
+    private Tab AmountStudent_Tab;
+    @FXML
+    private Tab Class_Tab;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        PieChartClassLoad();
-        BarChartLoad();
+        
+        
         ObservableList<String> ListCbb = FXCollections.observableArrayList("This month","Last month","Last 3 month");
         FilterCbb.setItems(ListCbb);
         FilterCbb.getSelectionModel().selectedItemProperty().addListener( (Observable, oldValue, newValue) -> 
             CbbChange());
         FilterCbb.getSelectionModel().select(0);
+        
+        
+        
+        AmountStudent_Tab.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event t) {
+                if (AmountStudent_Tab.isSelected()) {
+                    BarChartLoad();
+                }
+            }
+        });
+        Class_Tab.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event t) {
+                if (Class_Tab.isSelected()) {
+                    // refreshTabBData();
+                    PieChartClassLoad();
+                }
+            }
+        });
+        
     }    
 
     private void CbbChange() {
@@ -79,6 +109,7 @@ public class AnalysisController implements Initializable {
     }
     void BarChartLoad(){
         data = anal_dal.GetAmountStudentPerMonth();
+        StudentBarChart.getData().clear();
         XYChart.Series se = new XYChart.Series<>();
         se.getData().add(new XYChart.Data("Jan",data.get(0).jan));
         se.getData().add(new XYChart.Data("Feb",data.get(0).feb));

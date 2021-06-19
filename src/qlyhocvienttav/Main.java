@@ -7,6 +7,8 @@ package qlyhocvienttav;
 
 import java.awt.Dimension;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javax.swing.JOptionPane;
 import qlyhocvienttav.Controller.LoginViewController;
 /**
  *
@@ -25,17 +28,21 @@ import qlyhocvienttav.Controller.LoginViewController;
 public class Main extends Application {
     public static double height=1920,width=1080;
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("./View/LoginView.fxml"));
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        //stage.setResizable(false);
-        stage.show();
-        
-        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        width = screenSize.getWidth()*0.9375;
-        height = screenSize.getHeight()*0.9;
+    public void start(Stage stage){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("View//LoginView.fxml"));
+            
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            //stage.setResizable(false);
+            stage.show();
+            
+            Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+            width = screenSize.getWidth()*0.9375;
+            height = screenSize.getHeight()*0.9;
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Lỗi khởi động phần mềm: " +ex, "Lỗi", 0);
+        }
     }
     /**
      * @param args the command line arguments

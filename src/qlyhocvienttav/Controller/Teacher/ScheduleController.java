@@ -70,9 +70,7 @@ public class ScheduleController implements Initializable {
 
         }
     }
-    AnchorPane CreateAnchor(String ClassName, String Room){
-        AnchorPane anchor = new AnchorPane();
-        anchor.setStyle("-fx-background-color: gray");
+    VBox CreateAnchor(String ClassName, String Room){
         Label Class = new Label(ClassName);
         Label RoomLb = new Label(Room);
         Class.setStyle("-fx-font-size: 18; -fx-font-weight: Bold");        
@@ -80,9 +78,6 @@ public class ScheduleController implements Initializable {
 
         VBox vbox = new VBox(10,Class, RoomLb);
         vbox.setAlignment(Pos.CENTER);
-        AnchorPane.setLeftAnchor(vbox, 70.0);
-        AnchorPane.setTopAnchor(vbox, 60.0);
-        anchor.getChildren().add(vbox);       
-        return anchor;
+        return vbox;
     }
 }
