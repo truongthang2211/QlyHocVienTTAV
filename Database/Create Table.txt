@@ -220,21 +220,25 @@ Alter table student modify (dayenroll invisible); alter table student modify (da
 --triggger
 
 create or replace trigger std_class 
-after insert or update on Test_Schedule   
+Before insert or update on Score   
 for each row
 declare
-    tongdiem test_schedule.speaking%type;
-    bsgr class.basic_grade%type;
-    clsid class.class_id%type;
+    tongdiem Number;
+    clbsg Number;
+    clid varchar(50);
+--    CURSOR c1 IS
+--        select class_id,basic_grade
+--        from Class, Test_Schedule
+--        where  'TS02' = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND  class.basic_grade<=50/4
+--        Order By class.basic_grade DESC;
 begin
-    select sum(speaking, reading, writing, listening) into tongdiem
-    from test_schedule 
-    select class_id,basic_grade into clsid,bsgr
-    from class
-    if((tongdiem/4)  = bsgr then
-    begin 
+    tongdiem:= :NEW.Speaking + :NEW.Reading + :New.Writing + :New.listening;
+    select class_id, basic_grade into clid, clbsg
+    from ( select cl.*,row_number() over ( order by cl.basic_grade DESC) as rn
+            From class cl), Test_Schedule
+    where 'TS02' = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND  basic_grade<=50/4 and rn=1;
+    dbms_output.put_line(clid);
     update student 
-    set class_id=clsid
-    where student.student_id = test_schedule.student_id and test_schedule.testchedule_id=class.testchedule_id
-    end;
+    set class_id=clid
+    where student.student_id = :NEW.STUDENT_ID;
 end;
