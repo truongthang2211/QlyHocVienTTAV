@@ -235,8 +235,9 @@ begin
     tongdiem:= :NEW.Speaking + :NEW.Reading + :New.Writing + :New.listening;
     select class_id, basic_grade into clid, clbsg
     from ( select cl.*,row_number() over ( order by cl.basic_grade DESC) as rn
-            From class cl), Test_Schedule
-    where :NEW.TEST_SCHEDULE_ID = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND  basic_grade<=50/4 and rn=1;
+            From class cl 
+	    where basic_grade<=tongdiem/4), Test_Schedule
+    where :NEW.TEST_SCHEDULE_ID = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND and rn=1;
     dbms_output.put_line(clid);
     update student 
     set class_id=clid
