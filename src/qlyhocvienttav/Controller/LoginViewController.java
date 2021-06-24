@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package qlyhocvienttav.Controller; 
+package qlyhocvienttav.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -23,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javax.swing.JOptionPane;
 import qlyhocvienttav.Controller.Admin.MainAdminController;
 import qlyhocvienttav.Controller.Manager.MainManagerController;
 import qlyhocvienttav.Controller.Teacher.MainTeacherController;
@@ -31,6 +32,7 @@ import qlyhocvienttav.Main;
 import qlyhocvienttav.Model.DAL.Account_DAL;
 import qlyhocvienttav.Model.DAL.DBConnection;
 import qlyhocvienttav.Model.DTO.Account;
+
 /**
  * FXML Controller class
  *
@@ -50,74 +52,87 @@ public class LoginViewController implements Initializable {
     private GridPane logogrid;
     @FXML
     private ImageView logogif;
+
     @FXML
-    private void LoginButton(ActionEvent event) throws IOException  {
+    private void LoginButton(ActionEvent event) throws IOException {
         loginbutton.disableProperty().set(true);
         Task task;
-        task = new Task<Void>() { 
+        task = new Task<Void>() {
             @Override
             public Void call() {
                 try {
-                    if ( connection.OpenConnection()){
-                        ObservableList<Account> data= new Account_DAL().GetData();
+                    if (connection.OpenConnection()) {
+
+                        System.out.println("Lấy dữ liệu account..");
+                        ObservableList<Account> data = new Account_DAL().GetData();
+                        System.out.println("Lấy dữ liệu thành công");
+
                         boolean flag = false;
                         String Role = "";
                         Account ac = new Account();
-                        String Type="";
-                        for (Account a : data){
-                            if (username.getText().equals(a.getUsername()) && password.getText().equals(a.getPassword())){
+                        String Type = "";
+                        for (Account a : data) {
+                            if (username.getText().equals(a.getUsername()) && password.getText().equals(a.getPassword())) {
                                 Type = a.getAcctype();
-                                Role = Type + "/" +"Main"+ Type ;
+                                Role = Type + "/" + "Main" + Type;
                                 flag = true;
                                 ac = a;
                                 break;
                             }
-                        }                   
-                        if (flag){
+                        }
+                        if (flag) {
+
                             FXMLLoader loader;
-                            loader = new FXMLLoader(getClass().getResource("../View/"+Role +".fxml"));
+                            loader = new FXMLLoader(getClass().getResource("../View/" + Role + ".fxml"));
+
                             Parent root = loader.load();
-                            if (Type.equals("Manager")){
+                            System.out.println("Xác định quyền");
+                            if (Type.equals("Manager")) {
                                 MainManagerController managerController = loader.getController();
                                 managerController.SetAccount(ac);
                                 Main.ShowForm(root, false, event);
-                            }else if (Type.equals("Teacher")){
+                            } else if (Type.equals("Teacher")) {
                                 MainTeacherController teacherController = loader.getController();
                                 teacherController.SetAccount(ac);
                                 Main.ShowForm(root, false, event);
-                            }else if (Type.equals("Admin")){
+                            } else if (Type.equals("Admin")) {
                                 MainAdminController adminController = loader.getController();
                                 adminController.SetAccount(ac);
                                 Main.ShowForm(root, false, event);
                             }
-
-                        }else {
+                            System.out.println("Xác định quyền thành công");
+                        } else {
                             warninglabel.visibleProperty().set(true);
                             LoginViewController.connection.CloseConnection();
 
                         }
                     }
-                   
+                    
+
                 } catch (IOException ex) {
                     connection.CloseConnection();
-                    Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    loginbutton.disableProperty().set(false);
+                    JOptionPane.showMessageDialog(null, "Lỗi Hiển thị form: " + ex, "Lỗi", 0);
                 }
                 loginbutton.disableProperty().set(false);
                 return null;
             }
         };
+
+
         Thread thread = new Thread(task);
+
         thread.start();
+        
     }
-    
+
     public static DBConnection connection = new DBConnection();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         logogif.fitWidthProperty().bind(logogrid.widthProperty());
-        
 
-    }    
-    
+    }
 
 }

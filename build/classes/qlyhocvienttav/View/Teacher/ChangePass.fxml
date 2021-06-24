@@ -49,7 +49,7 @@
                   <JFXPasswordField fx:id="Current_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Current password" />
                   <JFXPasswordField fx:id="New_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="New password" GridPane.rowIndex="1" />
                   <JFXPasswordField fx:id="Confirm_Txt" focusColor="#1f1f1f" labelFloat="true" promptText="Confirm password" GridPane.rowIndex="2" />
-                  <JFXButton onAction="#Save_Btn" prefHeight="48.0" prefWidth="134.0" styleClass="LoginButton" text="SAVE" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <JFXButton onAction="#Save_Btn" prefHeight="48.0" prefWidth="134.0" ripplerFill="#05dd8354" styleClass="LoginButton" text="SAVE" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

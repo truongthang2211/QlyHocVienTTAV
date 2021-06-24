@@ -83,13 +83,13 @@ public class StudentManageController implements Initializable {
         TableColumn st_id = new TableColumn("Student ID");
         TableColumn class_id = new TableColumn("Class ID");
         TableColumn course_id = new TableColumn("Course ID");
-        TableColumn fullname = new TableColumn("Ho ten");
-        TableColumn Sex = new TableColumn("Gioi tinh");
-        TableColumn DateofBirth = new TableColumn("Ngay sinh");
-        TableColumn national = new TableColumn("Quoc tich");
-        TableColumn address = new TableColumn("Dia chi");
+        TableColumn fullname = new TableColumn("Full Name");
+        TableColumn Sex = new TableColumn("Gender");
+        TableColumn DateofBirth = new TableColumn("DoB");
+        TableColumn national = new TableColumn("Nationality");
+        TableColumn address = new TableColumn("Address");
         TableColumn email = new TableColumn("Email");
-        TableColumn phonenumber = new TableColumn("SDT");
+        TableColumn phonenumber = new TableColumn("Phone");
 
 
         st_id.setCellValueFactory(new PropertyValueFactory<>("student_id"));

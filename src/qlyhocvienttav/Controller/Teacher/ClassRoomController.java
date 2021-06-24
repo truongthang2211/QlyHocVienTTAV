@@ -6,8 +6,10 @@
 package qlyhocvienttav.Controller.Teacher;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -81,8 +83,14 @@ public class ClassRoomController implements Initializable {
     @FXML
     private void DisplayStudent(MouseEvent event) {
         Class cl = class_table.getSelectionModel().getSelectedItem();
-        ObservableList<Student> Display_student_data = student_data.filtered(x->x.getClass_id().equals(cl.getClassId()));
-        student_table.setItems(Display_student_data);
+        ObservableList<Student> Display_student_data =  FXCollections.observableArrayList();
+
+        for(Student t : student_data){
+            if (t.getClass_id()!= null && t.getClass_id().equals(cl.getClassId())){
+                Display_student_data.add(t);
+            }
+        }
+        student_table.setItems( Display_student_data);
     }
     private void CreateStudentTable(){
         TableColumn st_id = new TableColumn("Student ID");
@@ -109,6 +117,7 @@ public class ClassRoomController implements Initializable {
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         student_table.getColumns().addAll(st_id,class_id,course_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
 
+//<<<<<<< HEAD
 
         Student_DAL studentdata = new Student_DAL();
         studentdata.GetData();
@@ -117,6 +126,9 @@ public class ClassRoomController implements Initializable {
         Student_DAL student_data = new Student_DAL();
         student_table.setItems(student_data.GetData());
 //>>>>>>> 454403911bd941d30eabbbb171c167ac238a65fc
+
+
+
         
     }
 }

@@ -27,101 +27,139 @@ FROM "STUDENT"]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="101" splitType="Stretch">
 			<staticText>
-				<reportElement x="180" y="30" width="195" height="30" uuid="777ff3f9-4ad3-481e-8287-6ead96a6e1b3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="110" y="0" width="210" height="25" uuid="6dafef8d-bb5b-43d6-af1b-df69d0be47d1">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
 					<font size="19" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Thống kê học sinh]]></text>
+				<text><![CDATA[EFU]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="110" y="25" width="205" height="15" uuid="ff9bae28-2d3d-4b7b-82da-5acda413afc3"/>
+				<text><![CDATA[122, Linh Trung, Thủ Đức]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="40" width="205" height="15" uuid="09607d95-21ae-4fa6-8fdf-9d7036a4acf6"/>
+				<text><![CDATA[Thành phố Hồ Chí Minh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="55" width="205" height="15" uuid="6a0dab31-fd78-4b65-8bc7-95919772e2e6"/>
+				<text><![CDATA[0123456789]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="2" width="50" height="20" uuid="78ef9696-a8fc-410b-87df-0b304ce9e7c3"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="471" y="2" width="84" height="20" uuid="4dd9ee2f-fa48-42b3-8f91-eff92b1afe55"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="90" width="556" height="1" uuid="56c440a3-2ddb-4973-8720-f41266173809">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<image>
+				<reportElement x="-1" y="0" width="101" height="70" uuid="69423841-26bb-4d94-aa15-9e0e7ac1e47d"/>
+				<imageExpression><![CDATA["src/qlyhocvienttav/View/imgs/efulogo2.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="25" width="195" height="30" forecolor="#3366FF" uuid="777ff3f9-4ad3-481e-8287-6ead96a6e1b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Report]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="32" splitType="Stretch">
 			<staticText>
-				<reportElement x="80" y="0" width="100" height="30" uuid="2fbcdb0d-d5d0-4e95-93c6-0ff5123396f0">
+				<reportElement x="80" y="0" width="100" height="32" backcolor="#D3F5EC" uuid="2fbcdb0d-d5d0-4e95-93c6-0ff5123396f0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e4a3b01-ee16-4bda-90f4-512de7b76e08"/>
 				</reportElement>
 				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[STUDENT_ID]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="180" y="0" width="100" height="30" uuid="068cc8f3-eeb8-4685-9018-7aa3e8be74d7">
+				<reportElement x="180" y="0" width="100" height="32" backcolor="#D3F5EC" uuid="068cc8f3-eeb8-4685-9018-7aa3e8be74d7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1832ee2c-3b5b-4c2e-96b3-e2a3a73d0fa7"/>
 				</reportElement>
 				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[CLASS_ID]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="0" width="100" height="30" uuid="ef6ca84e-40e5-43b9-b2b6-d3b879f83ea7">
+				<reportElement x="280" y="0" width="100" height="32" backcolor="#D3F5EC" uuid="ef6ca84e-40e5-43b9-b2b6-d3b879f83ea7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8bb7df2e-f288-4e7c-892a-8a0707d03df3"/>
 				</reportElement>
 				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[COURSE_ID]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Course ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="380" y="0" width="100" height="30" uuid="13801bdf-c1fd-4fb3-bf2b-3421d3d461ee">
+				<reportElement x="380" y="0" width="100" height="32" backcolor="#D3F5EC" uuid="13801bdf-c1fd-4fb3-bf2b-3421d3d461ee">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f8d80db3-3163-44b7-a66b-ed1d878a8ef7"/>
 				</reportElement>
 				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Ngày đăng ký]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Enroll Day]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="30" splitType="Stretch">
 			<textField>
-				<reportElement x="80" y="0" width="100" height="30" uuid="d7201c09-7fbe-448b-8d40-621180497ecd">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e4a3b01-ee16-4bda-90f4-512de7b76e08"/>
-				</reportElement>
-				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{STUDENT_ID}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="180" y="0" width="100" height="30" uuid="2a2c04d1-3dbe-40f6-9007-9967197fa57f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1832ee2c-3b5b-4c2e-96b3-e2a3a73d0fa7"/>
 				</reportElement>
 				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{CLASS_ID}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -129,12 +167,12 @@ FROM "STUDENT"]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8bb7df2e-f288-4e7c-892a-8a0707d03df3"/>
 				</reportElement>
 				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{COURSE_ID}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -142,23 +180,44 @@ FROM "STUDENT"]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f8d80db3-3163-44b7-a66b-ed1d878a8ef7"/>
 				</reportElement>
 				<box padding="2">
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{DAYENROLL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="100" height="30" uuid="d7201c09-7fbe-448b-8d40-621180497ecd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e4a3b01-ee16-4bda-90f4-512de7b76e08"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{STUDENT_ID}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="66" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="556" height="30" backcolor="#E6E8E9" uuid="60877c9e-510f-48b6-8fc1-44f86cbb2425"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[THANKYOU FOR YOUR BUSINESS]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>
