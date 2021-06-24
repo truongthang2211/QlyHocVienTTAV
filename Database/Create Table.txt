@@ -229,7 +229,7 @@ declare
 --    CURSOR c1 IS
 --        select class_id,basic_grade
 --        from Class, Test_Schedule
---        where  'TS02' = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND  class.basic_grade<=50/4
+--        where  :NEW.Test_Schedule_Id = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND  class.basic_grade<=50/4
 --        Order By class.basic_grade DESC;
 begin
     tongdiem:= :NEW.Speaking + :NEW.Reading + :New.Writing + :New.listening;
