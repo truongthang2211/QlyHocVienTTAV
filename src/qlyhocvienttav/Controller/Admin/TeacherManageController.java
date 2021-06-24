@@ -100,7 +100,7 @@ public class TeacherManageController implements Initializable {
         data = acc_dal.GetTeacherData();
         maintable.setItems(data);
     }    
-
+    
     @FXML
     private void displaySelected(MouseEvent event) {
         Account acc = maintable.getSelectionModel().getSelectedItem();

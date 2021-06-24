@@ -95,6 +95,22 @@ public class ManagerManageController implements Initializable {
         data = acc_dal.GetManagerData();
         maintable.setItems(data);
     }
+    private boolean CheckInputGUI(){
+        String sex = cb_sex.getSelectionModel().getSelectedItem();
+        sex=sex==null?"":sex;
+        LocalDate lcdate = datePicker_DOB.getValue();
+        String date = lcdate==null?"":lcdate.toString();
+        String [] ListInput = {txt_name.getText(),date,sex,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText(),txt_username.getText(),txt_pass.getText()};
+        String [] Property = {"Name","Date of birth","Sex","Nationality","Address","Email","Phone number","Username","Password"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                String ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
     @FXML
     private void displaySelected(MouseEvent event) {
         Account acc = maintable.getSelectionModel().getSelectedItem();
@@ -116,11 +132,7 @@ public class ManagerManageController implements Initializable {
 
     @FXML
     private void AddButton(ActionEvent event) throws SQLException {
-        System.out.println("click add button");
-        if (txt_name.getText().equals("")||datePicker_DOB.getValue()==null){
-            JOptionPane.showMessageDialog(null,"Thieu Thong Tin");
-        }
-        else{
+            if(CheckInputGUI()){
             String sex = cb_sex.getSelectionModel().getSelectedItem();
             sex=sex==null?"":sex;
             LocalDate lcdate = datePicker_DOB.getValue();
@@ -128,21 +140,25 @@ public class ManagerManageController implements Initializable {
             Account acc = new Account(txt_username.getText(),txt_pass.getText(),"Manager","'MNG'||to_char(seq_manager_id.currval)",txt_name.getText(),sex,date,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
             acc_dal.Insert(acc);
             data = acc_dal.GetManagerData();
+            }
         }
 
 
 
-    }
+    
 
     @FXML
     private void DeleteButton(ActionEvent event) throws SQLException {
+        if(CheckInputGUI()){
         Account acc = maintable.getSelectionModel().getSelectedItem();
         acc_dal.Delete(acc);
         data = acc_dal.GetManagerData();
+        }
     }
 
     @FXML
     private void EditButton(ActionEvent event) throws SQLException {
+        if(CheckInputGUI()){
         String sex = cb_sex.getSelectionModel().getSelectedItem();
         sex=sex==null?"":sex;
         LocalDate lcdate = datePicker_DOB.getValue();
@@ -150,6 +166,7 @@ public class ManagerManageController implements Initializable {
         Account acc = new Account(txt_username.getText(),txt_pass.getText(),"Manager",txt_id.getText(),txt_name.getText(),sex,date,txt_national.getText(),txt_address.getText(),txt_email.getText(),txt_phoneNumber.getText());
         acc_dal.Update(acc);
         data = acc_dal.GetManagerData();
+        }
     }
 
 }

@@ -25,6 +25,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 public class CourseManageController implements Initializable {
 
@@ -98,13 +99,16 @@ public class CourseManageController implements Initializable {
     }
     @FXML
     private void DeleteButton(ActionEvent event) throws SQLException {
+        if(CheckInputGUI()){
         Course course = maintable.getSelectionModel().getSelectedItem();
         course_dal.Delete(course);
         data = course_dal.GetData();
+        }
     }
 
     @FXML
     private void EditButton(ActionEvent event) throws SQLException {
+        if(CheckInputGUI()){
         Course course = maintable.getSelectionModel().getSelectedItem();
 
         LocalDate dateStart = dp_DayStart.getValue();
@@ -117,11 +121,12 @@ public class CourseManageController implements Initializable {
         Course course1 = new Course(course.getCourse_id(),txt_courseName.getText(),Long.parseLong(txt_Fee.getText()),str_dateStart,str_dateEnd);
         course_dal.Update(course1);
         data = course_dal.GetData();
+        }
     }
 
     @FXML
     private void AddButton(ActionEvent event) throws SQLException {
-
+        if(CheckInputGUI()){
         LocalDate dateStart = dp_DayStart.getValue();
         LocalDate dateEnd = dp_dayEnd.getValue();
 
@@ -132,10 +137,26 @@ public class CourseManageController implements Initializable {
         Course course = new Course("",txt_courseName.getText(),Long.parseLong(txt_Fee.getText()),str_dateStart,str_dateEnd);
         course_dal.Insert(course);
         data = course_dal.GetData();
-
+        }
 
     }
-
+    
+    private boolean CheckInputGUI(){
+        LocalDate dateStart = dp_DayStart.getValue();
+        LocalDate dateEnd = dp_dayEnd.getValue();
+        String str_dateStart = dateStart==null?"":dateStart.toString();
+        String str_dateEnd = dateEnd==null?"":dateEnd.toString();
+        String [] ListInput = {txt_courseName.getText(),txt_Fee.getText(),str_dateStart,str_dateEnd};
+        String [] Property = {"Course Name","Fee","Day Start","Day End"};
+        for (int i = 0 ; i< ListInput.length; i++){
+            if (ListInput[i] == null || ListInput[i].equals("")){
+                String ErrorStr = Property[i] + " can not be empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
 //    private void OutfocusStudentID(){
 //        Student_DAL st_dal = new Student_DAL();
 //        ObservableList<Student> studentList = st_dal.GetData();
