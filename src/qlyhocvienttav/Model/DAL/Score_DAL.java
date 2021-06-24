@@ -82,10 +82,15 @@ public class Score_DAL {
 
         try {
             this.Data.clear();
-            String sql = String.format(" select st.student_id,pi.fullname,kindoftest,sc.listening,sc.writing,sc.reading,sc.speaking,tsc.id,sc.id\n" +
-"    from student st left join score sc on sc.student_id = st.student_id\n" +
-"    join Test_schedule tsc on tsc.course_id = st.course_id join Personal_info pi \n" +
-"    on pi.id = st.student_id where teacher_id = '%s'",MaGV);
+            String sql = String.format("select st.student_id,pi.fullname,a.kindoftest,a.listening,a.writing,a.reading,a.speaking,a.tsc_id,a.id\n" +
+"    from student st\n" +
+"    left join (select sc.*,tsc.id as tsc_id,tsc.kindoftest \n" +
+"                from score sc join test_schedule tsc on sc.test_schedule_id = tsc.id\n" +
+"                where to_date(testdate) = to_date(sysdate)) a on st.student_id = a.student_id\n" +
+"    join personal_info pi on pi.id = st.student_id\n" +
+"    where st.course_id in (select tsc2.course_id\n" +
+"                        from test_schedule tsc2\n" +
+"                        where teacher_id = '%s')",MaGV);
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 

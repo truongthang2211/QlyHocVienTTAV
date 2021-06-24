@@ -64,9 +64,9 @@ public class TestSche_DAL {
     }
     public boolean Update(TestSchedule ts) {
         try {
-            Object arg[]= {ts.getid(),ts.getTestDate(),ts.getLoai_KT(),ts.getTeacher_ID(),ts.getCourse_ID(),ts.getRoom_ID(), ts.getShift()};
+            Object arg[]= {ts.getTestDate(),ts.getLoai_KT(),ts.getTeacher_ID(),ts.getCourse_ID(),ts.getRoom_ID(), ts.getShift(),ts.getid()};
             String sql;
-            sql = String.format("UPDATE Test_Schedule SET id = '%s', testDate = TO_DATE('%s','YYYY-MM-DD'),kindofTest = '%s', teacher_id = '%s',course_id = '%s',  room_id = '%s',  Shift = '%s' WHERE ID = '%s'", arg);
+            sql = String.format("UPDATE Test_Schedule SET testDate = TO_DATE('%s','YYYY-MM-DD'),kindofTest = '%s', teacher_id = '%s',course_id = '%s',  room_id = '%s',  Shift = '%s' WHERE ID = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows = statement.executeUpdate(sql);
             if (rows > 0){

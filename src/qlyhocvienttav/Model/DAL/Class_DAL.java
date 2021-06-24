@@ -80,13 +80,13 @@ public class Class_DAL {
                 "                    group by cl.class_id) a on cl.class_id = a.class_id";
                 
             }else {
-                 sql = "SELECT cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade\n" +
+                 sql = String.format("SELECT cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade\n" +
 "                FROM class cl join (select cl.class_id , count (st.student_id) SL\n" +
 "                                    from student st right join class cl on st.class_id = cl.class_id\n" +
 "                                    group by cl.class_id) a on cl.class_id = a.class_id\n" +
 "                                    join schedule sche on sche.class_id = cl.class_id\n" +
-"                                    where sche.teacher_id = 'TC22'\n" +
-"                                    group by cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade";
+"                                    where sche.teacher_id = '%s'\n" +
+"                                    group by cl.class_id, className,a.SL, MaxNumberOfPeople, cl.course_id , basic_grade",ID);
             }
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
