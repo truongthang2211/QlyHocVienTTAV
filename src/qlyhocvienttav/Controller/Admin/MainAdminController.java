@@ -20,8 +20,6 @@ import qlyhocvienttav.Model.DTO.Account;
 public class MainAdminController implements Initializable {
     private Parent root = null;
     private FXMLLoader loader = null;
-    Account account;
-
     @FXML
     private GridPane rootgrid;
 
@@ -38,8 +36,6 @@ public class MainAdminController implements Initializable {
     @FXML
     void ChangePasswordButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/ChangePass.fxml");
-        ChangePassController ctro = loader.getController();
-        ctro.SetAccount(account);
     }
 
     @FXML
@@ -57,8 +53,6 @@ public class MainAdminController implements Initializable {
     @FXML
     void ProfileButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/Profile.fxml");
-        ProfileController ctro = loader.getController();
-        ctro.setAccount(account);
     }
 
     @FXML
@@ -97,11 +91,7 @@ public class MainAdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Platform.runLater(()->{
-            ChangeScreen("../../View/Admin/Profile.fxml");
-            ProfileController ctro = loader.getController();
-            ctro.setAccount(account);
-        });
+        ChangeScreen("../../View/Admin/Profile.fxml");
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
         rootgrid.setPrefWidth(Main.width);
@@ -128,8 +118,5 @@ public class MainAdminController implements Initializable {
     @FXML
     private void TeacherManageButton(ActionEvent event) {
         ChangeScreen("../../View/Admin/TeacherManage.fxml");
-    }
-    public void SetAccount (Account ac){
-        this.account = ac;
     }
 }

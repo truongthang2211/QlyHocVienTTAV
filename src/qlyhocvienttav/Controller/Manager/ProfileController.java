@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DTO.Account;
 
 /**
@@ -20,7 +21,7 @@ import qlyhocvienttav.Model.DTO.Account;
  * @author Thang
  */
 public class ProfileController implements Initializable {
-    Account account ;
+    Account account = LoginViewController.account;
     @FXML
     private Label topcenterlabel;
     @FXML
@@ -52,9 +53,7 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Platform.runLater(() -> {
-            SetProfile();
-        });
+        SetProfile();
     }    
     public void SetProfile(){
         txt_Fullname.setText(this.account.getFullName());
@@ -68,7 +67,5 @@ public class ProfileController implements Initializable {
         txt_Owner.setText(this.account.getOwner());
         txt_Createdate.setText(this.account.getCreate_date());
     }
-    public void SetAccount (Account ac){
-        this.account = ac;
-    }
+   
 }

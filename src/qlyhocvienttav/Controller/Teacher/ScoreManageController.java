@@ -22,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
+import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DAL.Score_DAL;
 import qlyhocvienttav.Model.DTO.Account;
 import qlyhocvienttav.Model.DTO.Score;
@@ -33,15 +34,16 @@ import qlyhocvienttav.Model.DTO.Student;
  * @author Thang
  */
 public class ScoreManageController implements Initializable {
-     ObservableList<Score> data;
-     Account account;
+
+    ObservableList<Score> data;
+    Account account=LoginViewController.account;
     private Score_DAL sc_dal = new Score_DAL();
 
     @FXML
     private Label topcenterlabel;
     @FXML
     private TableView<Score> maintable;
-    
+
     @FXML
     private JFXTextField StudentID_Txt;
     @FXML
@@ -54,7 +56,7 @@ public class ScoreManageController implements Initializable {
     private JFXTextField Reading_Txt;
     @FXML
     private JFXTextField Speaking_Txt;
-   
+
     /**
      * Initializes the controller class.
      */
@@ -68,8 +70,8 @@ public class ScoreManageController implements Initializable {
         TableColumn Writing = new TableColumn("Writing");
         TableColumn Reading = new TableColumn("Reading");
         TableColumn Speaking = new TableColumn("Speaking");
-        TableColumn TestSchedule_ID= new TableColumn("Test ID");
-        
+        TableColumn TestSchedule_ID = new TableColumn("Test ID");
+
         Student_Name.setCellValueFactory(new PropertyValueFactory<>("Student_Name"));
         Student_ID.setCellValueFactory(new PropertyValueFactory<>("Student_ID"));
         Listening.setCellValueFactory(new PropertyValueFactory<>("Listening"));
@@ -77,66 +79,61 @@ public class ScoreManageController implements Initializable {
         Reading.setCellValueFactory(new PropertyValueFactory<>("Reading"));
         Speaking.setCellValueFactory(new PropertyValueFactory<>("Speaking"));
         TestSchedule_ID.setCellValueFactory(new PropertyValueFactory<>("TestSchedule_ID"));
-        
-        maintable.getColumns().addAll(Student_ID,Student_Name,Listening,Writing,Reading,Speaking);
-        Platform.runLater(()->{
-            data = sc_dal.GetData(account.getOwner());
-            maintable.setItems(data);
-        });
-        
+
+        maintable.getColumns().addAll(Student_ID, Student_Name, Listening, Writing, Reading, Speaking, TestSchedule_ID);
+        data = sc_dal.GetData(account.getOwner());
+        maintable.setItems(data);
+
     }
-    private Score GetScoreFromGUI(){
-        Score in4 = new Score(StudentID_Txt.getText(),StudentName_Txt.getText(),"",Float.parseFloat(Listening_Txt.getText()),Float.parseFloat(Writting_Txt.getText()),Float.parseFloat(Reading_Txt.getText()),Float.parseFloat(Speaking_Txt.getText()));
+
+    private Score GetScoreFromGUI() {
+        Score in4 = new Score(StudentID_Txt.getText(), StudentName_Txt.getText(), "", Float.parseFloat(Listening_Txt.getText()), Float.parseFloat(Writting_Txt.getText()), Float.parseFloat(Reading_Txt.getText()), Float.parseFloat(Speaking_Txt.getText()));
         return in4;
     }
-    
-    private boolean CheckInputGUI(){
+
+    private boolean CheckInputGUI() {
         //String date= DatePicker.getValue() == null?"":DatePicker.getValue().toString();
-        if (StudentID_Txt==null||StudentID_Txt.getText().equals("")){
+        if (StudentID_Txt == null || StudentID_Txt.getText().equals("")) {
             return false;
         }
         return true;
     }
+
     @FXML
-    private void EditBtn(ActionEvent event){
-        if(CheckInputGUI()){
+    private void EditBtn(ActionEvent event) {
+        if (CheckInputGUI()) {
             Score sc = GetScoreFromGUI();
-            Score sc2  = (Score) maintable.getSelectionModel().getSelectedItem();
-            if (sc2 == null){
-                JOptionPane.showMessageDialog(null,"Please choose row to edit","Error", JOptionPane.ERROR_MESSAGE);
+            Score sc2 = (Score) maintable.getSelectionModel().getSelectedItem();
+            if (sc2 == null) {
+                JOptionPane.showMessageDialog(null, "Please choose row to edit", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             sc.setScore_ID(sc2.getScore_ID());
             sc.setTestSchedule_ID(sc2.getTestSchedule_ID());
-            if (sc.getScore_ID() == null){
+            if (sc.getScore_ID() == null) {
                 sc_dal.Insert(sc);
 
-            }else {
+            } else {
                 sc_dal.Update(sc);
             }
             data = sc_dal.GetData(account.getOwner());
         }
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     @FXML
     private void DisPlaySelected(MouseEvent event) {
-        Score sc  = (Score) maintable.getSelectionModel().getSelectedItem();
-        if (sc == null ){
+        Score sc = (Score) maintable.getSelectionModel().getSelectedItem();
+        if (sc == null) {
             System.out.println("Khong thay diem");
-        }else {
+        } else {
             StudentID_Txt.setText(sc.getStudent_ID());
             StudentName_Txt.setText(sc.getStudent_Name());
             Listening_Txt.setText(Float.toString(sc.getListening()));
             Writting_Txt.setText(Float.toString(sc.getWriting()));
             Reading_Txt.setText(Float.toString(sc.getReading()));
             Speaking_Txt.setText(Float.toString(sc.getSpeaking()));
-            
 
         }
     }
-    
+
 }

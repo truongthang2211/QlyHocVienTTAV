@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javax.swing.JOptionPane;
+import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DAL.Account_DAL;
 import qlyhocvienttav.Model.DTO.Account;
 
@@ -23,7 +24,7 @@ import qlyhocvienttav.Model.DTO.Account;
  * @author Thang
  */
 public class ChangePassController implements Initializable {
-    Account account;
+    Account account = LoginViewController.account;
     @FXML
     private Label topcenterlabel;
     @FXML
@@ -62,8 +63,4 @@ public class ChangePassController implements Initializable {
             JOptionPane.showMessageDialog(null,info,"Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    public void SetAccount (Account ac){
-        this.account = ac;
-    }
-    
 }

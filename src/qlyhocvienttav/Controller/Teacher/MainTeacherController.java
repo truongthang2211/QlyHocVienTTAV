@@ -45,11 +45,7 @@ public class MainTeacherController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Platform.runLater(()->{
-            ChangeScreen("../../View/Teacher/Profile.fxml");
-            ProfileController ctro = loader.getController();
-            ctro.setAccount(account);
-        });
+        ChangeScreen("../../View/Teacher/Profile.fxml");
         
         logo.fitWidthProperty().bind(logogrid.widthProperty());
         rootgrid.setPrefHeight(Main.height);
@@ -68,30 +64,22 @@ public class MainTeacherController implements Initializable {
     private void ProfileButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/Profile.fxml");
         ProfileController ctro = loader.getController();
-        ctro.setAccount(account);
     }
 
 
     @FXML
     private void ClassButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/ClassRoom.fxml");
-        ClassRoomController ctrol = loader.getController();
-        ctrol.setAccount(account);
     }
 
     @FXML
     private void ScheduleButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/Schedule.fxml");
-        ScheduleController ctrol = loader.getController();
-        ctrol.SetAccount(account);
-        ctrol.Start();
     }
 
     @FXML
     private void ChangePasswordButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/ChangePass.fxml");
-        ChangePassController ctro = loader.getController();
-        ctro.SetAccount(account);
     }
 
     @FXML
@@ -103,15 +91,11 @@ public class MainTeacherController implements Initializable {
     @FXML
     private void ScoreButton(ActionEvent event) {
         ChangeScreen("../../View/Teacher/ScoreManage.fxml");
-        ScoreManageController ctrol = loader.getController();
-        ctrol.setAccount(account);
     }
     private void ChangeScreen(String centerfxml){
         maingrid.getChildren().clear();
         LoadUI(centerfxml);
         maingrid.add(root, 0, 0);
     }
-    public void SetAccount (Account ac){
-        this.account =ac;
-    }
+    
 }

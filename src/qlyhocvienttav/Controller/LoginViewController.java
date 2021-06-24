@@ -39,7 +39,9 @@ import qlyhocvienttav.Model.DTO.Account;
  * @author Thang
  */
 public class LoginViewController implements Initializable {
-
+    
+    public static Account account = new Account();
+    
     @FXML
     private JFXTextField username;
     @FXML
@@ -62,21 +64,16 @@ public class LoginViewController implements Initializable {
             public Void call() {
                 try {
                     if (connection.OpenConnection()) {
-
-                        System.out.println("Lấy dữ liệu account..");
                         ObservableList<Account> data = new Account_DAL().GetData();
-                        System.out.println("Lấy dữ liệu thành công");
-
                         boolean flag = false;
                         String Role = "";
-                        Account ac = new Account();
                         String Type = "";
                         for (Account a : data) {
                             if (username.getText().equals(a.getUsername()) && password.getText().equals(a.getPassword())) {
                                 Type = a.getAcctype();
                                 Role = Type + "/" + "Main" + Type;
                                 flag = true;
-                                ac = a;
+                                account = a;
                                 break;
                             }
                         }
@@ -84,20 +81,13 @@ public class LoginViewController implements Initializable {
 
                             FXMLLoader loader;
                             loader = new FXMLLoader(getClass().getResource("../View/" + Role + ".fxml"));
-
                             Parent root = loader.load();
                             System.out.println("Xác định quyền");
                             if (Type.equals("Manager")) {
-                                MainManagerController managerController = loader.getController();
-                                managerController.SetAccount(ac);
                                 Main.ShowForm(root, false, event);
                             } else if (Type.equals("Teacher")) {
-                                MainTeacherController teacherController = loader.getController();
-                                teacherController.SetAccount(ac);
                                 Main.ShowForm(root, false, event);
                             } else if (Type.equals("Admin")) {
-                                MainAdminController adminController = loader.getController();
-                                adminController.SetAccount(ac);
                                 Main.ShowForm(root, false, event);
                             }
                             System.out.println("Xác định quyền thành công");

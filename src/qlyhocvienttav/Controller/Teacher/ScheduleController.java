@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DAL.Schedule_DAL;
 import qlyhocvienttav.Model.DTO.Account;
 import qlyhocvienttav.Model.DTO.Schedule;
@@ -34,7 +35,7 @@ public class ScheduleController implements Initializable {
     private Label topcenterlabel;
     @FXML
     private GridPane Schedule_Grid;
-    Account account ;
+    Account account =LoginViewController.account;
     private ObservableList<Schedule> data;
     private Schedule_DAL sche_dal = new Schedule_DAL();
     /**
@@ -43,10 +44,8 @@ public class ScheduleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Start();
     }    
-    public void SetAccount (Account ac){
-        this.account = ac;
-    }
     public void Start(){
         data = sche_dal.GetDataByTeacher(account.getOwner());
         String [] DayList = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"};

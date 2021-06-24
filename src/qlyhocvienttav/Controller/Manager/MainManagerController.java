@@ -33,8 +33,6 @@ public class MainManagerController implements Initializable {
      * Initializes the controller class.
      * 
      */
-    
-    Account account;
     private Parent root = null;
     private FXMLLoader loader = null;
     @FXML
@@ -45,16 +43,12 @@ public class MainManagerController implements Initializable {
     private GridPane rootgrid;
     @FXML
     private GridPane maingrid;
-   
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Platform.runLater(() -> {
-            ChangeScreen("../../View/Manager/Profile.fxml");
-            ProfileController ctro = loader.getController();
-            ctro.SetAccount(account);
-        });
+        
+        ChangeScreen("../../View/Manager/Profile.fxml");
+        
         
        
         logo.fitWidthProperty().bind(logogrid.widthProperty());
@@ -105,8 +99,6 @@ public class MainManagerController implements Initializable {
     @FXML
     private void ChangePassword_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/ChangePass.fxml");
-        ChangePassController ctrol = loader.getController();
-        ctrol.SetAccount(account);
     }
     private void ChangeScreen(String centerfxml){
         maingrid.getChildren().clear();
@@ -125,15 +117,11 @@ public class MainManagerController implements Initializable {
         ChangeScreen("../../View/Manager/TestScheduleManage.fxml");
 
     }
-    public void SetAccount(Account ac){
-        this.account = ac;
-    }
+  
 
     @FXML
     private void Profile_Button(ActionEvent event) {
         ChangeScreen("../../View/Manager/Profile.fxml");
-        ProfileController ctro = loader.getController();
-        ctro.SetAccount(account);
     }
 }
 
