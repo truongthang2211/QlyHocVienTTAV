@@ -102,6 +102,10 @@ public class ScoreManageController implements Initializable {
         if(CheckInputGUI()){
             Score sc = GetScoreFromGUI();
             Score sc2  = (Score) maintable.getSelectionModel().getSelectedItem();
+            if (sc2 == null){
+                JOptionPane.showMessageDialog(null,"Please choose row to edit","Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             sc.setScore_ID(sc2.getScore_ID());
             sc.setTestSchedule_ID(sc2.getTestSchedule_ID());
             if (sc.getScore_ID() == null){
