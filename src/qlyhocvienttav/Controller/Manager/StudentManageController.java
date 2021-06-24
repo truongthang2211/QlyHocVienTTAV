@@ -72,7 +72,7 @@ public class StudentManageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ObservableList<String> sexList = FXCollections.observableArrayList("Male","Femaie","Other");
+        ObservableList<String> sexList = FXCollections.observableArrayList("Male","Female","Other");
         sexCbb.setItems(sexList);
         sexCbb.getSelectionModel().select(0);
         GetCourseToCbb();

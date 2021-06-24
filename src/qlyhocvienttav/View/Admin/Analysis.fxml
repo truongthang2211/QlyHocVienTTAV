@@ -73,7 +73,7 @@
                            <content>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <BarChart fx:id="StudentBarChart" layoutX="-14.0" prefHeight="576.0" prefWidth="1023.0" title="Amount of Student Enroll">
+                                    <BarChart fx:id="StudentBarChart" layoutX="-5.0" prefHeight="576.0" prefWidth="1023.0" title="Amount of Student Enroll">
                                       <xAxis>
                                         <CategoryAxis label="Month" side="BOTTOM" />
                                       </xAxis>

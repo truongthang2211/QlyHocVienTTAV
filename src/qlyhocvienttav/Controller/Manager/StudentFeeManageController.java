@@ -113,7 +113,7 @@ public class StudentFeeManageController implements Initializable {
                     OutfocusStudentID();
                 }});
         datePickerOfComplete.setValue(LocalDate.now());
-        Cbb_Status.setItems(FXCollections.observableArrayList("Hoàn thành","Chưa hoàn thành"));
+        Cbb_Status.setItems(FXCollections.observableArrayList("Finished","Not Finished"));
         Cbb_Status.getSelectionModel().select(1);
     }
     @FXML

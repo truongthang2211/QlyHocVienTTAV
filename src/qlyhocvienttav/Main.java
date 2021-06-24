@@ -26,7 +26,7 @@ public class Main extends Application {
     public static double height=1920,width=1080;
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("./View/LoginView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("View/LoginView.fxml"));
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

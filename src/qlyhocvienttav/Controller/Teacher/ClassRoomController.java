@@ -108,14 +108,15 @@ public class ClassRoomController implements Initializable {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         student_table.getColumns().addAll(st_id,class_id,course_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
-<<<<<<< HEAD
+
+
         Student_DAL studentdata = new Student_DAL();
         studentdata.GetData();
         student_table.setItems( student_data);
-=======
+//=======
         Student_DAL student_data = new Student_DAL();
         student_table.setItems(student_data.GetData());
->>>>>>> 454403911bd941d30eabbbb171c167ac238a65fc
+//>>>>>>> 454403911bd941d30eabbbb171c167ac238a65fc
         
     }
 }

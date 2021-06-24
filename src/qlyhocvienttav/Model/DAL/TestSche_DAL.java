@@ -46,7 +46,7 @@ public class TestSche_DAL {
     }
     public boolean Delete(TestSchedule ts){
         try {
-            Object arg[]= {ts.getid()};
+            Object arg[]= {ts.getTestSche_ID()};
             String testsche_sql;
             //info_sql = String.format("DELETE FROM Test_Schedule WHERE ID = '%s'", arg);
             testsche_sql = String.format("DELETE FROM Test_Schedule WHERE id = '%s'", arg);
@@ -64,7 +64,7 @@ public class TestSche_DAL {
     }
     public boolean Update(TestSchedule ts) {
         try {
-            Object arg[]= {ts.getid(),ts.getTestDate(),ts.getLoai_KT(),ts.getTeacher_ID(),ts.getCourse_ID(),ts.getRoom_ID(), ts.getShift()};
+            Object arg[]= {ts.getTestSche_ID(),ts.getTestDate(),ts.getLoai_KT(),ts.getTeacher_ID(),ts.getCourse_ID(),ts.getRoom_ID(), ts.getShift()};
             String sql;
             sql = String.format("UPDATE Test_Schedule SET id = '%s', testDate = TO_DATE('%s','YYYY-MM-DD'),kindofTest = '%s', teacher_id = '%s',course_id = '%s',  room_id = '%s',  Shift = '%s' WHERE ID = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
@@ -83,7 +83,7 @@ public class TestSche_DAL {
 
         try {
             this.Data.clear();
-            String sql = "SELECT id,teacher_id,course_id,room_id,kindofTest,testDate,Shift \n" + "FROM Test_Schedule";
+            String sql = "SELECT * \n" + "FROM Test_Schedule";
             ResultSet rs = LoginViewController.connection.con.createStatement().executeQuery(sql);
             while (rs.next()){
                 Date lcdate = rs.getDate("testDate");

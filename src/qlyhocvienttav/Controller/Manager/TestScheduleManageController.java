@@ -110,7 +110,7 @@ public class TestScheduleManageController implements Initializable {
         if (ts == null ){
             System.out.println("Khong thay ts");
         }else {
-            testscheduleIDTxt.setText(ts.getid());
+            testscheduleIDTxt.setText(ts.getTestSche_ID());
             CourseCbb.getSelectionModel().select(ts.getCourse_ID());
             shiftCbb.getSelectionModel().select(ts.getShift());
             
@@ -188,8 +188,8 @@ public class TestScheduleManageController implements Initializable {
     
     private boolean CheckInputGUI(){
         String date= DatePicker.getValue() == null?"":DatePicker.getValue().toString();
-        String [] ListInput = {testscheduleIDTxt.getText(), shiftCbb.getSelectionModel().getSelectedItem(),Teacher_Cbb.getSelectionModel().getSelectedItem(),date,CourseCbb.getSelectionModel().getSelectedItem(),Room_Cbb.getSelectionModel().getSelectedItem(),kindoftestTxt.getText()};
-        String [] Property = {"Test Schedule ID", "Date","Shift","Course ID","Teacher ID","Room ID","Kind of test"};
+        String [] ListInput = {date,shiftCbb.getSelectionModel().getSelectedItem(),kindoftestTxt.getText()};
+        String [] Property = {"Date","Shift","Kind of test"};
         for (int i = 0 ; i< ListInput.length; i++){
             if (ListInput[i] == null || ListInput[i].equals("")){
                 String ErrorStr = Property[i] + " can not be empty";

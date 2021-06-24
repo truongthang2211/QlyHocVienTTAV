@@ -23,12 +23,20 @@ public class TestSchedule {
         this.Shift = Shift;
     }
 
-    public String getid() {
+    /*public String getid() {
         return TestSche_ID;
     }
 
     public void setid(String id) {
         this.TestSche_ID = id;
+    }
+*/
+    public String getTestSche_ID() {
+        return TestSche_ID;
+    }
+
+    public void setTestSche_ID(String TestSche_ID) {
+        this.TestSche_ID = TestSche_ID;
     }
 
     public String getTeacher_ID() {
