@@ -5,6 +5,7 @@
  */
 package qlyhocvienttav.Controller.Teacher;
 
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -17,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import qlyhocvienttav.Controller.LoginViewController;
 import qlyhocvienttav.Model.DAL.Class_DAL;
@@ -32,6 +34,8 @@ import qlyhocvienttav.Model.DTO.Student;
  */
 public class ClassRoomController implements Initializable {
 
+    ObservableList<Class> datacl;
+    ObservableList<Student> datastd;
     private Account account = LoginViewController.account;
     private ObservableList<Class> class_data;
     private ObservableList<Student> student_data;
@@ -44,6 +48,10 @@ public class ClassRoomController implements Initializable {
     private TableView<Class> class_table;
     @FXML
     private TableView<Student> student_table;
+    @FXML
+    private JFXTextField txt_searchclass;
+    @FXML
+    private JFXTextField txt_searchstd;
 
     /**
      * Initializes the controller class.
@@ -115,4 +123,37 @@ public class ClassRoomController implements Initializable {
 
 
     }
+
+    @FXML
+    private void Searching(KeyEvent event) {
+         String srch = txt_searchclass.getText();
+        if (datacl == null){
+            return;
+        }
+        ObservableList<Class> list_class= FXCollections.observableArrayList();
+
+            datacl.forEach((Class c) -> {
+                if (c.checkContain(srch)){
+                    list_class.add(c);
+                }
+            });
+            class_table.setItems(list_class);
+    }
+
+    @FXML
+    private void Searchingstd(KeyEvent event) {
+        String srch = txt_searchstd.getText();
+        if (datastd == null){
+            return;
+        }
+        ObservableList<Student> list_std= FXCollections.observableArrayList();
+
+            datastd.forEach((Student s) -> {
+                if (s.checkContain(srch)){
+                    list_std.add(s);
+                }
+            });
+            student_table.setItems(list_std);
+    }
+    
 }
