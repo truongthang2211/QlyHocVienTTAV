@@ -33,9 +33,7 @@ import qlyhocvienttav.Model.DTO.Student;
  * @author Thang
  */
 public class ClassRoomController implements Initializable {
-
-    ObservableList<Class> datacl;
-    ObservableList<Student> datastd;
+    
     private Account account = LoginViewController.account;
     private ObservableList<Class> class_data;
     private ObservableList<Student> student_data;
@@ -127,12 +125,12 @@ public class ClassRoomController implements Initializable {
     @FXML
     private void Searching(KeyEvent event) {
          String srch = txt_searchclass.getText();
-        if (datacl == null){
+        if (class_data == null){
             return;
         }
         ObservableList<Class> list_class= FXCollections.observableArrayList();
 
-            datacl.forEach((Class c) -> {
+            class_data.forEach((Class c) -> {
                 if (c.checkContain(srch)){
                     list_class.add(c);
                 }
@@ -143,12 +141,12 @@ public class ClassRoomController implements Initializable {
     @FXML
     private void Searchingstd(KeyEvent event) {
         String srch = txt_searchstd.getText();
-        if (datastd == null){
+        if (student_data== null){
             return;
         }
         ObservableList<Student> list_std= FXCollections.observableArrayList();
 
-            datastd.forEach((Student s) -> {
+            student_data.forEach((Student s) -> {
                 if (s.checkContain(srch)){
                     list_std.add(s);
                 }
