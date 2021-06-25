@@ -168,7 +168,7 @@ ALTER USER admin quota 100M on system;
 --------------------------------
 create SEQUENCE seq_teacher_id start with 1 increment by 1;
 
-alter table Test_Schedule add shift int
+alter table Test_Schedule add shift int;
 
 create SEQUENCE seq_StudentFee_id start with 1 increment by 1;
 
@@ -237,7 +237,7 @@ begin
     from ( select cl.*,row_number() over ( order by cl.basic_grade DESC) as rn
             From class cl 
 	    where basic_grade<=tongdiem/4), Test_Schedule
-    where :NEW.TEST_SCHEDULE_ID = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND and rn=1;
+    where :NEW.TEST_SCHEDULE_ID = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND rn=1;
     dbms_output.put_line(clid);
     update student 
     set class_id=clid
