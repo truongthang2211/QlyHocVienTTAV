@@ -226,6 +226,7 @@ declare
     tongdiem Number;
     clbsg Number;
     clid varchar(50);
+    clidOfCourse varchar(50);
 --    CURSOR c1 IS
 --        select class_id,basic_grade
 --        from Class, Test_Schedule
@@ -233,13 +234,19 @@ declare
 --        Order By class.basic_grade DESC;
 begin
     tongdiem:= :NEW.Speaking + :NEW.Reading + :New.Writing + :New.listening;
+    
     select class_id, basic_grade into clid, clbsg
     from ( select cl.*,row_number() over ( order by cl.basic_grade DESC) as rn
             From class cl 
 	    where basic_grade<=tongdiem/4), Test_Schedule
-    where :NEW.TEST_SCHEDULE_ID = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND rn=1;
+    where :NEW.TEST_SCHEDULE_ID = Test_Schedule.id  AND Test_Schedule.kindOfTest='Phân Lớp' AND rn=1 
+     						    AND Test_SCHEDULE.Course_Id = Class.Course_ID;
     dbms_output.put_line(clid);
+    
     update student 
     set class_id=clid
     where student.student_id = :NEW.STUDENT_ID;
 end;
+
+
+
