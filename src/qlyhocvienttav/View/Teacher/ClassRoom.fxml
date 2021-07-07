@@ -45,7 +45,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTextField maxWidth="-Infinity" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXTextField fx:id="txt_searchclass" maxWidth="-Infinity" onKeyReleased="#Searching" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
@@ -81,7 +81,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTextField maxWidth="-Infinity" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXTextField fx:id="txt_searchstd" maxWidth="-Infinity" onKeyReleased="#Searchingstd" prefHeight="34.0" prefWidth="200.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>

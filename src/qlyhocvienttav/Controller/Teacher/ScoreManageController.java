@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import qlyhocvienttav.Controller.LoginViewController;
@@ -56,6 +58,8 @@ public class ScoreManageController implements Initializable {
     private JFXTextField Reading_Txt;
     @FXML
     private JFXTextField Speaking_Txt;
+    @FXML
+    private JFXTextField txt_searching;
 
     /**
      * Initializes the controller class.
@@ -134,6 +138,26 @@ public class ScoreManageController implements Initializable {
             Speaking_Txt.setText(Float.toString(sc.getSpeaking()));
 
         }
+    }
+    private void Search(KeyEvent event) {
+   
+        
+    }
+
+    @FXML
+    private void Searching(KeyEvent event) {
+         String srch = txt_searching.getText();
+        if (data == null){
+            return;
+        }
+        ObservableList<Score> list_score = FXCollections.observableArrayList();
+
+            data.forEach((Score s) -> {
+                if (s.checkdata(srch)){
+                    list_score.add(s);
+                }
+            });
+            maintable.setItems(list_score);
     }
 
 }

@@ -96,4 +96,20 @@ public class Score {
         this.KindOfTest = KindOfTest;
     }
     
+    public boolean checkdata(String str) {        
+         if (
+            Student_ID.toUpperCase().contains(str.toUpperCase())==true ||
+            Student_Name.toUpperCase().contains(str.toUpperCase())==true ||
+            String.valueOf(Listening).toUpperCase().contains(str)==true||
+            String.valueOf(Writing).toUpperCase().contains(str)==true||
+            String.valueOf(Speaking).toUpperCase().contains(str)==true||
+            String.valueOf(Reading).toUpperCase().contains(str)==true
+                 
+        ){    
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
