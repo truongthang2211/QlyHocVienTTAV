@@ -168,23 +168,28 @@ ALTER USER admin quota 100M on system;
 --------------------------------
 create SEQUENCE seq_teacher_id start with 1 increment by 1;
 
-alter table Test_Schedule add shift int;
-
 create SEQUENCE seq_StudentFee_id start with 1 increment by 1;
 
 create SEQUENCE seq_Course_id start with 1 increment by 1;
-
-alter table student add course_id varchar(50);
-
-alter table student 
-add constraint FK_courseId_To_Student
-foreign key (course_id) references Course(course_id);
 
 create SEQUENCE seq_Class_id start with 1 increment by 1;
 
 create SEQUENCE seq_Room_id start with 1 increment by 1;
 
 create SEQUENCE seq_testschedule_id start with 1 increment by 1;
+
+create SEQUENCE seq_Schedule_id start with 1 increment by 1;
+
+create SEQUENCE score_seq_id start with 1 increment by 1;
+
+alter table student add course_id varchar(50);
+
+alter table Test_Schedule add shift int;
+
+alter table student 
+add constraint FK_courseId_To_Student
+foreign key (course_id) references Course(course_id);
+
 
 Alter table student add DayEnroll Date;
 
@@ -211,9 +216,6 @@ insert into personal_info values (
 insert into admin values ('ADMIN01');
 insert into account values ('admin','admin','Admin',sysdate,'ADMIN01');
 
-create SEQUENCE seq_Schedule_id start with 1 increment by 1;
-
-create SEQUENCE score_seq_id start with 1 increment by 1;
 
 Alter table student modify (dayenroll invisible); alter table student modify (dayenroll visible);
 
