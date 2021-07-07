@@ -9,8 +9,9 @@ package qlyhocvienttav.Model.DTO;
  *
  * @author Thang
  */
-public class Student extends Personal_Info{
-    String student_id, class_id,course_id,course_name;
+public class Student extends Personal_Info {
+
+    String student_id, class_id, course_id, course_name;
     double amountOfFee;
 
     public Student(String student_id, String class_id, String course_id, String course_name, double amountOfFee, String fullName, String sex, String dateOfBirth, String nationality, String address, String email, String phoneNumber) {
@@ -29,11 +30,9 @@ public class Student extends Personal_Info{
         this.course_id = course_id;
     }
 
-    
-
     public Student() {
     }
-    
+
     public Student(String student_id) {
         this.student_id = student_id;
     }
@@ -61,8 +60,6 @@ public class Student extends Personal_Info{
         this.amountOfFee = amountOfFee;
     }
 
-    
-    
     public String getCourse_id() {
         return course_id;
     }
@@ -70,8 +67,6 @@ public class Student extends Personal_Info{
     public void setCourse_id(String course_id) {
         this.course_id = course_id;
     }
-    
-    
 
     public String getStudent_id() {
         return student_id;
@@ -91,27 +86,25 @@ public class Student extends Personal_Info{
 
     @Override
     public boolean checkContain(String str) {
-        
-         if (
-            fullName.toUpperCase().contains(str.toUpperCase())==true ||
-                sex.toUpperCase().contains(str.toUpperCase())==true ||
-                dateOfBirth.toUpperCase().contains(str.toUpperCase())==true ||
-                nationality.toUpperCase().contains(str.toUpperCase())==true ||
-                address.toUpperCase().contains(str.toUpperCase())==true ||
-                email.toUpperCase().contains(str.toUpperCase())==true ||
-                phoneNumber.toUpperCase().contains(str.toUpperCase())==true||
-                class_id.toUpperCase().contains(str.toUpperCase())==true ||
-                course_id.toUpperCase().contains(str.toUpperCase())==true ||
-                course_name.toUpperCase().contains(str.toUpperCase())==true ||
-                String.valueOf(amountOfFee).toUpperCase().contains(str.toUpperCase())==true
-        ){
-   
-            
-            return true;
+        if (class_id == null){
+            class_id = "";
         }
-        else{
+        if (fullName.toUpperCase().contains(str.toUpperCase()) == true
+                || student_id.toUpperCase().contains(str.toUpperCase()) == true
+                || sex.toUpperCase().contains(str.toUpperCase()) == true
+                || dateOfBirth.toUpperCase().contains(str.toUpperCase()) == true
+                || nationality.toUpperCase().contains(str.toUpperCase()) == true
+                || address.toUpperCase().contains(str.toUpperCase()) == true
+                || email.toUpperCase().contains(str.toUpperCase()) == true
+                || phoneNumber.toUpperCase().contains(str.toUpperCase()) == true
+                || class_id.toUpperCase().contains(str.toUpperCase()) == true
+                || course_id.toUpperCase().contains(str.toUpperCase()) == true
+                || course_name.toUpperCase().contains(str.toUpperCase()) == true
+                || String.valueOf(amountOfFee).toUpperCase().contains(str.toUpperCase()) == true) {
+            return true;
+        } else {
             return false;
         }
     }
-    
+
 }

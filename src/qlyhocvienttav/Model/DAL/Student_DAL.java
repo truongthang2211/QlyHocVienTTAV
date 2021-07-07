@@ -52,13 +52,17 @@ public class Student_DAL{
      public boolean Delete(Student st){
         try {
             Object arg[]= {st.getStudent_id()};
-            String info_sql,st_sql;
+            String info_sql,st_sql,score_sql;
             info_sql = String.format("DELETE FROM Personal_Info WHERE ID = '%s'", arg);
             st_sql = String.format("DELETE FROM STUDENT WHERE student_id = '%s'", arg);
+            score_sql = String.format("DELETE FROM Score WHERE student_id = '%s'", arg);
             Statement statement = LoginViewController.connection.con.createStatement();
+            int score_rows = statement.executeUpdate(score_sql);
             int st_rows = statement.executeUpdate(st_sql);
+            
             int info_rows = statement.executeUpdate(info_sql);
-            if (info_rows > 0 && st_rows >0){
+
+            if (info_rows > 0 && st_rows >0 && score_rows >0){
                 System.out.println("Delete successfull");
             }
         } catch (SQLException ex) {

@@ -27,23 +27,9 @@ import qlyhocvienttav.Controller.LoginViewController;
  */
 public class Main extends Application {
     public static double height=1920,width=1080;
-    @Override
-//<<<<<<< HEAD
-    /*public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("View/LoginView.fxml"));
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        //stage.setResizable(false);
-        stage.show();
-        
-        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        width = screenSize.getWidth()*0.9375;
-        height = screenSize.getHeight()*0.9;
-//=======*/
     public void start(Stage stage){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("View//LoginView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("View/LoginView.fxml"));
             
             Scene scene = new Scene(root);
             stage.setScene(scene);

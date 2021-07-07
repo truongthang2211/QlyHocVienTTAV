@@ -103,6 +103,8 @@ public class StudentManageController implements Initializable {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         maintable.getColumns().addAll(st_id,class_id,course_id,fullname,Sex,DateofBirth,national,address,email,phonenumber);
+        
+        
         data = st_dal.GetData();
         maintable.setItems(data);
     }

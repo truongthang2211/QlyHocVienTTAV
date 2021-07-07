@@ -19,7 +19,7 @@ public class Schedule_DAL {
             Object arg[]= {sche.getDay(), sche.getShift(), sche.getClassId(), sche.getRoomId(),sche.getTeacherId()};
 
             String Schedule_SQL;
-            Schedule_SQL = String.format("INSERT INTO Schedule VALUES ('STF'||to_char(seq_Schedule_id.nextval),'%s','%s','%s','%s','%s')",arg);
+            Schedule_SQL = String.format("INSERT INTO Schedule VALUES ('SCH'||to_char(seq_Schedule_id.nextval),'%s','%s','%s','%s','%s')",arg);
             Statement statement = LoginViewController.connection.con.createStatement();
             int rows_sche = statement.executeUpdate(Schedule_SQL);
             if (rows_sche > 0){
